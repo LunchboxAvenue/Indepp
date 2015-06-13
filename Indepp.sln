@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indepp", "Indepp\Indepp.csproj", "{0A6693D0-ACF7-4013-87B3-C9D554B7A04D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{5B4D37A0-A335-4082-9E32-224C8A084283}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{9E380C78-EA94-4F61-B273-A5AF76A82C6B}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\Indepp-WAWS-dev.json = PublishScripts\Configurations\Indepp-WAWS-dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A6693D0-ACF7-4013-87B3-C9D554B7A04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6693D0-ACF7-4013-87B3-C9D554B7A04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6693D0-ACF7-4013-87B3-C9D554B7A04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6693D0-ACF7-4013-87B3-C9D554B7A04D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9E380C78-EA94-4F61-B273-A5AF76A82C6B} = {5B4D37A0-A335-4082-9E32-224C8A084283}
+	EndGlobalSection
+EndGlobal
