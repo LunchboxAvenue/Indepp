@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Indepp.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,11 @@ namespace Indepp.Controllers
 {
     public class HomeController : Controller
     {
+        private PlaceContext db = new PlaceContext();
         // GET: Home
         public ActionResult Index()
         {
-            return View();
+            return View(db.Places.ToList());
         }
     }
 }

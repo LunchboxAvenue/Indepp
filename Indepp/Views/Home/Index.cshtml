@@ -1,4 +1,13 @@
-﻿<div>
+﻿@model List<Indepp.Models.Place>
+
+@foreach (var place in Model)
+{
+    <li>@place.ID</li>
+    <li>@place.Name</li>
+    <li>@place.Category</li>
+}
+
+<div>
     <p>Continuous deployment test</p>
     <button class="btn btn-danger">Bootsrap check</button>
 </div>
