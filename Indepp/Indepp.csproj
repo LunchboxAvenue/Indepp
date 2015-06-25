@@ -115,6 +115,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\images\homePage.png" />
     <Content Include="Content\site.css">
@@ -161,6 +164,11 @@
     <Content Include="Content\site.css.map">
       <DependentUpon>site.css</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\Indepp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\Indepp - Web Deploy.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
