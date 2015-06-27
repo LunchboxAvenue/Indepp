@@ -1,15 +1,17 @@
 ﻿@model List<Indepp.Models.Place>
 
-@foreach (var place in Model)
-{
-    <li>@place.ID</li>
-    <li>@place.Name</li>
-    <li>@place.Category</li>
-}
+<section id="coffee">
+    <div style="text-align: center;">
+        <h2 style="text-transform: uppercase;">List of best Coffee places in UK</H2>
+    </div>
+    <ul>
+        @foreach (var place in Model)
+        {
+            <li>@place.ID</li>
+            <li>@place.Name</li>
+            <li>@place.Category</li>
+        }
+    </ul>
+    
+</section>
 
-<div>
-    <p>Continuous deployment test</p>
-    <button class="btn btn-danger">Bootsrap check</button>
-</div>
-
-<p style="padding-top: 40%">hello hi</p>
