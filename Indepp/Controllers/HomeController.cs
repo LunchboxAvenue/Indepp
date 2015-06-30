@@ -56,5 +56,43 @@ namespace Indepp.Controllers
 
             return View(places.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult Restaurants()
+        {
+            return View();
+        }
+
+        public ActionResult Farms()
+        {
+            return View();
+        }
+
+        public ActionResult CraftShops()
+        {
+            return View();
+        }
+
+        public ActionResult Events()
+        {
+            return View();
+        }
+
+        public ActionResult About() 
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.MessageSent = false;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string name, string email, string message)
+        {
+            ViewBag.MessageSent = true;
+            return View();
+        }
     }
 }
