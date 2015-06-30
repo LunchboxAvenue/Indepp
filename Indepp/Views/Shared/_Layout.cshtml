@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Indepp.HelperMethods;
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -18,49 +20,49 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/home">
+                        <a href='@Url.Action("Index", "Home")' class='@Html.IsActive("Home", "Index")'>
                             <i class="fa fa-home fa-2x"></i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/home/coffee">
+                        <a href='@Url.Action("Coffee", "Home")' class='@Html.IsActive("Home", "Coffee")'>
                             <i class="fa fa-coffee fa-2x"></i>
                             <span>Coffee</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/home/restaurants">
+                        <a href='@Url.Action("Restaurants", "Home")' class='@Html.IsActive("Home", "Restaurants")'>
                             <i class="fa fa-cutlery fa-2x"></i>
                             <span>Restaurants</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/home/farms">
+                        <a href='@Url.Action("Farms", "Home")' class='@Html.IsActive("Home", "Farms")'>
                             <i class="fa fa-pagelines fa-2x"></i>
                             <span>Farms</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/home/craftshops">
+                        <a href='@Url.Action("CraftShops", "Home")' class='@Html.IsActive("Home", "CraftShops")'>
                             <i class="fa fa-cog fa-2x"></i>
                             <span>Craft Shops</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/home/events">
+                        <a href='@Url.Action("Events", "Home")' class='@Html.IsActive("Home", "Events")'>
                             <i class="fa fa-calendar fa-2x"></i>
                             <span>Events</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/home/about">
+                        <a href='@Url.Action("About", "Home")' class='@Html.IsActive("Home", "About")'>
                             <i class="fa fa-file-text fa-2x"></i>
                             <span>About</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/home/contact">
+                        <a href='@Url.Action("Contact", "Home")' class='@Html.IsActive("Home", "Contact")'>
                             <i class="fa fa-envelope fa-2x"></i>
                             <span>Contact</span>
                         </a>

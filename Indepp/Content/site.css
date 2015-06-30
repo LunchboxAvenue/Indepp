@@ -113,6 +113,10 @@
   font-size: 20px;
   padding-left: 10px;
 }
+.sidebar-nav li a.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
