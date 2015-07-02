@@ -10,6 +10,11 @@
 </head>
 <body>
     <div class='@Html.IsActiveBackground()'>
+        <div id="bga">
+            <img src="~/Content/images/homePage.png" style="" class='@Html.IsActiveBg("Home", "Index")' />
+            <img src="~/Content/images/coffeePage.jpg" style="" class='@Html.IsActiveBg("Coffee", "Index")' />
+        </div>
+        
         <div id="wrapper">
             <!-- Sidebar -->
             <div id="sidebar-wrapper">
@@ -26,31 +31,31 @@
                         </a>
                     </li>
                     <li>
-                        <a href='@Url.Action("Coffee", "Home")' class='@Html.IsActive("Home", "Coffee")'>
+                        <a href='@Url.Action("Index", "Coffee")' class='@Html.IsActive("Coffee", "Index")'>
                             <i class="fa fa-coffee fa-2x"></i>
                             <span>Coffee</span>
                         </a>
                     </li>
                     <li>
-                        <a href='@Url.Action("Restaurants", "Home")' class='@Html.IsActive("Home", "Restaurants")'>
+                        <a href='@Url.Action("Index", "Restaurants")' class='@Html.IsActive("Restaurants", "Index")'>
                             <i class="fa fa-cutlery fa-2x"></i>
                             <span>Restaurants</span>
                         </a>
                     </li>
                     <li>
-                        <a href='@Url.Action("Farms", "Home")' class='@Html.IsActive("Home", "Farms")'>
+                        <a href='@Url.Action("Index", "Farms")' class='@Html.IsActive("Farms", "Index")'>
                             <i class="fa fa-pagelines fa-2x"></i>
                             <span>Farms</span>
                         </a>
                     </li>
                     <li>
-                        <a href='@Url.Action("CraftShops", "Home")' class='@Html.IsActive("Home", "CraftShops")'>
+                        <a href='@Url.Action("Index", "CraftShops")' class='@Html.IsActive("CraftShops", "Index")'>
                             <i class="fa fa-cog fa-2x"></i>
                             <span>Craft Shops</span>
                         </a>
                     </li>
                     <li>
-                        <a href='@Url.Action("Events", "Home")' class='@Html.IsActive("Home", "Events")'>
+                        <a href='@Url.Action("Index", "Events")' class='@Html.IsActive("Events", "Index")'>
                             <i class="fa fa-calendar fa-2x"></i>
                             <span>Events</span>
                         </a>

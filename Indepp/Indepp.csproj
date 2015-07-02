@@ -151,7 +151,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CoffeeController.cs" />
+    <Compile Include="Controllers\CraftShopsController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FarmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="DAL\PlaceContext.cs" />
     <Compile Include="DAL\PlaceInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,13 +213,14 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Coffee.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Events.cshtml" />
-    <Content Include="Views\Home\CraftShops.cshtml" />
-    <Content Include="Views\Home\Farms.cshtml" />
-    <Content Include="Views\Home\Restaurants.cshtml" />
+    <Content Include="Views\Coffee\Index.cshtml" />
+    <Content Include="Views\Coffee\Details.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
+    <Content Include="Views\Farms\Index.cshtml" />
+    <Content Include="Views\CraftShops\Index.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

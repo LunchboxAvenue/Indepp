@@ -25,12 +25,12 @@
     font-style: normal;
 }
 
-@paperColor: rgba(255, 255, 255, 0.5);
+@paperColor: rgba(255, 255, 255, 0.75);
 
 .specialHeaderText {
     font-family: nexa_rust, Arial, Helvetica, sans-serif;
     text-align: center;
-    font-size: 132px;
+    font-size: 52px;
 }
 
 .underHeaderText {
@@ -47,14 +47,12 @@
     font-family: courier_prime, Arial, Helvetica, sans-serif;
 }
 
-.homeBackground {
+/*.homeBackground {
     background: url("images/homePage.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    -webkit-transition: background-image 2.2s ease-in-out;
-    transition: background-image 2.2s ease-in-out;
 }
 
 .coffeeBackground {
@@ -63,15 +61,43 @@
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    -webkit-transition: background-image 2.2s ease-in-out;
-    transition: background-image 2.2s ease-in-out;
-}
+}*/
 
 .recentPosts {
     text-align: center;
     p {
         text-align: left;
     }
+}
+
+#bga {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+}
+#bga img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  -moz-transition: opacity 2s ease-in;
+    -o-transition: opacity 2s ease-in;
+    -ms-transition: opacity 2s ease-in;
+    transition: opacity 2s ease-in;
+}
+
+.showBackgroundImage {
+    opacity: 1;
+}
+
+.hideBackgroundImage {
+    opacity: 0;
 }
 
 /* bootstrap */

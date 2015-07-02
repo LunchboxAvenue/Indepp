@@ -11,7 +11,7 @@
         <h2 style="text-transform: uppercase;">List of best Coffee places in UK</h2>
     </div>
 
-    @using (Html.BeginForm("Coffee", "Home", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Coffee", FormMethod.Get))
     {
         <p>
             Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
@@ -49,7 +49,7 @@
     </table>
     Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-    @Html.PagedListPager(Model, page => Url.Action("Coffee",
+    @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 </section>
