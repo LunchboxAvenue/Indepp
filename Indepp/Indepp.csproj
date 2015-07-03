@@ -130,8 +130,14 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\NexaRustSlab-BlackShadow01-Free-webfont.svg" />
-    <Content Include="Content\images\coffeePage.jpg" />
-    <Content Include="Content\images\homePage.png" />
+    <Content Include="Content\images\aboutus.jpg" />
+    <Content Include="Content\images\coffee.jpg" />
+    <Content Include="Content\images\contact.jpg" />
+    <Content Include="Content\images\craftshops.jpg" />
+    <Content Include="Content\images\events.jpg" />
+    <Content Include="Content\images\farms.jpg" />
+    <Content Include="Content\images\food.jpg" />
+    <Content Include="Content\images\home.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\site.css">
       <DependentUpon>site.less</DependentUpon>
@@ -156,7 +162,7 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FarmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RestaurantsController.cs" />
+    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="DAL\PlaceContext.cs" />
     <Compile Include="DAL\PlaceInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -217,10 +223,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Coffee\Index.cshtml" />
     <Content Include="Views\Coffee\Details.cshtml" />
-    <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\Farms\Index.cshtml" />
     <Content Include="Views\CraftShops\Index.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\Food\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

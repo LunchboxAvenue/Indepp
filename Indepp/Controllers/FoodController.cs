@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace Indepp.Controllers
 {
-    public class RestaurantsController : Controller
+    public class FoodController : Controller
     {
-        // GET: Restaurants
+        // GET: Foods
         public ActionResult Index()
         {
             return View();

@@ -23,28 +23,17 @@ namespace Indepp.HelperMethods
         public static string IsActiveBackground(this HtmlHelper html)
         {
             var routeData = html.ViewContext.RouteData;
-
+            var path = "/Content/images/";
             var routeAction = (string)routeData.Values["action"];
-            var routeControl = (string)routeData.Values["controller"];
+            var routeController = (string)routeData.Values["controller"];
 
-            if (routeAction == "Index")
-                return "homeBackground";
-            else if (routeAction == "Coffee")
-                return "coffeeBackground";
-            else
-                return "homeBackground";
+            if (routeAction == "About")
+                routeController = "aboutus";
+            else if (routeAction == "Contact")
+                routeController = "contact";
+
+            return path + routeController.ToLower() + ".jpg";
         }
 
-        public static string IsActiveBg(this HtmlHelper html, string control, string action)
-        {
-            var routeData = html.ViewContext.RouteData;
-
-            var routeAction = (string)routeData.Values["action"];
-            var routeControl = (string)routeData.Values["controller"];
-
-            var returnActive = control == routeControl && action == routeAction;
-
-            return returnActive ? "showBackgroundImage" : "hideBackgroundImage";
-        }
     }
 }
