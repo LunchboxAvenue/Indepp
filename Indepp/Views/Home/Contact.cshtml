@@ -1,13 +1,29 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
+﻿<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
 
+            <h1 class="specialHeaderText">@ViewBag.PageTitle</h1>
 
-<div>
-    contact us page
+            <p class="underHeaderText">
+                Might not be needed exactly as it looks now
+            </p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-12">
+            <section>
+                @if (ViewBag.MessageSent)
+                {
+                    <p>Message has been sent</p>
+                }
+                
+                Contact Us Form goes here
+            </section>
+        </div>
+        <!-- Main Content Ends-->
+
+    </div>
 </div>
-
-@if (ViewBag.MessageSent)
-{
-    <p>Message has been sent</p>
-}

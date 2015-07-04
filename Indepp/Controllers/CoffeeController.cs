@@ -20,6 +20,8 @@ namespace Indepp.Controllers
         // GET: Coffee
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.PageTitle = "Coffee";
+
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
@@ -31,7 +33,7 @@ namespace Indepp.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var places = Context.Places.AsQueryable();
+            var places = Context.Places.AsQueryable().Where(c => c.Category == "coffee");
 
             if (!String.IsNullOrEmpty(searchString))
                 places = places.Where(p => p.Name.Contains(searchString));
@@ -55,12 +57,13 @@ namespace Indepp.Controllers
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-            return View(places.ToPagedList(pageNumber, pageSize));
+            return View("PlaceList", places.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Details(string details)
+        public ActionResult Details(string id)
         {
-            return View();
+            ViewBag.PageTitle = "Name of the place";
+            return View("PlaceDetails");
         }
     }
 }

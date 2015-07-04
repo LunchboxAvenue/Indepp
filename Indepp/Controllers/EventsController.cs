@@ -11,6 +11,7 @@ namespace Indepp.Controllers
         // GET: Events
         public ActionResult Index()
         {
+            ViewBag.PageTitle = "Events";
             return View();
         }
     }

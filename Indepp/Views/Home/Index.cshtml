@@ -1,17 +1,53 @@
 ﻿@model List<Indepp.Models.Place>
 
-<section id="coffee">
-    <div style="text-align: center;">
-        <h2 style="text-transform: uppercase;">List of best Coffee places in UK</H2>
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle" style="position: absolute; top: 10px;">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">@ViewBag.PageTitle</h1>
+
+            <p class="underHeaderText">
+                Milk viennese, seasonal acerbic so as turkish a irish doppio.
+                Variety iced decaffeinated milk cream roast skinny blue mountain.
+                Redeye blue mountain, a, cultivar robust seasonal, robusta, iced
+                fair trade ut seasonal black. Mazagran, ristretto blue mountain
+                lungo crema latte aged crema.
+            </p>
+
+            <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-8">
+            <section id="placeList">
+                <div style="text-align: center;">
+                    <h2 style="text-transform: uppercase;">List of best @ViewBag.PageTitle places in UK</h2>
+                </div>
+
+                <ul>
+                    @foreach (var place in Model)
+                    {
+                        <li>@place.ID</li>
+                        <li>@place.Name</li>
+                        <li>@place.Category</li>
+                    }
+                </ul>
+
+            </section>
+        </div>
+        <!-- Main Content Ends-->
+        <!-- Will be a partial later on -->
+        <div class="col-md-4 recentPosts">
+            <h2 style="text-transform:uppercase">Recent posts</h2>
+
+            <p>Single origin saucer cappuccino doppio robusta crema single shot.</p>
+            <p>Roast, aromatic, white black java medium extra.</p>
+            <p>Blue mountain mug, redeye, flavour extraction lungo cream aromatic grounds body cappuccino.</p>
+        </div>
+        <!-- Partial will end here-->
+
     </div>
-    <ul>
-        @foreach (var place in Model)
-        {
-            <li>@place.ID</li>
-            <li>@place.Name</li>
-            <li>@place.Category</li>
-        }
-    </ul>
-
-</section>
-
+</div>

@@ -221,12 +221,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Coffee\Index.cshtml" />
-    <Content Include="Views\Coffee\Details.cshtml" />
-    <Content Include="Views\Farms\Index.cshtml" />
-    <Content Include="Views\CraftShops\Index.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Food\Index.cshtml" />
+    <Content Include="Views\Shared\PlaceList.cshtml" />
+    <Content Include="Views\Shared\PlaceDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

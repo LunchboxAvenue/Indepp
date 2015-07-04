@@ -16,14 +16,20 @@ namespace Indepp.DAL
 
             var places = new List<Place> 
             {
-                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee Shop", Address = address, Article = article, Description = description },
-                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee Shop", Address = address, Article = article, Description = description },
-                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee Shop", Address = address, Article = article, Description = description },
-                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee Shop", Address = address, Article = article, Description = description },
-                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee Shop", Address = address, Article = article, Description = description },
-                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee Shop", Address = address, Article = article, Description = description },
-                new Place {ID = 7, Name = "Burning hell", Category = "Coffee Shop", Address = address, Article = article, Description = description },
-                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee Shop", Address = address, Article = article, Description = description },
+                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 7, Name = "Burning hell", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee", Address = address, Article = article, Description = description },
+                new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food", Address = address, Article = article, Description = description },
+                new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Address = address, Article = article, Description = description },
+                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Address = address, Article = article, Description = description },
+                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Address = address, Article = article, Description = description },
+                new Place {ID = 11, Name = "The Light", Category = "CraftShops", Address = address, Article = article, Description = description },
+                new Place {ID = 12, Name = "The Dark", Category = "CraftShops", Address = address, Article = article, Description = description }
             };
 
             places.ForEach(p => context.Places.Add(p));
