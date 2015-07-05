@@ -52,6 +52,12 @@
 .recentPosts p {
   text-align: left;
 }
+#placeList table .fa {
+  vertical-align: middle;
+}
+#placeList table td {
+  vertical-align: middle;
+}
 #backgroundImage {
   position: fixed;
   top: -50%;

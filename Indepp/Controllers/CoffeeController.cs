@@ -33,7 +33,7 @@ namespace Indepp.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var places = Context.Places.AsQueryable().Where(c => c.Category == "coffee");
+            var places = Context.Places.Where(c => c.Category == "coffee");
 
             if (!String.IsNullOrEmpty(searchString))
                 places = places.Where(p => p.Name.Contains(searchString));
@@ -60,10 +60,11 @@ namespace Indepp.Controllers
             return View("PlaceList", places.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
-            ViewBag.PageTitle = "Name of the place";
-            return View("PlaceDetails");
+            var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
+
+            return View("PlaceDetails", place);
         }
     }
 }

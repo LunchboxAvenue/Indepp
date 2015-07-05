@@ -53,7 +53,9 @@
                     {
                         <tr>
                             <td>
-                                @place.ID
+                                <a href='@Url.Action("Details", place.Category, new { id = place.ID })'>
+                                    <i class="fa fa-newspaper-o fa-2x"></i>
+                                </a>
                             </td>
                             <td>
                                 @place.Name

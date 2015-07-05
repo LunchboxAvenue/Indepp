@@ -60,10 +60,11 @@ namespace Indepp.Controllers
             return View("PlaceList", places.ToPagedList(pageNumber, pageSize));
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int? id)
         {
-            ViewBag.PageTitle = "Name of the place";
-            return View("PlaceDetails");
+            var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
+
+            return View("PlaceDetails", place);
         }
     }
 }
