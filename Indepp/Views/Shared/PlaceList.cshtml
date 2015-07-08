@@ -28,7 +28,7 @@
                 <div style="text-align: center;">
                     <h2 style="text-transform: uppercase;">List of best @ViewBag.PageTitle places in UK</h2>
                 </div>
-                @using (Html.BeginForm("Index", "Coffee", FormMethod.Get))
+                @using (Html.BeginForm("Index", (@ViewBag.PageTitle as string).Replace(" ", string.Empty), FormMethod.Get))
                 {
                     <p>
                         Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
@@ -39,10 +39,10 @@
                 <table class="table table-hover">
                     <tr>
                         <th>
-                            @Html.ActionLink("ID", "Coffee", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
+                            @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
                         </th>
                         <th>
-                            @Html.ActionLink("Name", "Coffee", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
                         </th>
                         <th>
                             Category
