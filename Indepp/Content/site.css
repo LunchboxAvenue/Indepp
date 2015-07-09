@@ -208,4 +208,8 @@
 #adminPlaceList a:focus {
   text-decoration: none;
 }
+/* admin end*/
+.btn-group a {
+  text-decoration: none;
+}
 /*# sourceMappingURL=site.css.map */

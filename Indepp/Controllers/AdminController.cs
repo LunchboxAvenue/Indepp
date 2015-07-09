@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Indepp.DAL;
 using PagedList;
+using Indepp.Models;
 
 namespace Indepp.Controllers
 {
@@ -69,6 +70,17 @@ namespace Indepp.Controllers
             var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
 
             return View(place);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Place place)
+        {
+            var Inplace = Context.Places.Where(p => p.ID == place.ID).FirstOrDefault();
+
+            Inplace.Name = place.Name;
+            Context.SaveChanges();
+
+            return RedirectToAction("Details", new { id = place.ID });
         }
     }
 }

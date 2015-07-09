@@ -1,0 +1,55 @@
+﻿@model Indepp.Models.Place
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">@Model.Name</h1>
+
+            <p class="underHeaderText">
+                Details view.
+            </p>
+
+        </div>
+
+        <!-- Content -->
+        @using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+        {
+            <!-- Controls -->
+            <div class="btn-group" role="group">
+                <input type="submit" valie="Save" />
+            </div>
+            <!-- /Controls-->
+
+            <div class="col-md-8">
+                <section id="placeDetails">
+                    <div>
+                        <h1>
+                            PLACE DETAILS
+                        </h1>
+                        <p>
+                            @Html.TextBoxFor(p => Model.Name)
+                        </p>
+                        <p>
+                            @Html.TextBoxFor(p => Model.Category)
+                        </p>
+                    </div>
+                </section>
+            </div>
+        }
+        <!-- /Content-->
+
+        <div class="col-md-4 recentPosts">
+            <h2 style="text-transform:uppercase">Opening Times</h2>
+
+            <p>Mon: </p>
+            <p>Tue: </p>
+            <p>Wed: </p>
+
+        </div>
+
+    </div>
+</div>
