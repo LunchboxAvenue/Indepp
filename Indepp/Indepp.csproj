@@ -227,6 +227,7 @@
     <Content Include="Views\Shared\PlaceList.cshtml" />
     <Content Include="Views\Shared\PlaceDetails.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

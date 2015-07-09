@@ -56,5 +56,19 @@ namespace Indepp.Controllers
 
             return View(places.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult Details(int? id)
+        {
+            var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
+
+            return View(place);
+        }
+        
+        public ActionResult Edit(int? id)
+        {
+            var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
+
+            return View(place);
+        }
     }
 }

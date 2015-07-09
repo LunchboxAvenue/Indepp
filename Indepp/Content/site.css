@@ -202,4 +202,10 @@
     margin-right: 0;
   }
 }
+/* bootstrap end */
+/* admin */
+#adminPlaceList a:hover,
+#adminPlaceList a:focus {
+  text-decoration: none;
+}
 /*# sourceMappingURL=site.css.map */
