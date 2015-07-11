@@ -16,6 +16,8 @@
 
         @using (Html.BeginForm("Delete", "Admin", FormMethod.Post))
         {
+            @Html.AntiForgeryToken()
+            
             <!-- Controls -->
             <div class="col-md-12">
                 <div class="btn-group" role="group">

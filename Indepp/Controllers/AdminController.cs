@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Indepp.DAL;
 using PagedList;
 using Indepp.Models;
+using System.Data;
 
 namespace Indepp.Controllers
 {
@@ -65,13 +66,25 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Place place)
         {
-            // validate the model here
-            Context.Places.Add(place);
-            Context.SaveChanges();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Context.Places.Add(place);
+                    Context.SaveChanges();
 
-            return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
+            }
+
+            return View(place);
         }
 
         public ActionResult Details(int? id)
@@ -89,14 +102,26 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Place place)
         {
-            var Inplace = Context.Places.Where(p => p.ID == place.ID).FirstOrDefault();
+            try
+            {
+                var Inplace = Context.Places.Where(p => p.ID == place.ID).FirstOrDefault();
 
-            Inplace.Name = place.Name;
-            Context.SaveChanges();
+                Inplace.Name = place.Name;
+                Inplace.Category = place.Category;
+                Context.SaveChanges();
 
-            return RedirectToAction("Details", new { id = place.ID });
+                return RedirectToAction("Details", new { id = place.ID });
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
+            return View("Edit", place);
+            
         }
         
         public ActionResult Delete(int? id)
@@ -107,13 +132,25 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             var place = Context.Places.Find(id);
-            Context.Places.Remove(place);
-            Context.SaveChanges();
 
-            return RedirectToAction("Index");
+            try
+            {
+                Context.Places.Remove(place);
+                Context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to delete the model");
+            }
+
+            return View("Delete", place);
+            
         }
 
         protected override void Dispose(bool disposing)
