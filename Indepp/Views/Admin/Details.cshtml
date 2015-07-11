@@ -12,18 +12,23 @@
             <p class="underHeaderText">
                 Details view.
             </p>
+        </div>
 
-            <!-- Controls -->
+        <!-- Controls -->
+        <div class="col-md-12">
             <div class="btn-group" role="group">
-                <a href='@Url.Action("Index", "Admin")'>
-                    <i class="fa fa-arrow-circle-o-left fa-2x"></i>
+                <a href='@Url.Action("Index", "Admin")' class="btn">
+                    <i class="fa fa-hand-o-left fa-2x"></i>
                 </a>
-                <a href='@Url.Action("Edit", "Admin", new { id = Model.ID })'>
+                <a href='@Url.Action("Edit", "Admin", new { id = Model.ID })' class="btn">
                     <i class="fa fa-pencil fa-2x"></i>
                 </a>
+                <a href='@Url.Action("Delete", "Admin", new { id = Model.ID })' class="btn">
+                    <i class="fa fa-trash-o fa-2x"></i>
+                </a>
             </div>
-            <!-- /Controls-->
         </div>
+        <!-- /Controls -->
 
         <!-- Main Content -->
         <div class="col-md-8">

@@ -82,5 +82,22 @@ namespace Indepp.Controllers
 
             return RedirectToAction("Details", new { id = place.ID });
         }
+        
+        public ActionResult Delete(int? id)
+        {
+            var place = Context.Places.Find(id);
+
+            return View(place);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var place = Context.Places.Find(id);
+            Context.Places.Remove(place);
+            Context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

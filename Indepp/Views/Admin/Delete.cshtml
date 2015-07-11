@@ -10,13 +10,11 @@
             <h1 class="specialHeaderText">@Model.Name</h1>
 
             <p class="underHeaderText">
-                Details view.
+                Press delete to remove the place.
             </p>
-
         </div>
 
-        <!-- Content -->
-        @using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+        @using (Html.BeginForm("Delete", "Admin", FormMethod.Post))
         {
             <!-- Controls -->
             <div class="col-md-12">
@@ -25,29 +23,33 @@
                         <i class="fa fa-hand-o-left fa-2x"></i>
                     </a>
                     <button type="submit" class="btn btn-link">
-                        <i class="fa fa-floppy-o fa-2x"></i>
+                        <i class="fa fa-trash-o fa-2x"></i>
                     </button>
                 </div>
             </div>
-            <!-- /Controls-->
-
-            <div class="col-md-8">
-                <section id="placeDetails">
-                    <div>
-                        <h1>
-                            PLACE DETAILS
-                        </h1>
-                        <p>
-                            @Html.TextBoxFor(p => Model.Name)
-                        </p>
-                        <p>
-                            @Html.TextBoxFor(p => Model.Category)
-                        </p>
-                    </div>
-                </section>
-            </div>
+            <!-- /Controls -->
         }
-        <!-- /Content-->
+
+        <!-- Main Content -->
+        <div class="col-md-8">
+            <section id="placeDetails">
+                <div>
+                    <h1>
+                        PLACE DETAILS
+                    </h1>
+                    <p>
+                        @Model.ID
+                    </p>
+                    <p>
+                        @Model.Name
+                    </p>
+                    <p>
+                        @Model.Category
+                    </p>
+                </div>
+            </section>
+        </div>
+        <!-- Main Content Ends-->
 
         <div class="col-md-4 recentPosts">
             <h2 style="text-transform:uppercase">Opening Times</h2>
