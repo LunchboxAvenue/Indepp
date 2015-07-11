@@ -17,6 +17,7 @@ namespace Indepp.Controllers
         {
             Context = context;
         }
+
         // GET: Admin
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -56,6 +57,21 @@ namespace Indepp.Controllers
             int pageNumber = (page ?? 1);
 
             return View(places.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Place place)
+        {
+            // validate the model here
+            Context.Places.Add(place);
+            Context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Details(int? id)
@@ -98,6 +114,12 @@ namespace Indepp.Controllers
             Context.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            Context.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

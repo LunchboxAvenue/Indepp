@@ -1,0 +1,52 @@
+﻿@model Indepp.Models.Place
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">Create a place</h1>
+
+            <p class="underHeaderText">
+                Here you can add a new place to database
+            </p>
+        </div>
+
+        @using (Html.BeginForm("Create", "Admin", FormMethod.Post))
+        {
+        <!-- Controls -->
+            <div class="col-md-12">
+                <div class="btn-group" role="group">
+                    <a href='@Url.Action("Index", "Admin")' class="btn">
+                        <i class="fa fa-hand-o-left fa-2x"></i>
+                    </a>
+                    <button type="submit" class="btn btn-link">
+                        <i class="fa fa-check fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        <!-- /Controls -->
+
+        <!-- Main Content -->
+            <div class="col-md-8">
+                <section id="placeDetails">
+                    <div>
+                        <h1>
+                            Create Place
+                        </h1>
+                        <p>
+                            @Html.EditorFor(p => p.Name)
+                        </p>
+                        <p>
+                            @Html.EditorFor(p => p.Category)
+                        </p>
+                    </div>
+                </section>
+            </div>
+        <!-- /Main Content-->
+        }
+
+    </div>
+</div>
