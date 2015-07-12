@@ -11,11 +11,17 @@ namespace Indepp.Controllers
     public class HomeController : Controller
     {
         private PlaceContext db = new PlaceContext();
+
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             ViewBag.PageTitle = "Home";
-            return View(db.Places.ToList());
+
+            var blogPosts = db.BlogPosts.OrderByDescending(pb => pb.ID);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(blogPosts.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult About() 

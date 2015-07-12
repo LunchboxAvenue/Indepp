@@ -1,4 +1,6 @@
-﻿@model List<Indepp.Models.Place>
+﻿@model PagedList.IPagedList<Indepp.Models.BlogPost>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <div class="container-fluid">
     <div class="row paperBody">
@@ -10,31 +12,50 @@
             <h1 class="specialHeaderText">@ViewBag.PageTitle</h1>
 
             <p class="underHeaderText">
-                Milk viennese, seasonal acerbic so as turkish a irish doppio.
-                Variety iced decaffeinated milk cream roast skinny blue mountain.
-                Redeye blue mountain, a, cultivar robust seasonal, robusta, iced
-                fair trade ut seasonal black. Mazagran, ristretto blue mountain
-                lungo crema latte aged crema.
+                Blog posts. 
             </p>
-
-            <!--<p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>-->
         </div>
 
         <!-- Main Content -->
         <div class="col-md-8">
-            <section id="placeList">
-                <div style="text-align: center;">
-                    <h2 style="text-transform: uppercase;">List of best @ViewBag.PageTitle places in UK</h2>
-                </div>
+            <section id="blogPostList">
+                <table class="table table-hover">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Title
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Post on
+                        </th>
+                    </tr>
 
-                <ul>
-                    @foreach (var place in Model)
+                    @foreach (var blogPost in Model)
                     {
-                        <li>@place.ID</li>
-                        <li>@place.Name</li>
-                        <li>@place.Category</li>
+                        <tr>
+                            <td>
+                                @blogPost.ID
+                            </td>
+                            <td>
+                                @blogPost.Title
+                            </td>
+                            <td>
+                                @blogPost.ShortDescription
+                            </td>
+                            <td>
+                                @blogPost.PostedOn
+                            </td>
+                        </tr>
                     }
-                </ul>
+                </table>
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
             </section>
         </div>

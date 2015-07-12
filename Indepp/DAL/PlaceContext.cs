@@ -18,6 +18,7 @@ namespace Indepp.DAL
         public DbSet<Article> Articles { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<PlaceDescription> PlaceDescriptions { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
