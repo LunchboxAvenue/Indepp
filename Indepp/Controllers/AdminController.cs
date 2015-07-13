@@ -121,7 +121,6 @@ namespace Indepp.Controllers
             }
 
             return View("Edit", place);
-            
         }
         
         public ActionResult Delete(int? id)
@@ -152,6 +151,86 @@ namespace Indepp.Controllers
             return View("Delete", place);
             
         }
+
+        #region BlogPost Functionality
+
+        public ActionResult BlogPostList(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
+
+            if (searchString != null)
+                page = 1;
+            else
+                searchString = currentFilter;
+
+            ViewBag.CurrentFilter = searchString;
+
+            var blogPosts = Context.BlogPosts.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+                blogPosts = blogPosts.Where(bp => bp.Title.Contains(searchString));
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    blogPosts = blogPosts.OrderByDescending(bp => bp.Title);
+                    break;
+                case "id_desc":
+                    blogPosts = blogPosts.OrderByDescending(bp => bp.ID);
+                    break;
+                case "ID":
+                    blogPosts = blogPosts.OrderBy(bp => bp.ID);
+                    break;
+                default:
+                    blogPosts = blogPosts.OrderBy(bp => bp.Title);
+                    break;
+            }
+
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            return View(blogPosts.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult BlogPostDetails(int? id)
+        {
+            var blogPost = Context.BlogPosts.Find(id);
+            return View(blogPost);
+        }
+
+        public ActionResult BlogPostEdit(int? id)
+        {
+            var blogPost = Context.BlogPosts.Find(id);
+            return View(blogPost);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BlogPostEdit(BlogPost blogPost)
+        {
+            try
+            {
+                var IndeppBlogPost = Context.BlogPosts.Find(blogPost.ID);
+
+                IndeppBlogPost.Title = blogPost.Title;
+                IndeppBlogPost.ShortDescription = blogPost.ShortDescription;
+                IndeppBlogPost.Description = blogPost.Description;
+                Context.SaveChanges();
+
+                return RedirectToAction("BlogPostDetails", new { id = blogPost.ID });
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
+            return View("BlogPostEdit", blogPost);
+        }
+
+        #endregion 
+
 
         protected override void Dispose(bool disposing)
         {
