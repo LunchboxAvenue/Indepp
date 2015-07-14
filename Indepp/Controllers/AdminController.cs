@@ -194,6 +194,34 @@ namespace Indepp.Controllers
             return View(blogPosts.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult BlogPostCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BlogPostCreate(BlogPost blogPost)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    blogPost.PostedOn = DateTime.Now;
+                    Context.BlogPosts.Add(blogPost);
+                    Context.SaveChanges();
+
+                    return RedirectToAction("BlogPostList");
+                }
+            }
+            catch (DataException e)
+            {
+                ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
+            }
+
+            return View(blogPost);
+        }
+
         public ActionResult BlogPostDetails(int? id)
         {
             var blogPost = Context.BlogPosts.Find(id);
@@ -227,6 +255,35 @@ namespace Indepp.Controllers
             }
 
             return View("BlogPostEdit", blogPost);
+        }
+
+        public ActionResult BlogPostDelete(int? id)
+        {
+            var blogPost = Context.BlogPosts.Find(id);
+
+            return View(blogPost);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BlogPostDelete(int id)
+        {
+            var blogPost = Context.BlogPosts.Find(id);
+
+            try
+            {
+                Context.BlogPosts.Remove(blogPost);
+                Context.SaveChanges();
+
+                return RedirectToAction("BlogPostList");
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to delete the model");
+            }
+
+            return View("BlogPostDelete", blogPost);
+
         }
 
         #endregion 

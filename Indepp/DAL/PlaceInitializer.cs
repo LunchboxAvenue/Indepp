@@ -38,8 +38,8 @@ namespace Indepp.DAL
 
             var blogPosts = new List<BlogPost>
             {
-                new BlogPost {ID = 1, Title = "Welcome to our website", ShortDescription = "Hello and welcome. We pleased to announce, that ...", Description = "", PostedOn = new DateTime(2015, 7, 12, 22, 37, 15)},
-                new BlogPost {ID = 2, Title = "First thing to do in the mornings", ShortDescription = "It feels good to start your day with a great cup of coffee...", Description = "", PostedOn = new DateTime(2015, 7, 12, 23, 0 , 0)}
+                new BlogPost {ID = 1, Title = "Welcome to our website", ShortDescription = "Hello and welcome. We pleased to announce, that ...", Description = "pam", PostedOn = new DateTime(2015, 7, 12, 22, 37, 15)},
+                new BlogPost {ID = 2, Title = "First thing to do in the mornings", ShortDescription = "It feels good to start your day with a great cup of coffee...", Description = "param", PostedOn = new DateTime(2015, 7, 12, 23, 0 , 0)}
             };
 
             blogPosts.ForEach(bp => context.BlogPosts.Add(bp));

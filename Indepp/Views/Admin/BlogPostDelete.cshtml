@@ -10,25 +10,27 @@
             <h1 class="specialHeaderText">@Model.Title</h1>
 
             <p class="underHeaderText">
-                Blog Post Details
+                Delete Blog Post view.
             </p>
         </div>
 
-        <!-- Controls -->
-        <div class="col-md-12">
-            <div class="btn-group" role="group">
-                <a href='@Url.Action("BlogPostList", "Admin")' class="btn">
-                    <i class="fa fa-hand-o-left fa-2x"></i>
-                </a>
-                <a href='@Url.Action("BlogPostEdit", "Admin", new { id = Model.ID })' class="btn">
-                    <i class="fa fa-pencil fa-2x"></i>
-                </a>
-                <a href='@Url.Action("BlogPostDelete", "Admin", new { id = Model.ID })' class="btn">
-                    <i class="fa fa-trash-o fa-2x"></i>
-                </a>
+        @using (Html.BeginForm("BlogPostDelete", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Controls -->
+            <div class="col-md-12">
+                <div class="btn-group" role="group">
+                    <a href='@Url.Action("BlogPostList", "Admin")' class="btn">
+                        <i class="fa fa-hand-o-left fa-2x"></i>
+                    </a>
+                    <button type="submit" class="btn btn-link">
+                        <i class="fa fa-trash-o fa-2x"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-        <!-- /Controls -->
+            <!-- /Controls -->
+        }
 
         <!-- Main Content -->
         <div class="col-md-12">
@@ -54,7 +56,9 @@
                     </p>
                 </div>
             </section>
+
         </div>
         <!-- Main Content Ends-->
+
     </div>
 </div>

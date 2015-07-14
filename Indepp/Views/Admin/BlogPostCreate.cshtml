@@ -1,0 +1,63 @@
+﻿@model Indepp.Models.BlogPost
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">Create a blog post</h1>
+
+            <p class="underHeaderText">
+                Here you can add a a new blog entry to the database
+            </p>
+        </div>
+
+        @using (Html.BeginForm("BlogPostCreate", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Controls -->
+            <div class="col-md-12">
+                <div class="btn-group" role="group">
+                    <a href='@Url.Action("BlogPostList", "Admin")' class="btn">
+                        <i class="fa fa-hand-o-left fa-2x"></i>
+                    </a>
+                    <button type="submit" class="btn btn-link">
+                        <i class="fa fa-check fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /Controls -->
+
+            <!-- Main Content -->
+            <div class="col-md-12">
+                <section id="blogPostDetails">
+                    <div>
+                        <h1>
+                            Create Blog Entry
+                        </h1>
+                        <div class="form-group">
+                            <label for="Title">Title</label>
+                            @Html.TextAreaFor(bp => Model.Title, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(bp => Model.Title)
+                        </div>
+                        <div class="form-group">
+                            <label for="Short Description">Short Description</label>
+                            @Html.TextAreaFor(bp => Model.ShortDescription, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(bp => Model.ShortDescription)
+                        </div>
+                        <div class="form-group">
+                            <label for="Description">Description</label>
+                            @Html.TextAreaFor(bp => Model.Description, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(bp => Model.Description)
+                        </div>    
+                    </div>
+                </section>
+            </div>
+            <!-- /Main Content-->
+        }
+
+    </div>
+</div>
