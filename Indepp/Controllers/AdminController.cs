@@ -288,6 +288,50 @@ namespace Indepp.Controllers
 
         #endregion 
 
+        #region Article Functionality
+
+        public ActionResult ArticleList(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
+
+            if (searchString != null)
+                page = 1;
+            else
+                searchString = currentFilter;
+
+            ViewBag.CurrentFilter = searchString;
+
+            var articles = Context.Articles.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchString))
+                articles = articles.Where(a => a.Title.Contains(searchString));
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    articles = articles.OrderByDescending(bp => bp.Title);
+                    break;
+                case "id_desc":
+                    articles = articles.OrderByDescending(bp => bp.ID);
+                    break;
+                case "ID":
+                    articles = articles.OrderBy(bp => bp.ID);
+                    break;
+                default:
+                    articles = articles.OrderBy(bp => bp.Title);
+                    break;
+            }
+
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            return View(articles.ToPagedList(pageNumber, pageSize));
+        }
+
+        #endregion
+
 
         protected override void Dispose(bool disposing)
         {

@@ -237,6 +237,7 @@
     <Content Include="Views\Admin\BlogPostEdit.cshtml" />
     <Content Include="Views\Admin\BlogPostDelete.cshtml" />
     <Content Include="Views\Admin\BlogPostCreate.cshtml" />
+    <Content Include="Views\Admin\ArticleList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,128 @@
+﻿@model PagedList.IPagedList<Indepp.Models.Article>
+@using PagedList.Mvc;
+@using Indepp.HelperMethods;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">Admin Section</h1>
+
+            <p class="underHeaderText">
+                This view and functionality should only be available for authenticated admin.
+                This morelikely will be using "OAuth2"
+            </p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-12">
+            <section id="adminArticleList">
+                <div class="panel panel-default">
+
+                    <!-- List group -->
+                    <div class="list-group">
+                        <a href='@Url.Action("Create", "Admin")' class="list-group-item">
+                            <h4 class="list-group-item-heading">Add Place</h4>
+                            <p class="list-group-item-text">
+                                Provides the functionality to create add a place to the database.
+                            </p>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">Add Article</h4>
+                            <p class="list-group-item-text">
+                                Provides the functionality to create an article, link it to a place and add it to the database.
+                            </p>
+                        </a>
+                        <a href='@Url.Action("BlogPostCreate", "Admin")' class="list-group-item">
+                            <h4 class="list-group-item-heading">Add News/Blog entry</h4>
+                            <p class="list-group-item-text">
+                                Provides the functionality to add a blog/news entry that will be displayed on the home page.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs nav-justified">
+                    <li role="presentation" class='@Html.IsActive("Admin", "Index")'>
+                        <a href='@Url.Action("Index", "Admin")'>Places</a>
+                    </li>
+                    <li role="presentation" class='@Html.IsActive("Admin", "ArticleList")'>
+                        <a href='@Url.Action("ArticleList", "Admin")'>Articles</a>
+                    </li>
+                    <li role="presentation" class='@Html.IsActive("Admin", "BlogPostList")'>
+                        <a href='@Url.Action("BlogPostList", "Admin")'>Blog Posts</a>
+                    </li>
+                </ul>
+
+                <div>
+                    <section id="articleList">
+                        <div style="text-align: center;">
+                            <h2 style="text-transform: uppercase;">List of all articles</h2>
+                        </div>
+                        @using (Html.BeginForm("ArticleList", "Admin", FormMethod.Get))
+                        {
+                            <p>
+                                Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                                <input type="submit" class="btn btn-default" value="Search" />
+                            </p>
+                        }
+
+                        <table class="table table-hover">
+                            <tr>
+                                <th>
+                                    @Html.ActionLink("ID", "ArticleList", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
+                                </th>
+                                <th>
+                                    @Html.ActionLink("Title", "ArticleList", new { sortOrder = ViewBag.TitleSortParm, currentFilter = ViewBag.CurrentFilter })
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+
+                            @foreach (var article in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @article.ID
+                                    </td>
+                                    <td>
+                                        @article.Title
+                                    </td>
+                                    <td>
+                                        @article.Description
+                                    </td>
+                                    <td>
+                                        <a href='@Url.Action("ArticleDetails", "Admin", new { id = article.ID })'>
+                                            <i class="fa fa-file-text-o fa-2x"></i>
+                                        </a>
+                                        <a href='@Url.Action("ArticleEdit", "Admin", new { id = article.ID })'>
+                                            <i class="fa fa-pencil fa-2x"></i>
+                                        </a>
+                                        <a href='@Url.Action("ArticleDelete", "Admin", new { id = article.ID })'>
+                                            <i class="fa fa-trash-o fa-2x"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+                    </section>
+                </div>
+            </section>
+        </div>
+        <!-- Main Content Ends-->
+
+    </div>
+</div>

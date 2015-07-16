@@ -11,7 +11,7 @@ namespace Indepp.DAL
         protected override void Seed(PlaceContext context)
         {
             var address = new Address { City = "Leeds", Country = "United Kingdom", Couty = "West Yorkshire" };
-            var article = new Article { Name = "Best Coffee in UK!", Description = "This is the best place to drink coffee in UK." };
+            var article = new Article { Title = "Best Coffee in UK!", Description = "This is the best place to drink coffee in UK." };
             var description = new PlaceDescription { Description = "Temporary Missing" };
 
             var places = new List<Place> 
