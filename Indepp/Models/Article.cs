@@ -10,5 +10,7 @@ namespace Indepp.Models
         public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public DateTime PostedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
     }
 }

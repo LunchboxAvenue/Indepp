@@ -7,6 +7,7 @@ using Indepp.DAL;
 using PagedList;
 using Indepp.Models;
 using System.Data;
+using System.Data.Entity;
 
 namespace Indepp.Controllers
 {
@@ -328,6 +329,74 @@ namespace Indepp.Controllers
             int pageNumber = (page ?? 1);
 
             return View(articles.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult ArticleEdit(int? id)
+        {
+            var article = Context.Articles.Find(id);
+
+            return View(article);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ArticleEdit(Article article)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var IndeppArticle = Context.Articles.Find(article.ID);
+
+                    IndeppArticle.Title = article.Title;
+                    IndeppArticle.Description = article.Description;
+                    IndeppArticle.ModifiedOn = DateTime.Now;
+                    Context.SaveChanges();
+
+                    return RedirectToAction("ArticleDetails", new { id = article.ID });
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            }
+
+            return View("ArticleEdit", article);
+        }
+
+        public ActionResult ArticleDetails(int? id)
+        {
+            var article = Context.Articles.Find(id);
+
+            return View(article);
+        }
+
+        public ActionResult ArticleDelete(int? id)
+        {
+            var article = Context.Articles.Find(id);
+
+            return View(article);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ArticleDelete(int id)
+        {
+            var article = Context.Articles.Find(id);
+
+            try
+            {
+                Context.Articles.Remove(article);
+                Context.SaveChanges();
+
+                return RedirectToAction("ArticleList");
+            }
+            catch (DataException e)
+            {
+                ModelState.AddModelError("", "Unable to delete the model");
+            }
+
+            return View("ArticleDelete", article);
         }
 
         #endregion

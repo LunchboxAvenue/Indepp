@@ -11,7 +11,7 @@ namespace Indepp.DAL
         protected override void Seed(PlaceContext context)
         {
             var address = new Address { City = "Leeds", Country = "United Kingdom", Couty = "West Yorkshire" };
-            var article = new Article { Title = "Best Coffee in UK!", Description = "This is the best place to drink coffee in UK." };
+            var article = new Article { Title = "Best Coffee in UK!", Description = "This is the best place to drink coffee in UK.", PostedOn = new DateTime(2015, 7, 17, 14, 37, 15) };
             var description = new PlaceDescription { Description = "Temporary Missing" };
 
             var places = new List<Place> 
@@ -44,6 +44,16 @@ namespace Indepp.DAL
 
             blogPosts.ForEach(bp => context.BlogPosts.Add(bp));
             context.SaveChanges();
+
+            var articles = new List<Article>
+            {
+                new Article {ID = 2, Title = "test1", Description = "test1", PostedOn = new DateTime(2012, 7, 17, 16, 00, 00)},
+                new Article {ID = 3, Title = "test2", Description = "test2", PostedOn = new DateTime(2012, 7, 17, 16, 1, 1)},
+            };
+
+            articles.ForEach(a => context.Articles.Add(a));
+            context.SaveChanges();
+            
         }
     }
 }

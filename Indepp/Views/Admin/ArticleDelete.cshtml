@@ -1,0 +1,64 @@
+﻿@model Indepp.Models.Article
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">@Model.Title</h1>
+
+            <p class="underHeaderText">
+                Delete Article
+            </p>
+        </div>
+
+        @using (Html.BeginForm("ArticleDelete", "Admin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- Controls -->
+            <div class="col-md-12">
+                <div class="btn-group" role="group">
+                    <a href='@Url.Action("ArticleList", "Admin")' class="btn">
+                        <i class="fa fa-hand-o-left fa-2x"></i>
+                    </a>
+                    <button type="submit" class="btn btn-link">
+                        <i class="fa fa-trash-o fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /Controls -->
+        }
+
+        <!-- Main Content -->
+        <div class="col-md-12">
+            <section id="articleDetails">
+                <div>
+                    <h1>
+                        Article
+                    </h1>
+                    <p>
+                        @Model.ID
+                    </p>
+                    <p>
+                        @Model.Title
+                    </p>
+                    <p>
+                        @Model.Description
+                    </p>
+                    <p>
+                        @Model.PostedOn
+                    </p>
+                    <p>
+                        @Model.ModifiedOn
+                    </p>
+                </div>
+            </section>
+
+        </div>
+        <!-- Main Content Ends-->
+
+    </div>
+</div>
