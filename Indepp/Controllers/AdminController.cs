@@ -215,7 +215,7 @@ namespace Indepp.Controllers
                     return RedirectToAction("BlogPostList");
                 }
             }
-            catch (DataException e)
+            catch (DataException)
             {
                 ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
             }
@@ -329,6 +329,34 @@ namespace Indepp.Controllers
             int pageNumber = (page ?? 1);
 
             return View(articles.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult ArticleCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ArticleCreate(Article article)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    article.PostedOn = DateTime.Now;
+                    Context.Articles.Add(article);
+                    Context.SaveChanges();
+
+                    return RedirectToAction("ArticleList");
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
+            }
+
+            return View(article);
         }
 
         public ActionResult ArticleEdit(int? id)

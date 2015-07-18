@@ -241,6 +241,7 @@
     <Content Include="Views\Admin\ArticleDetails.cshtml" />
     <Content Include="Views\Admin\ArticleEdit.cshtml" />
     <Content Include="Views\Admin\ArticleDelete.cshtml" />
+    <Content Include="Views\Admin\ArticleCreate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
