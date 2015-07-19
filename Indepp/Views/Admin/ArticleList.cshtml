@@ -97,7 +97,7 @@
                                         @article.Title
                                     </td>
                                     <td>
-                                        @article.Description
+                                        @Html.Raw(article.Description)
                                     </td>
                                     <td>
                                         <a href='@Url.Action("ArticleDetails", "Admin", new { id = article.ID })'>
