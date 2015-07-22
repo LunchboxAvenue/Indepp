@@ -31,8 +31,34 @@
                         @Model.Category
                     </p>
                 </div>
+
+                <div id="placeDetailsArticle">
+                    <p>
+                        This is article you are looking at
+                    </p>
+                    @if (Model.Articles != null)
+                    {
+                        foreach (var article in Model.Articles)
+                        {
+                            <p>
+                                @article.ID
+                            </p>
+                            <p>
+                                @article.Title
+                            </p>
+                            <p>
+                                @article.Description
+                            </p>
+                            <p>
+                                @article.PostedOn
+                            </p>
+                        }
+                    }
+                </div>
             </section>
+
         </div>
+
         <!-- Main Content Ends-->
 
         <div class="col-md-4 recentPosts">

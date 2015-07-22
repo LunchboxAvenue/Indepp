@@ -20,6 +20,8 @@ namespace Indepp.Models
 
         public Address Address { get; set; }
         public PlaceDescription Description { get; set; }
-        public Article Article { get; set; }
+
+        public virtual ICollection<Article> Articles { get; set; }
+        public virtual ICollection<BlogPost> BlogPosts { get; set; }
     }
 }

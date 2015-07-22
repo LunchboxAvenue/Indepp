@@ -23,5 +23,6 @@ namespace Indepp.Models
         public string Description { get; set; }
 
         public DateTime PostedOn { get; set; }
+        public int? PlaceID { get; set; }
     }
 }

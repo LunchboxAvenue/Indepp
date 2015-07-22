@@ -351,7 +351,7 @@ namespace Indepp.Controllers
                     return RedirectToAction("ArticleList");
                 }
             }
-            catch (DataException)
+            catch (DataException e)
             {
                 ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
             }
