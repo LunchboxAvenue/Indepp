@@ -72,6 +72,15 @@
                                 @Html.ValidationMessageFor(p => Model.Address.Country)
                             </div>
                         </p>
+
+                        <h4>Place Description</h4>
+                        <p>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Description</span>
+                                @Html.TextBoxFor(p => p.PlaceDescription.Description, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(p => Model.PlaceDescription.Description)
+                            </div>
+                        </p>
                     </section>
                 </div>
             <!-- /Main Content-->

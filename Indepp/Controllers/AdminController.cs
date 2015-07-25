@@ -123,6 +123,11 @@ namespace Indepp.Controllers
                     Inplace.Address.Country = place.Address.Country;
                 }
 
+                if (Inplace.PlaceDescription == null)
+                    Inplace.PlaceDescription = new PlaceDescription() { Description = place.PlaceDescription.Description };
+                else
+                    Inplace.PlaceDescription.Description = place.PlaceDescription.Description;
+
                 Context.SaveChanges();
 
                 return RedirectToAction("Details", new { id = place.ID });

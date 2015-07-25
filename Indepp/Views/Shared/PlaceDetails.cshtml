@@ -35,7 +35,9 @@
                 <div id="placeDetailsAddress">
                     @if (Model.Address != null)
                     {
-                        <p>Address:</p>
+                        <p>
+                            Address:
+                        </p>
                         <p>
                             @Model.Address.City
                         </p>
@@ -49,11 +51,11 @@
                 </div>
 
                 <div id="placeDetailsArticle">
-                    <p>
-                        This is article you are looking at
-                    </p>
-                    @if (Model.Articles != null)
+                    @if (Model.Articles.Count() > 0)
                     {
+                        <p>
+                            Article:
+                        </p>
                         foreach (var article in Model.Articles)
                         {
                             <p>
@@ -71,11 +73,20 @@
                         }
                     }
                 </div>
+
+                <div id="placeDetailsDescription">
+                    @if (Model.PlaceDescription != null)
+                    {
+                        <p>
+                            Description:
+                        </p>
+                        <p>
+                            @Model.PlaceDescription.Description
+                        </p>
+                    }
+                </div>
             </section>
-
         </div>
-
-
 
         <!-- Main Content Ends-->
 

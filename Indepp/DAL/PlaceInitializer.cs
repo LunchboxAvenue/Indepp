@@ -10,24 +10,22 @@ namespace Indepp.DAL
     {
         protected override void Seed(PlaceContext context)
         {
-            var description = new PlaceDescription { Description = "Temporary Missing" };
-
             var places = new List<Place> 
             {
-                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee", Description = description },
-                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee", Description = description },
-                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee", Description = description },
-                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee", Description = description },
-                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee", Description = description },
-                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee", Description = description },
-                new Place {ID = 7, Name = "Burning hell", Category = "Coffee", Description = description },
-                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee", Description = description },
-                new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food", Description = description },
-                new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Description = description },
-                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Description = description },
-                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Description = description },
-                new Place {ID = 11, Name = "The Light", Category = "CraftShops", Description = description },
-                new Place {ID = 12, Name = "The Dark", Category = "CraftShops", Description = description }
+                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee" },
+                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee" },
+                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee" },
+                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee" },
+                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee" },
+                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee" },
+                new Place {ID = 7, Name = "Burning hell", Category = "Coffee" },
+                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee" },
+                new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food" },
+                new Place {ID = 10, Name = "JUST FOOD", Category = "Food" },
+                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms" },
+                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms" },
+                new Place {ID = 11, Name = "The Light", Category = "CraftShops" },
+                new Place {ID = 12, Name = "The Dark", Category = "CraftShops" }
             };
 
             places.ForEach(p => context.Places.Add(p));
@@ -41,6 +39,16 @@ namespace Indepp.DAL
             };
 
             addresses.ForEach(a => context.Addresses.Add(a));
+            context.SaveChanges();
+
+            var placeDescriptions = new List<PlaceDescription>
+            {
+                new PlaceDescription { PlaceID = 1, Description = "La bottega is..."},
+                new PlaceDescription { PlaceID = 2, Description = "Once upon a time"},
+                new PlaceDescription { PlaceID = 3, Description = "test description"}
+            };
+
+            placeDescriptions.ForEach(pd => context.PlaceDescriptions.Add(pd));
             context.SaveChanges();
 
             var blogPosts = new List<BlogPost>

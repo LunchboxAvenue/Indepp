@@ -60,6 +60,14 @@
                             @Model.Address.Country
                         </p>
                     }
+                    
+                    @if (Model.PlaceDescription != null)
+                    {
+                        <p>Description:</p>
+                        <p>
+                            @Model.PlaceDescription.Description
+                        </p>
+                    }
                 </div>
             </section>
         </div>

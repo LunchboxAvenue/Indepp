@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,7 +10,11 @@ namespace Indepp.Models
 {
     public class PlaceDescription
     {
-        public int ID { get; set; }
+        [Key]
+        [ForeignKey("Place")]
+        public int PlaceID { get; set; }
+        public virtual Place Place { get; set; }
+
         public int DayOfTheWeek { get; set; }
         public DateTime? OpeningTime { get; set; }
         public DateTime? ClosingTime { get; set; }

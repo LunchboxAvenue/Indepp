@@ -65,6 +65,14 @@
                         @Html.ValidationMessageFor(p => Model.Address.Country)
                     </p>
                 </section>
+
+                <section id="placeDescription">
+                    <p>Place Description:</p>
+                    <p>
+                        @Html.EditorFor(p => p.PlaceDescription.Description)
+                        @Html.ValidationMessageFor(p => p.PlaceDescription.Description)
+                    </p>
+                </section>
             </div>
         }
         <!-- /Content-->
