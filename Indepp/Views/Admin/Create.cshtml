@@ -34,34 +34,43 @@
             <!-- Main Content -->
                 <div class="col-md-8">
                     <section id="placeDetails">
-                        <div>
-                            <h1>
-                                Create Place
-                            </h1>
-                            <p>
-                                @Html.EditorFor(p => p.Name)
+                        <h4>Place Details</h4>
+                        <p>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Name</span>
+                                @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Name)
-                            </p>
-                            <p>
-                                @Html.EditorFor(p => p.Category)
+                            </div>
+                        </p>
+                        <p>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Category</span>
+                                @Html.TextBoxFor(p => p.Category, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Category)
-                            </p>
-                        </div>
-                    </section>
+                            </div>
+                        </p>
 
-                    <section id="placeAddress">
-                        <p>Address:</p>
+                        <h4>Address</h4>
                         <p>
-                            @Html.EditorFor(p => p.Address.City)
-                            @Html.ValidationMessageFor(p => Model.Address.City)
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">City</span>
+                                @Html.TextBoxFor(p => p.Address.City, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(p => Model.Address.City)
+                            </div>
                         </p>
                         <p>
-                            @Html.EditorFor(p => p.Address.County)
-                            @Html.ValidationMessageFor(p => Model.Address.County)
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">County</span>
+                                @Html.TextBoxFor(p => p.Address.County, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(p => Model.Address.County)
+                            </div>
                         </p>
                         <p>
-                            @Html.EditorFor(p => p.Address.Country)
-                            @Html.ValidationMessageFor(p => Model.Address.Country)
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Country</span>
+                                @Html.TextBoxFor(p => p.Address.Country, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(p => Model.Address.Country)
+                            </div>
                         </p>
                     </section>
                 </div>
