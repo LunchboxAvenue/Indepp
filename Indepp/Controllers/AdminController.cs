@@ -151,7 +151,7 @@ namespace Indepp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            var place = Context.Places.Find(id);
+            var place = Context.Places.Include("Address").Include("PlaceDescription").Where(p => p.ID == id).Single();
 
             try
             {
