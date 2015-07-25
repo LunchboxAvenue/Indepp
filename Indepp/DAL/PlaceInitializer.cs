@@ -10,31 +10,38 @@ namespace Indepp.DAL
     {
         protected override void Seed(PlaceContext context)
         {
-            var address = new Address { City = "Leeds", Country = "United Kingdom", Couty = "West Yorkshire" };
-            var article = new Article { Title = "Best Coffee in UK!", Description = "This is the best place to drink coffee in UK.", PostedOn = new DateTime(2015, 7, 17, 14, 37, 15) };
             var description = new PlaceDescription { Description = "Temporary Missing" };
 
             var places = new List<Place> 
             {
-                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee", Address = address, Description = description },
-                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee", Address = address,Description = description },
-                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee", Address = address, Description = description },
-                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee", Address = address, Description = description },
-                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee", Address = address, Description = description },
-                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee", Address = address, Description = description },
-                new Place {ID = 7, Name = "Burning hell", Category = "Coffee", Address = address, Description = description },
-                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee", Address = address, Description = description },
-                new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food", Address = address,Description = description },
-                new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Address = address, Description = description },
-                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Address = address, Description = description },
-                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Address = address, Description = description },
-                new Place {ID = 11, Name = "The Light", Category = "CraftShops", Address = address, Description = description },
-                new Place {ID = 12, Name = "The Dark", Category = "CraftShops", Address = address, Description = description }
+                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee", Description = description },
+                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee", Description = description },
+                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee", Description = description },
+                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee", Description = description },
+                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee", Description = description },
+                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee", Description = description },
+                new Place {ID = 7, Name = "Burning hell", Category = "Coffee", Description = description },
+                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee", Description = description },
+                new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food", Description = description },
+                new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Description = description },
+                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Description = description },
+                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Description = description },
+                new Place {ID = 11, Name = "The Light", Category = "CraftShops", Description = description },
+                new Place {ID = 12, Name = "The Dark", Category = "CraftShops", Description = description }
             };
 
             places.ForEach(p => context.Places.Add(p));
             context.SaveChanges();
 
+            var addresses = new List<Address>
+            {
+                new Address { PlaceID = 1, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
+                new Address { PlaceID = 2, City = "Manchester", Country = "United Kingdom", County = "Midlands" },
+                new Address { PlaceID = 3, City = "London", Country = "United Kingdom", County = "Midlands"}
+            };
+
+            addresses.ForEach(a => context.Addresses.Add(a));
+            context.SaveChanges();
 
             var blogPosts = new List<BlogPost>
             {
@@ -47,8 +54,8 @@ namespace Indepp.DAL
 
             var articles = new List<Article>
             {
-                new Article {ID = 2, Title = "test1", Description = "test1", PostedOn = new DateTime(2012, 7, 17, 16, 00, 00), PlaceID = 1},
-                new Article {ID = 3, Title = "test2", Description = "test2", PostedOn = new DateTime(2012, 7, 17, 16, 1, 1), PlaceID = 2},
+                new Article {ID = 1, Title = "test1", Description = "test1", PostedOn = new DateTime(2012, 7, 17, 16, 00, 00), PlaceID = 1},
+                new Article {ID = 2, Title = "test2", Description = "test2", PostedOn = new DateTime(2012, 7, 17, 16, 1, 1), PlaceID = 2},
             };
 
             articles.ForEach(a => context.Articles.Add(a));

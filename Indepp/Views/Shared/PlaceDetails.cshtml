@@ -32,6 +32,22 @@
                     </p>
                 </div>
 
+                <div id="placeDetailsAddress">
+                    @if (Model.Address != null)
+                    {
+                        <p>Address:</p>
+                        <p>
+                            @Model.Address.City
+                        </p>
+                        <p>
+                            @Model.Address.Country
+                        </p>
+                        <p>
+                            @Model.Address.County
+                        </p>
+                    }
+                </div>
+
                 <div id="placeDetailsArticle">
                     <p>
                         This is article you are looking at
@@ -58,6 +74,8 @@
             </section>
 
         </div>
+
+
 
         <!-- Main Content Ends-->
 

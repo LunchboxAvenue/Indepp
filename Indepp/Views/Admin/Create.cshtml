@@ -48,6 +48,22 @@
                             </p>
                         </div>
                     </section>
+
+                    <section id="placeAddress">
+                        <p>Address:</p>
+                        <p>
+                            @Html.EditorFor(p => p.Address.City)
+                            @Html.ValidationMessageFor(p => Model.Address.City)
+                        </p>
+                        <p>
+                            @Html.EditorFor(p => p.Address.County)
+                            @Html.ValidationMessageFor(p => Model.Address.County)
+                        </p>
+                        <p>
+                            @Html.EditorFor(p => p.Address.Country)
+                            @Html.ValidationMessageFor(p => Model.Address.Country)
+                        </p>
+                    </section>
                 </div>
             <!-- /Main Content-->
         }

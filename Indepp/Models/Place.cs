@@ -18,9 +18,10 @@ namespace Indepp.Models
         [StringLength(50)]
         public string Category { get; set; }
 
-        public Address Address { get; set; }
+        
         public PlaceDescription Description { get; set; }
 
+        public virtual Address Address { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
         public virtual ICollection<BlogPost> BlogPosts { get; set; }
     }

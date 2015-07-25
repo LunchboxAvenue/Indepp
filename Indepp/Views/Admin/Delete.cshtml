@@ -48,6 +48,20 @@
                     <p>
                         @Model.Category
                     </p>
+
+                    @if (Model.Address != null)
+                    {
+                        <p>Address:</p>
+                        <p>
+                            @Model.Address.City
+                        </p>
+                        <p>
+                            @Model.Address.County
+                        </p>
+                        <p>
+                            @Model.Address.Country
+                        </p>
+                    }
                 </div>
             </section>
         </div>

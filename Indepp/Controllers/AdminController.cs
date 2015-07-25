@@ -110,8 +110,19 @@ namespace Indepp.Controllers
             {
                 var Inplace = Context.Places.Where(p => p.ID == place.ID).FirstOrDefault();
 
+                // check if there's a better way of doing this without assigning everything I need
                 Inplace.Name = place.Name;
                 Inplace.Category = place.Category;
+
+                if (Inplace.Address == null)
+                    Inplace.Address = new Address() { PlaceID = place.ID, City = place.Address.City, County = place.Address.County, Country = place.Address.Country };
+                else
+                {
+                    Inplace.Address.City = place.Address.City;
+                    Inplace.Address.County = place.Address.County;
+                    Inplace.Address.Country = place.Address.Country;
+                }
+
                 Context.SaveChanges();
 
                 return RedirectToAction("Details", new { id = place.ID });
