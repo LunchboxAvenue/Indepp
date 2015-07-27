@@ -63,7 +63,8 @@ namespace Indepp.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var place = new Place();
+            return View(place);
         }
 
         [HttpPost]

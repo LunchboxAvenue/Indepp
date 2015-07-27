@@ -342,6 +342,7 @@
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogPost.cs" />
+    <Compile Include="Models\WorkingHours.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\PlaceDescription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

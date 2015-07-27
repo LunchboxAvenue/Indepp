@@ -15,10 +15,6 @@ namespace Indepp.Models
         public int PlaceID { get; set; }
         public virtual Place Place { get; set; }
 
-        public int DayOfTheWeek { get; set; }
-        public DateTime? OpeningTime { get; set; }
-        public DateTime? ClosingTime { get; set; }
-
         [AllowHtml]
         public string Description { get; set; }
     }
