@@ -46,7 +46,7 @@
                     <p>
                         @Model.Category
                     </p>
-                    
+
                     @if (Model.Address != null)
                     {
                         <p>Address:</p>
@@ -60,7 +60,7 @@
                             @Model.Address.Country
                         </p>
                     }
-                    
+
                     @if (Model.PlaceDescription != null)
                     {
                         <p>Description:</p>
@@ -68,19 +68,29 @@
                             @Model.PlaceDescription.Description
                         </p>
                     }
+                    
                 </div>
             </section>
         </div>
+
+
+
         <!-- Main Content Ends-->
 
         <div class="col-md-4 recentPosts">
             <h2 style="text-transform:uppercase">Opening Times</h2>
 
-            <p>Mon: </p>
-            <p>Tue: </p>
-            <p>Wed: </p>
+            @if (Model.WorkingHours.Count() > 0)
+            {
+                foreach (var workingHour in Model.WorkingHours)
+                {
+                    <p>
+                        <span>@workingHour.Day: </span>
+                        @workingHour.OpenTime
+                    </p>
+                }
+            }
 
         </div>
-
     </div>
 </div>

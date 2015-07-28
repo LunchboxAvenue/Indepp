@@ -63,7 +63,9 @@ namespace Indepp.Controllers
 
         public ActionResult Create()
         {
-            var place = new Place();
+            var workingHours = new WorkingHour();
+            var place = new Place() { WorkingHours = workingHours.PopulateHours() };
+
             return View(place);
         }
 
@@ -91,14 +93,18 @@ namespace Indepp.Controllers
 
         public ActionResult Details(int? id)
         {
-            var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
+            var place = Context.Places.Include("WorkingHours").ToList().Where(p => p.ID == id).FirstOrDefault();
 
             return View(place);
         }
         
         public ActionResult Edit(int? id)
         {
+            var workingHours = new WorkingHour();
             var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
+
+            if (place.WorkingHours.Count() == 0)
+                place.WorkingHours = workingHours.PopulateHours().ToList();
 
             return View(place);
         }
@@ -115,6 +121,7 @@ namespace Indepp.Controllers
                 Inplace.Name = place.Name;
                 Inplace.Category = place.Category;
 
+                // address update
                 if (Inplace.Address == null)
                     Inplace.Address = new Address() { PlaceID = place.ID, City = place.Address.City, County = place.Address.County, Country = place.Address.Country };
                 else
@@ -124,10 +131,21 @@ namespace Indepp.Controllers
                     Inplace.Address.Country = place.Address.Country;
                 }
 
+                // place description update
                 if (Inplace.PlaceDescription == null)
                     Inplace.PlaceDescription = new PlaceDescription() { Description = place.PlaceDescription.Description };
                 else
                     Inplace.PlaceDescription.Description = place.PlaceDescription.Description;
+
+                // working hours update
+                if (Inplace.WorkingHours.Count() == 0)
+                    Inplace.WorkingHours = place.WorkingHours;
+                else
+                    foreach (var workingHour in place.WorkingHours)
+                    {
+                        var dayOfTheWeek = Inplace.WorkingHours.Where(wh => wh.Day == workingHour.Day).SingleOrDefault();
+                        dayOfTheWeek.OpenTime = workingHour.OpenTime;
+                    }
 
                 Context.SaveChanges();
 
@@ -152,7 +170,11 @@ namespace Indepp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            var place = Context.Places.Include("Address").Include("PlaceDescription").Where(p => p.ID == id).Single();
+            var place = Context.Places
+                .Include("Address")
+                .Include("PlaceDescription")
+                .Include("WorkingHours")
+                .Where(p => p.ID == id).Single();
 
             try
             {

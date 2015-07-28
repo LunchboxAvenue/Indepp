@@ -22,20 +22,6 @@ namespace Indepp.Models
         public virtual PlaceDescription PlaceDescription { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
         public virtual ICollection<BlogPost> BlogPosts { get; set; }
-        public virtual ICollection<WorkingHours> WorkingHours { get; set; }
-
-        public Place()
-        {
-            WorkingHours = new List<WorkingHours>
-            {
-                new WorkingHours(DayOfWeek.Monday, null, null),
-                new WorkingHours(DayOfWeek.Tuesday, null, null),
-                new WorkingHours(DayOfWeek.Wednesday, null, null),
-                new WorkingHours(DayOfWeek.Thursday, null, null),
-                new WorkingHours(DayOfWeek.Friday, null, null),
-                new WorkingHours(DayOfWeek.Saturday, null, null),
-                new WorkingHours(DayOfWeek.Sunday, null, null)
-            };
-        }
+        public virtual ICollection<WorkingHour> WorkingHours { get; set; }
     }
 }

@@ -73,18 +73,14 @@
                         @Html.ValidationMessageFor(p => p.PlaceDescription.Description)
                     </p>
                 </section>
+
+                <div class="editSection">
+                    <label>Working Hours</label>
+                    @Html.EditorFor(p => p.WorkingHours)
+                </div>
             </div>
         }
         <!-- /Content-->
-
-        <div class="col-md-4 recentPosts">
-            <h2 style="text-transform:uppercase">Opening Times</h2>
-
-            <p>Mon: </p>
-            <p>Tue: </p>
-            <p>Wed: </p>
-
-        </div>
 
     </div>
 </div>

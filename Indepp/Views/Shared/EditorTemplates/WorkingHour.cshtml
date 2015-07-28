@@ -1,0 +1,8 @@
+﻿@model Indepp.Models.WorkingHour
+
+<div class="input-group">
+    @Html.HiddenFor(wh => wh.Day)
+    <span class="input-group-addon" id="basic-addon1">@Html.DisplayTextFor(wh => wh.Day)</span>
+    @Html.TextBoxFor(wh => wh.OpenTime, new { @class = "form-control", @placeholder = "hh:mm - hh:mm" })
+    @Html.ValidationMessageFor(p => Model.OpenTime)
+</div>

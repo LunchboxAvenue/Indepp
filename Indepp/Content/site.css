@@ -212,6 +212,14 @@
 .btn-group a {
   text-decoration: none;
 }
+/* styles for Create Pages */
+.input-group-addon {
+  min-width: 120px;
+}
+.editSection {
+  padding: 20px 0;
+}
+/* styles for Create Pages END */
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error {
