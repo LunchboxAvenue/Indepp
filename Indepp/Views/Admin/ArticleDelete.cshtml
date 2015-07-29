@@ -54,6 +54,10 @@
                     <p>
                         @Model.ModifiedOn
                     </p>
+                    @if (Model.Place != null)
+                    {
+                        <p>Mapped to: @Model.Place.Name</p>
+                    }
                 </div>
             </section>
 

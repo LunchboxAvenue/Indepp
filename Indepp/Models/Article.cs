@@ -23,5 +23,6 @@ namespace Indepp.Models
         public DateTime? ModifiedOn { get; set; }
 
         public int? PlaceID { get; set; }
+        public virtual Place Place { get; set; }
     }
 }

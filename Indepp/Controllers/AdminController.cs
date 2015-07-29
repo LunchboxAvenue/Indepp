@@ -372,6 +372,13 @@ namespace Indepp.Controllers
 
         public ActionResult ArticleCreate()
         {
+            var places = Context.Places.ToList();
+            ViewBag.placeList = places.Select(p => new Place()
+            {
+                ID = p.ID,
+                Name = p.Name
+            });
+
             return View();
         }
 
@@ -402,6 +409,13 @@ namespace Indepp.Controllers
         {
             var article = Context.Articles.Find(id);
 
+            var places = Context.Places.ToList();
+            ViewBag.placeList = places.Select(p => new Place()
+            {
+                ID = p.ID,
+                Name = p.Name
+            });
+
             return View(article);
         }
 
@@ -418,6 +432,8 @@ namespace Indepp.Controllers
                     IndeppArticle.Title = article.Title;
                     IndeppArticle.Description = article.Description;
                     IndeppArticle.ModifiedOn = DateTime.Now;
+                    IndeppArticle.PlaceID = article.PlaceID;
+
                     Context.SaveChanges();
 
                     return RedirectToAction("ArticleDetails", new { id = article.ID });

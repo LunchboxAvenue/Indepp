@@ -50,6 +50,11 @@
                             @Html.ValidationMessageFor(a => Model.Description)
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <h4>Map to the Place</h4>
+                        @Html.DropDownListFor(a => a.PlaceID, new SelectList(ViewBag.placeList, "ID", "Name", new { @class = "form-control" }), "Choose a mapping")
+                    </div>
                 </section>
             </div>
         }
