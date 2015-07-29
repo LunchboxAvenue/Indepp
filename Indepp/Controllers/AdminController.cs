@@ -174,6 +174,7 @@ namespace Indepp.Controllers
                 .Include("Address")
                 .Include("PlaceDescription")
                 .Include("WorkingHours")
+                .Include("Articles")
                 .Where(p => p.ID == id).Single();
 
             try
