@@ -239,4 +239,8 @@
 .validation-summary-valid {
   display: none;
 }
+/* override typeahead width used in autocomplete dropdown */
+ul.typeahead {
+  width: 100%;
+}
 /*# sourceMappingURL=site.css.map */

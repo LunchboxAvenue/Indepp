@@ -374,6 +374,7 @@ namespace Indepp.Controllers
         public ActionResult ArticleCreate()
         {
             var places = Context.Places.ToList();
+            places.Insert(0, new Place() { ID = 0, Name = "None" });
             ViewBag.placeList = places.Select(p => new Place()
             {
                 ID = p.ID,
@@ -387,6 +388,9 @@ namespace Indepp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ArticleCreate(Article article)
         {
+            if (article.PlaceID == 0)
+                article.PlaceID = null;
+
             try
             {
                 if (ModelState.IsValid)
@@ -411,6 +415,7 @@ namespace Indepp.Controllers
             var article = Context.Articles.Find(id);
 
             var places = Context.Places.ToList();
+            places.Insert(0, new Place() { ID = 0, Name = "None" });
             ViewBag.placeList = places.Select(p => new Place()
             {
                 ID = p.ID,
@@ -424,6 +429,9 @@ namespace Indepp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ArticleEdit(Article article)
         {
+            if (article.PlaceID == 0)
+                article.PlaceID = null;
+
             try
             {
                 if (ModelState.IsValid)

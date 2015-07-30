@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                         <h4>Map to the Place</h4>
-                        @Html.DropDownListFor(a => a.PlaceID, new SelectList(ViewBag.placeList, "ID", "Name", new { @class = "form-control" }), "Choose a mapping")
+                        @Html.DropDownListFor(a => a.PlaceID, new SelectList(ViewBag.placeList, "ID", "Name", "Choose a mapping"), new { @class = "form-control", @id = "combobox" })
                     </div>
                 </section>
             </div>
@@ -66,5 +66,10 @@
 @Scripts.Render("~/bundles/editor")
 
 <script>
-    CKEDITOR.replace( 'descriptionEditor' );
+    CKEDITOR.replace('descriptionEditor');
+
+    $(document).ready(function () {
+        $('#combobox').combobox();
+        $('.input-group .form-control').attr("placeholder", "Type the name of a place or click the arrow");
+    });
 </script>

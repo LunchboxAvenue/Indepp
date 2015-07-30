@@ -11,10 +11,12 @@ namespace Indepp
                       "~/Scripts/jquery-2.1.4.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-combobox.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-combobox.css",
                       "~/Content/font-awesome.css",
                       "~/Content/site.css"));
 
