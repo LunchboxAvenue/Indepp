@@ -45,14 +45,14 @@
                         </div>
                         <div class="form-group">
                             <label for="Description">Description</label>
-                            @Html.TextAreaFor(a => Model.Description, new { @class = "form-control" })
+                            @Html.TextAreaFor(a => Model.Description, new { @class = "form-control", @id = "descriptionEditor" })
                             @Html.ValidationMessageFor(a => Model.Description)
                         </div>
                     </div>
 
                     <div class="form-group">
                         <h4>Map to the Place</h4>
-                        @Html.DropDownListFor(a => a.PlaceID, new SelectList(ViewBag.placeList, "ID", "Name", "Choose a mapping"), new { @class = "form-control", @id = "combobox", @placeholder = "whyyy?!:("})
+                        @Html.DropDownListFor(a => a.PlaceID, new SelectList(ViewBag.placeList, "ID", "Name", "Choose a mapping"), new { @class = "form-control", @id = "combobox" })
                     </div>
                 </section>
             </div>
@@ -62,7 +62,11 @@
     </div>
 </div>
 
-<script type="text/javascript">
+@Scripts.Render("~/bundles/editor")
+
+<script>
+    CKEDITOR.replace('descriptionEditor');
+
     $(document).ready(function () {
         $('#combobox').combobox();
         $('.input-group .form-control').attr("placeholder", "Type the name of a place or click the arrow");

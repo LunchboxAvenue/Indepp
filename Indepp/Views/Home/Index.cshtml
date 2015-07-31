@@ -27,7 +27,7 @@
                         <th>
                             Title
                         <th>
-                            Description
+                            Short Description
                         </th>
                         <th>
                             Post on
@@ -44,7 +44,7 @@
                                 @blogPost.Title
                             </td>
                             <td>
-                                @blogPost.ShortDescription
+                                @Html.Raw(blogPost.ShortDescription)
                             </td>
                             <td>
                                 @blogPost.PostedOn

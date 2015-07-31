@@ -45,12 +45,12 @@
                         </div>
                         <div class="form-group">
                             <label for="Short Description">Short Description</label>
-                            @Html.TextAreaFor(bp => Model.ShortDescription, new { @class = "form-control" })
+                            @Html.TextAreaFor(bp => Model.ShortDescription, new { @class = "form-control", @id = "shortDescriptionEditor" })
                             @Html.ValidationMessageFor(bp => Model.ShortDescription)
                         </div>
                         <div class="form-group">
                             <label for="Description">Description</label>
-                            @Html.TextAreaFor(bp => Model.Description, new { @class = "form-control" })
+                            @Html.TextAreaFor(bp => Model.Description, new { @class = "form-control", @id = "descriptionEditor" })
                             @Html.ValidationMessageFor(bp => Model.Description)
                         </div>    
                     </div>
@@ -61,3 +61,10 @@
 
     </div>
 </div>
+
+@Scripts.Render("~/bundles/editor")
+
+<script>
+    CKEDITOR.replace('shortDescriptionEditor');
+    CKEDITOR.replace('descriptionEditor');
+</script>

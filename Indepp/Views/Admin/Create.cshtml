@@ -70,8 +70,7 @@
                         <div class="editSection">
                             <label>Place Description</label>
                             <div class="input-group">
-                                <span class="input-group-addon" id="basic-addon1">Description</span>
-                                @Html.TextBoxFor(p => p.PlaceDescription.Description, new { @class = "form-control" })
+                                @Html.TextAreaFor(p => p.PlaceDescription.Description, new { @class = "form-control", @id = "descriptionEditor" })
                                 @Html.ValidationMessageFor(p => Model.PlaceDescription.Description)
                             </div>
                         </div>
@@ -89,3 +88,9 @@
 
     </div>
 </div>
+
+@Scripts.Render("~/bundles/editor")
+
+<script>
+    CKEDITOR.replace('descriptionEditor');
+</script>

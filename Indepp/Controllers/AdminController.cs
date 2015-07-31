@@ -20,7 +20,8 @@ namespace Indepp.Controllers
             Context = context;
         }
 
-        // GET: Admin
+        #region Place Functionality
+
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -117,7 +118,6 @@ namespace Indepp.Controllers
             {
                 var Inplace = Context.Places.Where(p => p.ID == place.ID).FirstOrDefault();
 
-                // check if there's a better way of doing this without assigning everything I need
                 Inplace.Name = place.Name;
                 Inplace.Category = place.Category;
 
@@ -192,6 +192,8 @@ namespace Indepp.Controllers
             return View("Delete", place);
             
         }
+
+        #endregion
 
         #region BlogPost Functionality
 

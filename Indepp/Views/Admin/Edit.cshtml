@@ -69,7 +69,7 @@
                 <section id="placeDescription">
                     <p>Place Description:</p>
                     <p>
-                        @Html.EditorFor(p => p.PlaceDescription.Description)
+                        @Html.TextAreaFor(p => p.PlaceDescription.Description, new { @id = "descriptionEditor" })
                         @Html.ValidationMessageFor(p => p.PlaceDescription.Description)
                     </p>
                 </section>
@@ -84,3 +84,9 @@
 
     </div>
 </div>
+
+@Scripts.Render("~/bundles/editor")
+
+<script>
+    CKEDITOR.replace('descriptionEditor');
+</script>
