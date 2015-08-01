@@ -122,13 +122,31 @@ namespace Indepp.Controllers
                 Inplace.Category = place.Category;
 
                 // address update
-                if (Inplace.Address == null)
-                    Inplace.Address = new Address() { PlaceID = place.ID, City = place.Address.City, County = place.Address.County, Country = place.Address.Country };
+                if (Inplace.Address == null) {
+                    Inplace.Address = new Address() {
+                        PlaceID = place.ID,
+                        Address1 = place.Address.Address1,
+                        Address2 = place.Address.Address2,
+                        Address3 = place.Address.Address3,
+                        City = place.Address.City,
+                        County = place.Address.County,
+                        Country = place.Address.Country,
+                        PostCode = place.Address.PostCode,
+                        Latitude = place.Address.Latitude,
+                        Longitude = place.Address.Longitude
+                    };
+                }
                 else
                 {
+                    Inplace.Address.Address1 = place.Address.Address1;
+                    Inplace.Address.Address2 = place.Address.Address2;
+                    Inplace.Address.Address3 = place.Address.Address3;
                     Inplace.Address.City = place.Address.City;
                     Inplace.Address.County = place.Address.County;
                     Inplace.Address.Country = place.Address.Country;
+                    Inplace.Address.PostCode = place.Address.PostCode;
+                    Inplace.Address.Latitude = place.Address.Latitude;
+                    Inplace.Address.Longitude = place.Address.Longitude;
                 }
 
                 // place description update
