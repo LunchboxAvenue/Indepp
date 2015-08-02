@@ -12,6 +12,7 @@ namespace Indepp.Models
         public int ID { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string Title { get; set; }
 
         [Required]

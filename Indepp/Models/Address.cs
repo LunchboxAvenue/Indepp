@@ -14,14 +14,28 @@ namespace Indepp.Models
         public int PlaceID { get; set; }
         public virtual Place Place { get; set; }
 
+        [StringLength(50)]
         public string Address1 { get; set; }
+
+        [StringLength(50)]
         public string Address2 { get; set; }
+
+        [StringLength(50)]
         public string Address3 { get; set; }
+
+        [StringLength(50)]
         public string City { get; set; }
+
+        [StringLength(50)]
         public string County { get; set; }
+
+        [StringLength(50)]
         public string Country { get; set; }
+
+        [StringLength(32)]
         public string PostCode { get; set; }
-        public decimal Latitude { get; set; }
-        public decimal Longitude { get; set; } 
+
+        public decimal? Latitude { get; set; }
+        public decimal? Longitude { get; set; } 
     }
 }

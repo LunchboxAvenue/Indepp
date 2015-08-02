@@ -13,6 +13,8 @@ namespace Indepp.Models
         public int PlaceID { get; set; }
 
         public DayOfWeek Day { get; set; }
+
+        [StringLength(15)]
         public string OpenTime { get; set; }
 
         public List<WorkingHour> PopulateHours()
