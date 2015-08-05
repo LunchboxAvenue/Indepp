@@ -85,8 +85,16 @@
                 foreach (var workingHour in Model.WorkingHours)
                 {
                     <p>
-                        <span>@workingHour.Day: </span>
-                        @workingHour.OpenTime
+                        @if (workingHour.Day == DateTime.Now.DayOfWeek)
+                        {
+                            <span class="boldText">@workingHour.Day: </span>
+                            <span class="boldText">@workingHour.OpenTime</span>
+                        }
+                        else
+                        {
+                            <span>@workingHour.Day: </span>
+                            <span>@workingHour.OpenTime</span>
+                        }
                     </p>
                 }
             }
