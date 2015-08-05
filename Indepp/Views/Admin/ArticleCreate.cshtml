@@ -35,22 +35,19 @@
             <div class="col-md-12">
                 <section id="articleDetails">
                     <div>
-                        <h1>
-                            Create Blog Entry
-                        </h1>
-                        <div class="form-group">
+                        <div class="editSection">
                             <label for="Title">Title</label>
                             @Html.TextAreaFor(a => Model.Title, new { @class = "form-control" })
                             @Html.ValidationMessageFor(a => Model.Title)
                         </div>
-                        <div class="form-group">
+                        <div class="editSection">
                             <label for="Description">Description</label>
                             @Html.TextAreaFor(a => Model.Description, new { @class = "form-control", @id = "descriptionEditor" })
                             @Html.ValidationMessageFor(a => Model.Description)
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="editSection">
                         <h4>Map to the Place</h4>
                         @Html.DropDownListFor(a => a.PlaceID, new SelectList(ViewBag.placeList, "ID", "Name", "Choose a mapping"), new { @class = "form-control", @id = "combobox" })
                     </div>
