@@ -247,4 +247,12 @@ ul.typeahead {
 .boldText {
   font-weight: bold;
 }
+.uppercaseText {
+  text-transform: uppercase;
+}
+#blogPostList h2,
+#articleList h2,
+#placeList h2 {
+  text-align: center;
+}
 /*# sourceMappingURL=site.css.map */

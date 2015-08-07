@@ -25,9 +25,8 @@
         <!-- Main Content -->
         <div class="col-md-8">
             <section id="placeList">
-                <div style="text-align: center;">
-                    <h2 style="text-transform: uppercase;">List of best @ViewBag.PageTitle places in UK</h2>
-                </div>
+                <h2 class="uppercaseText">List of best @ViewBag.PageTitle places in UK</h2>
+
                 @using (Html.BeginForm("Index", (@ViewBag.PageTitle as string).Replace(" ", string.Empty), FormMethod.Get))
                 {
                     <p>
@@ -77,7 +76,7 @@
 
         <!-- Will be a partial later on -->
         <div class="col-md-4 recentPosts">
-            <h2 style="text-transform:uppercase">Recent posts</h2>
+            <h2 class="uppercaseText">Recent posts</h2>
 
             <p>Single origin saucer cappuccino doppio robusta crema single shot.</p>
             <p>Roast, aromatic, white black java medium extra.</p>
