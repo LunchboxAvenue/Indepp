@@ -388,7 +388,6 @@
     <Content Include="Content\fonts\NexaRustSlab-BlackShadow01-Free-webfont.woff" />
     <Content Include="Content\fonts\NexaRustSlab-BlackShadow01-Free-webfont.woff2" />
     <Content Include="Content\ckeditor\skins\moono\readme.md" />
-    <Content Include="privateSettings.config" />
     <None Include="Properties\PublishProfiles\Indepp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\Indepp - Web Deploy.pubxml" />
     <Content Include="Views\Home\Index.cshtml" />
