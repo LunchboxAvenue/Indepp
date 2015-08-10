@@ -21,6 +21,16 @@
                 }
                 
                 Contact Us Form goes here
+
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                {
+                    <input type="text" placeholder="Name" name="name">
+                    <input type="text" placeholder="Email" name="email">
+                    <input type="text" placeholder="Subject" name="subject">
+                    <input type="text" placeholder="Message" name="Message">
+
+                    <button type="submit">Send Email</button>
+                }
             </section>
         </div>
         <!-- Main Content Ends-->

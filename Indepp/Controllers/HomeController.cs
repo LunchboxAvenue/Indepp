@@ -8,6 +8,7 @@ using PagedList;
 using System.Net;
 using System.Net.Mail;
 using SendGrid;
+using System.Configuration;
 
 namespace Indepp.Controllers
 {
@@ -41,9 +42,34 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Contact(string name, string email, string message)
+        public ActionResult Contact(string name, string email, string subject, string message)
         {
-            //ViewBag.PageTitle = "Contact";
+            ViewBag.PageTitle = "Contact";
+
+            // Add Recipients
+            /*
+            var recipients = new List<string>()
+            { 
+                @"Artur Smulko <artursmulko@gmail.com>" 
+            };
+
+            // Using SendGrid to send emails
+            var messageToIndepp = new SendGridMessage();
+            messageToIndepp.From = new MailAddress(email, name);
+            messageToIndepp.AddTo(recipients);
+            messageToIndepp.Subject = subject;
+            messageToIndepp.Text = message;
+
+            // Credentials
+            var username = ConfigurationManager.AppSettings["SENDGRID_USER"];
+            var password = ConfigurationManager.AppSettings["SENDGRID_PASSWORD"];
+            var credentials = new NetworkCredential(username, password);
+            var transportWeb = new Web(credentials);
+
+            // Send email
+            transportWeb.DeliverAsync(messageToIndepp);
+            */
+
             ViewBag.MessageSent = true;
             return View();
         }
