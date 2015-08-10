@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Net;
+using System.Net.Mail;
+using SendGrid;
 
 namespace Indepp.Controllers
 {
