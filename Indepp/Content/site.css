@@ -219,6 +219,12 @@
 .editSection {
   padding: 20px 0;
 }
+.editSection .input-group {
+  width: 100%;
+}
+.editSection .input-group textarea {
+  width: 100%;
+}
 /* styles for Create Pages END */
 /* Styles for validation helpers
 -----------------------------------------------------------*/

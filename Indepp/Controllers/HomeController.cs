@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Mail;
 using SendGrid;
 using System.Configuration;
+using Indepp.ViewModels;
 
 namespace Indepp.Controllers
 {
@@ -37,41 +38,47 @@ namespace Indepp.Controllers
         public ActionResult Contact()
         {
             ViewBag.PageTitle = "Contact";
-            ViewBag.MessageSent = false;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Contact(string name, string email, string subject, string message)
+        public ActionResult Contact(EmailMessage emailMessage)
         {
             ViewBag.PageTitle = "Contact";
 
-            // Add Recipients
-            /*
-            var recipients = new List<string>()
-            { 
-                @"Artur Smulko <artursmulko@gmail.com>" 
-            };
+            if (ModelState.IsValid)
+            {
+                // Add Recipients
+                /*
+                var recipients = new List<string>()
+                { 
+                    @"Artur Smulko <artursmulko@gmail.com>" 
+                };
 
-            // Using SendGrid to send emails
-            var messageToIndepp = new SendGridMessage();
-            messageToIndepp.From = new MailAddress(email, name);
-            messageToIndepp.AddTo(recipients);
-            messageToIndepp.Subject = subject;
-            messageToIndepp.Text = message;
+                // Using SendGrid to send emails
+                var messageToIndepp = new SendGridMessage();
+                messageToIndepp.From = new MailAddress(emailMessage.Email, emailMessage.Name);
+                messageToIndepp.AddTo(recipients);
+                messageToIndepp.Subject = emailMessage.Subject;
+                messageToIndepp.Text = emailMessage.Message;
 
-            // Credentials
-            var username = ConfigurationManager.AppSettings["SENDGRID_USER"];
-            var password = ConfigurationManager.AppSettings["SENDGRID_PASSWORD"];
-            var credentials = new NetworkCredential(username, password);
-            var transportWeb = new Web(credentials);
+                // Credentials
+                var username = ConfigurationManager.AppSettings["SENDGRID_USER"];
+                var password = ConfigurationManager.AppSettings["SENDGRID_PASSWORD"];
+                var credentials = new NetworkCredential(username, password);
+                var transportWeb = new Web(credentials);
 
-            // Send email
-            transportWeb.DeliverAsync(messageToIndepp);
-            */
+                // Send email
+                transportWeb.DeliverAsync(messageToIndepp);
+                */
+                TempData.Add("MessageSent", "Your email has been sent");
 
-            ViewBag.MessageSent = true;
-            return View();
+                return RedirectToAction("Contact");
+            }
+            else
+            {
+                return View(emailMessage);
+            }
         }
     }
 }
