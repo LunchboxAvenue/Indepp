@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace Indepp.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         public PlaceContext Context;

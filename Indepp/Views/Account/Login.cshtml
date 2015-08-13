@@ -1,0 +1,56 @@
+﻿@model Indepp.ViewModels.LoginDetails
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">Login</h1>
+
+            <p class="underHeaderText">
+                Enter your admin credentials to access editing functionality
+            </p>
+        </div>
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+        <!-- Main Content -->
+            <div class="col-md-4">
+                <div class="editSection">
+                    <label>Login Credentials</label>
+                    @if (ViewBag.WrongCredentials != null)
+                    {
+                        <p class="field-validation-error">@ViewBag.WrongCredentials</p>
+                    }
+                    <div class="input-group">
+                        <span class="input-group-addon">User</span>
+                        @Html.TextBoxFor(l => l.User, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(l => l.User)
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Password</span>
+                        @Html.TextBoxFor(l => l.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(l => l.Password)
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">Remember Me</span>
+                        @Html.CheckBoxFor(l => l.RememberMe, new { @class = "form-control" })
+                    </div>
+
+                    <button type="submit" class="btn btn-link">
+                        <i class="fa fa-sign-in fa-2x"></i>
+                    </button>
+                </div>
+            </div>
+        }
+        <!-- Main Content Ends-->
+
+    </div>
+</div>
+
+
+

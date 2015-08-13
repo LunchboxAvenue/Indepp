@@ -31,6 +31,8 @@ namespace Indepp.HelperMethods
                 routeController = "aboutus";
             else if (routeAction == "Contact")
                 routeController = "contact";
+            else if (routeAction == "Login")
+                routeController = "admin";
 
             return path + routeController.ToLower() + ".jpg";
         }

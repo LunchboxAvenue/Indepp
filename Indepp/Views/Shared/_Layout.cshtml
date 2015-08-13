@@ -74,14 +74,24 @@
                         <span>Contact</span>
                     </a>
                 </li>
-                <li>
-                    <a href='@Url.Action("Index", "Admin")' class='@Html.IsActive("Admin", "Index")'>
-                        <i class="fa fa-lock fa-2x"></i>
-                        <span>Admin</span>
-                    </a>
-                </li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li>
+                        <a href='@Url.Action("Index", "Admin")' class='@Html.IsActive("Admin", "Index")'>
+                            <i class="fa fa-lock fa-2x"></i>
+                            <span>Admin</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href='@Url.Action("Logout", "Account")'>
+                            <i class="fa fa-sign-out fa-2x"></i>
+                            <span>Sign Out</span>
+                        </a>
+                    </li> 
+                }
             </ul>
         </div>
+
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
