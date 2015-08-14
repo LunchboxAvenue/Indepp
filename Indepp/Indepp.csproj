@@ -371,6 +371,7 @@
     <Compile Include="Controllers\FarmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
+    <Compile Include="Controllers\UserPlaceController.cs" />
     <Compile Include="DAL\PlaceContext.cs" />
     <Compile Include="DAL\PlaceInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -468,6 +469,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\UserPlace\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
