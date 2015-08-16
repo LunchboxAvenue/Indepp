@@ -354,6 +354,7 @@
     <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
     <Content Include="Scripts\ckeditor\styles.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

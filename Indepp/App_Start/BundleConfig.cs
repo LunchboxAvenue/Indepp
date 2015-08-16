@@ -24,6 +24,10 @@ namespace Indepp
                 "~/Scripts/ckeditor/ckeditor.js",
                 "~/Scripts/ckeditor/config.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                "~/Scripts/knockout-3.3.0.js"
+                ));
         }
     }
 }
