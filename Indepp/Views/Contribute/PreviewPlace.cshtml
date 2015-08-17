@@ -1,0 +1,108 @@
+﻿@model Indepp.Models.Place
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">Preview of submission</h1>
+
+            <p class="underHeaderText">
+                Please review the information you are about to submit.
+                If everything is correct submit it.
+                If there's something you would like to change - go back.
+            </p>
+        </div>
+
+        @using (Html.BeginForm("SubmitPlace", "Contribute", FormMethod.Post))
+        {
+            <!-- Controls -->
+            <div class="col-md-12">
+                <div class="btn-group" role="group">
+                    <a href='@Url.Action("CreatePlace", "Contribute", new { submittedPlace = Model })' class="btn">
+                        <i class="fa fa-hand-o-left fa-2x"></i>
+                    </a>
+                        <button type="submit" class="btn btn-link">
+                            <i class="fa fa-check fa-2x"></i>
+                        </button>
+                </div>
+            </div>
+            <!-- /Controls -->
+            <!-- Main Content -->
+            <div class="col-md-8">
+                <section id="placeDetails">
+                    <div>
+                        <h1>
+                            PLACE DETAILS
+                        </h1>
+                        <p>
+                            @Html.DisplayFor(m => m.Name);
+                        </p>
+                        <p>
+                            @Html.DisplayFor(m => m.Category);
+                        </p>
+                        @Html.HiddenFor(m => m.Address);
+                        
+                        @if (Model.Address != null)
+                        {
+                            <p>Address:</p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.Address1)
+                            </p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.Address2)
+                            </p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.Address3)
+                            </p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.City)
+                            </p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.County)
+                            </p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.Country)
+                            </p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.Latitude)
+                            </p>
+                            <p>
+                                @Html.LabelFor(m => m.Address.Longitude)
+                            </p>
+                        }
+                        
+                        @Html.HiddenFor(m => m.PlaceDescription)
+
+                        @if (Model.PlaceDescription != null)
+                        {
+                            <p>Description:</p>
+                            <p>
+                                @Html.Raw(Model.PlaceDescription.Description)
+                            </p>
+                        }
+
+                        <h2>Opening Times</h2>
+
+                        @Html.HiddenFor(m => m.WorkingHours)
+
+                        @if (Model.WorkingHours.Count() > 0)
+                        {
+                            foreach (var workingHour in Model.WorkingHours)
+                            {
+                                <p>
+                                    <span>@workingHour.Day: </span>
+                                    <span>@workingHour.OpenTime</span>
+                                </p>
+                            }
+                        }
+
+                    </div>
+                </section>
+            </div>     
+        }
+        <!-- Main Content Ends-->
+    </div>
+</div>

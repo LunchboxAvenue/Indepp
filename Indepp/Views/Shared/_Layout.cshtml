@@ -74,6 +74,12 @@
                         <span>Contact</span>
                     </a>
                 </li>
+                <li>
+                    <a href='@Url.Action("CreatePlace", "Contribute")' class='@Html.IsActive("Contribute", "CreatePlace")'>
+                        <i class="fa fa-puzzle-piece fa-2x"></i>
+                        <span>Contribute</span>
+                    </a>
+                </li>
                 @*@if (Request.IsAuthenticated)
                 {*@
                     <li>
