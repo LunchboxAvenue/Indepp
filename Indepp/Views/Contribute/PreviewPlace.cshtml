@@ -16,17 +16,15 @@
             </p>
         </div>
 
-        @using (Html.BeginForm("SubmitPlace", "Contribute", FormMethod.Post))
-        {
             <!-- Controls -->
             <div class="col-md-12">
                 <div class="btn-group" role="group">
-                    <a href='@Url.Action("CreatePlace", "Contribute", new { submittedPlace = Model })' class="btn">
+                    <a href='@Url.Action("CreatePlace", "Contribute")' class="btn">
                         <i class="fa fa-hand-o-left fa-2x"></i>
                     </a>
-                        <button type="submit" class="btn btn-link">
-                            <i class="fa fa-check fa-2x"></i>
-                        </button>
+                    <a href='@Url.Action("SubmitPlace", "Contribute")' class="btn">
+                        <i class="fa fa-subway fa-2x"></i>
+                    </a>
                 </div>
             </div>
             <!-- /Controls -->
@@ -43,38 +41,35 @@
                         <p>
                             @Html.DisplayFor(m => m.Category);
                         </p>
-                        @Html.HiddenFor(m => m.Address);
                         
                         @if (Model.Address != null)
                         {
                             <p>Address:</p>
                             <p>
-                                @Html.LabelFor(m => m.Address.Address1)
+                                @Html.DisplayFor(m => m.Address.Address1)
                             </p>
                             <p>
-                                @Html.LabelFor(m => m.Address.Address2)
+                                @Html.DisplayFor(m => m.Address.Address2)
                             </p>
                             <p>
-                                @Html.LabelFor(m => m.Address.Address3)
+                                @Html.DisplayFor(m => m.Address.Address3)
                             </p>
                             <p>
-                                @Html.LabelFor(m => m.Address.City)
+                                @Html.DisplayFor(m => m.Address.City)
                             </p>
                             <p>
-                                @Html.LabelFor(m => m.Address.County)
+                                @Html.DisplayFor(m => m.Address.County)
                             </p>
                             <p>
-                                @Html.LabelFor(m => m.Address.Country)
+                                @Html.DisplayFor(m => m.Address.Country)
                             </p>
                             <p>
-                                @Html.LabelFor(m => m.Address.Latitude)
+                                @Html.DisplayFor(m => m.Address.Latitude)
                             </p>
                             <p>
-                                @Html.LabelFor(m => m.Address.Longitude)
+                                @Html.DisplayFor(m => m.Address.Longitude)
                             </p>
                         }
-                        
-                        @Html.HiddenFor(m => m.PlaceDescription)
 
                         @if (Model.PlaceDescription != null)
                         {
@@ -85,8 +80,6 @@
                         }
 
                         <h2>Opening Times</h2>
-
-                        @Html.HiddenFor(m => m.WorkingHours)
 
                         @if (Model.WorkingHours.Count() > 0)
                         {
@@ -102,7 +95,6 @@
                     </div>
                 </section>
             </div>     
-        }
         <!-- Main Content Ends-->
     </div>
 </div>

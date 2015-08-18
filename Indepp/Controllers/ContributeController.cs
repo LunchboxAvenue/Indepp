@@ -14,19 +14,39 @@ namespace Indepp.Controllers
         {
             var workingHours = new WorkingHour();
             var place = new Place() { WorkingHours = workingHours.PopulateHours() };
+
+            if (TempData["PlaceConfirmed"] != null)
+                return View(TempData["PlaceConfirmed"] as Place);
+
             return View(place);
         }
 
         [HttpPost]
-        public ActionResult PreviewPlace(Place place)
+        public ActionResult CreatePlace(Place place)
         {
+            if (ModelState.IsValid)
+            {
+                TempData.Add("Place", place);
+                return RedirectToAction("PreviewPlace");
+            }
+
             return View(place);
         }
 
-        [HttpPost]
-        public ActionResult SubmitPlace(Place place)
+        [HttpGet]
+        public ActionResult PreviewPlace()
         {
-            return View(); // return a thank you page or thank you text.
+            var place = TempData["Place"] as Place;
+            TempData.Add("PlaceConfirmed", place);
+            return View(place);
+        }
+
+        [HttpGet]
+        public ActionResult SubmitPlace()
+        {
+            // save to database
+            var place = TempData["PlaceConfirmed"] as Place;
+            return View();
         }
     }
 }
