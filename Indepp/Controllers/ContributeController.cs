@@ -4,11 +4,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Indepp.Models;
+using Indepp.DAL;
+using System.Data;
 
 namespace Indepp.Controllers
 {
     public class ContributeController : Controller
     {
+        public PlaceContext Context;
+
+        public ContributeController(PlaceContext context)
+        {
+            Context = context;
+        }
         // GET: UserPlace
         public ActionResult CreatePlace()
         {
@@ -22,6 +30,7 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult CreatePlace(Place place)
         {
             if (ModelState.IsValid)
@@ -38,14 +47,30 @@ namespace Indepp.Controllers
         {
             var place = TempData["Place"] as Place;
             TempData.Add("PlaceConfirmed", place);
+
             return View(place);
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult SubmitPlace()
         {
-            // save to database
             var place = TempData["PlaceConfirmed"] as Place;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Context.Places.Add(place);
+                    Context.SaveChanges();
+
+                    return View();
+                }
+            }
+            catch (DataException)
+            {
+                ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
+                ViewBag.Error = "We were unable to save your place, please try again later or contact administrator";
+            }
+
             return View();
         }
     }

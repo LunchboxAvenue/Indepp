@@ -16,7 +16,10 @@
         <!-- Controls -->
         <div class="col-md-12">
             <div class="btn-group" role="group">
-                
+                @if (ViewBag.Error != null)
+                {
+                    <p>@ViewBag.Error</p>
+                }
             </div>
         </div>
         <!-- /Controls -->

@@ -19,7 +19,7 @@
 
         @using (Html.BeginForm("CreatePlace", "Contribute", FormMethod.Post))
         {
-            @*@Html.AntiForgeryToken()*@
+            @Html.AntiForgeryToken()
 
             <!-- Controls -->
             <div class="col-md-12">
