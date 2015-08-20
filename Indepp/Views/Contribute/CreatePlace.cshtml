@@ -113,6 +113,15 @@
                         @Html.EditorFor(p => p.WorkingHours)
                     </div>
 
+                    <div class="editSection">
+                        <label>Contributor info</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">Email</span>
+                            @Html.TextBoxFor(p => p.UserEmail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.UserEmail)
+                        </div>
+                    </div>
+
                 </section>
             </div>
             <!-- /Main Content-->

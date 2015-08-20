@@ -194,6 +194,7 @@
     <Content Include="Content\images\admin.jpg" />
     <Content Include="Content\images\coffee.jpg" />
     <Content Include="Content\images\contact.jpg" />
+    <Content Include="Content\images\contribute.jpg" />
     <Content Include="Content\images\craftshops.jpg" />
     <Content Include="Content\images\events.jpg" />
     <Content Include="Content\images\farms.jpg" />

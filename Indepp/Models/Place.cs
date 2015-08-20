@@ -18,6 +18,12 @@ namespace Indepp.Models
         [StringLength(50)]
         public string Category { get; set; }
 
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string UserEmail { get; set; }
+
+        public bool? UserSubmitted { get; set; }
+        public bool? Reviewed { get; set; }
+
         public virtual Address Address { get; set; }
         public virtual PlaceDescription PlaceDescription { get; set; }
         public virtual ICollection<Article> Articles { get; set; }

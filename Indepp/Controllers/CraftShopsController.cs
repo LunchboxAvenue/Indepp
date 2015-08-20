@@ -33,7 +33,7 @@ namespace Indepp.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var places = Context.Places.AsQueryable().Where(c => c.Category == "craftShops");
+            var places = Context.Places.AsQueryable().Where(c => c.Category == "craftShops" && c.Reviewed == true);
 
             if (!String.IsNullOrEmpty(searchString))
                 places = places.Where(p => p.Name.Contains(searchString));
@@ -63,6 +63,9 @@ namespace Indepp.Controllers
         public ActionResult Details(int? id)
         {
             var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
+
+            if (place.Reviewed == false)
+                ViewBag.NotReviewed = true;
 
             return View("PlaceDetails", place);
         }

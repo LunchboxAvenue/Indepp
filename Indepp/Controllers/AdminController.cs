@@ -79,6 +79,7 @@ namespace Indepp.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    place.Reviewed = true;
                     Context.Places.Add(place);
                     Context.SaveChanges();
 
