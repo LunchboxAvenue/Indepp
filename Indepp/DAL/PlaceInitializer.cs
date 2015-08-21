@@ -12,20 +12,20 @@ namespace Indepp.DAL
         {
             var places = new List<Place> 
             {
-                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee", Reviewed = true },
-                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee", Reviewed = true },
-                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee", Reviewed = true },
-                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee", Reviewed = true },
-                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee", Reviewed = true },
-                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee", Reviewed = true },
-                new Place {ID = 7, Name = "Burning hell", Category = "Coffee", Reviewed = true },
-                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee", Reviewed = true },
-                new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food", Reviewed = true },
-                new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Reviewed = true },
-                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Reviewed = true },
-                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Reviewed = true },
-                new Place {ID = 11, Name = "The Light", Category = "CraftShops", Reviewed = true },
-                new Place {ID = 12, Name = "The Dark", Category = "CraftShops", Reviewed = true }
+                new Place {ID = 1, Name = "La Bottega Milanese", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 2, Name = "Test Coffee", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 3, Name = "Good Coffee", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 4, Name = "Shit Coffee", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 5, Name = "The Old Black Cat", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 6, Name = "Name me what you like", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 7, Name = "Burning hell", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee", Reviewed = true, UserContributed = false },
+                new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food", Reviewed = true, UserContributed = false },
+                new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Reviewed = true, UserContributed = false },
+                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Reviewed = true, UserContributed = false },
+                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Reviewed = true, UserContributed = false },
+                new Place {ID = 11, Name = "The Light", Category = "CraftShops", Reviewed = true, UserContributed = false },
+                new Place {ID = 12, Name = "The Dark", Category = "CraftShops", Reviewed = true, UserContributed = false }
             };
 
             places.ForEach(p => context.Places.Add(p));

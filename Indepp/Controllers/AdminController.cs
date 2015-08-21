@@ -36,7 +36,7 @@ namespace Indepp.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var places = Context.Places.AsQueryable();
+            var places = Context.Places.Where(p => p.Reviewed == true);
 
             if (!String.IsNullOrEmpty(searchString))
                 places = places.Where(p => p.Name.Contains(searchString));
@@ -79,6 +79,7 @@ namespace Indepp.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    place.UserContributed = false;
                     place.Reviewed = true;
                     Context.Places.Add(place);
                     Context.SaveChanges();
@@ -166,6 +167,8 @@ namespace Indepp.Controllers
                         var dayOfTheWeek = Inplace.WorkingHours.Where(wh => wh.Day == workingHour.Day).SingleOrDefault();
                         dayOfTheWeek.OpenTime = workingHour.OpenTime;
                     }
+
+                Inplace.Reviewed = place.Reviewed;
 
                 Context.SaveChanges();
 
@@ -514,6 +517,46 @@ namespace Indepp.Controllers
         }
 
         #endregion
+
+        public ActionResult UserPlaceList(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
+
+            if (searchString != null)
+                page = 1;
+            else
+                searchString = currentFilter;
+
+            ViewBag.CurrentFilter = searchString;
+
+            var places = Context.Places.Where(p => p.UserContributed == true && p.Reviewed == false);
+
+            if (!String.IsNullOrEmpty(searchString))
+                places = places.Where(p => p.Name.Contains(searchString));
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    places = places.OrderByDescending(p => p.Name);
+                    break;
+                case "id_desc":
+                    places = places.OrderByDescending(p => p.ID);
+                    break;
+                case "ID":
+                    places = places.OrderBy(p => p.ID);
+                    break;
+                default:
+                    places = places.OrderBy(p => p.Name);
+                    break;
+            }
+
+            int pageSize = 20;
+            int pageNumber = (page ?? 1);
+
+            return View(places.ToPagedList(pageNumber, pageSize));
+        }
 
 
         protected override void Dispose(bool disposing)

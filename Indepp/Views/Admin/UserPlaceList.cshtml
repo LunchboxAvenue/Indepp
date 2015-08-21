@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Indepp.Models.BlogPost>
+﻿@model PagedList.IPagedList<Indepp.Models.Place>
 @using PagedList.Mvc;
 @using Indepp.HelperMethods;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,6 @@
         <div class="col-lg-12">
             <section id="adminPlaceList">
                 <div class="panel panel-default">
-
                     <!-- List group -->
                     <div class="list-group">
                         <a href='@Url.Action("Create", "Admin")' class="list-group-item">
@@ -62,10 +61,10 @@
                 </ul>
 
                 <div>
-                    <section id="blogPostList">
+                    <section id="placeList">
                         <h2 class="uppercaseText">List of all places</h2>
 
-                        @using (Html.BeginForm("BlogPostList", "Admin", FormMethod.Get))
+                        @using (Html.BeginForm("UserPlaceList", "Admin", FormMethod.Get))
                         {
                             <p>
                                 Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
@@ -76,39 +75,39 @@
                         <table class="table table-hover">
                             <tr>
                                 <th>
-                                    @Html.ActionLink("ID", "BlogPostList", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
+                                    @Html.ActionLink("ID", "UserPlaceList", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
                                 </th>
                                 <th>
-                                    @Html.ActionLink("Title", "BlogPostList", new { sortOrder = ViewBag.TitleSortParm, currentFilter = ViewBag.CurrentFilter })
+                                    @Html.ActionLink("Name", "UserPlaceList", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
                                 </th>
                                 <th>
-                                    Short Description
+                                    Category
                                 </th>
                                 <th>
                                     Actions
                                 </th>
                             </tr>
 
-                            @foreach (var blogPost in Model)
+                            @foreach (var place in Model)
                             {
                                 <tr>
                                     <td>
-                                        @blogPost.ID
+                                        @place.ID
                                     </td>
                                     <td>
-                                        @blogPost.Title
+                                        @place.Name
                                     </td>
                                     <td>
-                                        @blogPost.ShortDescription
+                                        @place.Category
                                     </td>
                                     <td>
-                                        <a href='@Url.Action("BlogPostDetails", "Admin", new { id = blogPost.ID })'>
+                                        <a href='@Url.Action("Details", "Admin", new { id = place.ID })'>
                                             <i class="fa fa-file-text-o fa-2x"></i>
                                         </a>
-                                        <a href='@Url.Action("BlogPostEdit", "Admin", new { id = blogPost.ID })'>
+                                        <a href='@Url.Action("Edit", "Admin", new { id = place.ID })'>
                                             <i class="fa fa-pencil fa-2x"></i>
                                         </a>
-                                        <a href='@Url.Action("BlogPostDelete", "Admin", new { id = blogPost.ID })'>
+                                        <a href='@Url.Action("Delete", "Admin", new { id = place.ID })'>
                                             <i class="fa fa-trash-o fa-2x"></i>
                                         </a>
                                     </td>
@@ -117,7 +116,7 @@
                         </table>
                         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                        @Html.PagedListPager(Model, page => Url.Action("Index",
+                        @Html.PagedListPager(Model, page => Url.Action("UserPlaceList",
                             new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
                     </section>
