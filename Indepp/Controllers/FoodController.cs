@@ -63,9 +63,6 @@ namespace Indepp.Controllers
         {
             var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
 
-            if (place.Reviewed == false)
-                ViewBag.NotReviewed = true;
-
             return View("PlaceDetails", place);
         }
     }

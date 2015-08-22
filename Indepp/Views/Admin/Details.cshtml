@@ -17,7 +17,10 @@
         <!-- Controls -->
         <div class="col-md-12">
             <div class="btn-group" role="group">
-                <a href='@Url.Action("Index", "Admin")' class="btn">
+                @{
+                    var backButtonAction = Model.Reviewed ? "Index" : "UserPlaceList";
+                }
+                <a href='@Url.Action(backButtonAction, "Admin")' class="btn">
                     <i class="fa fa-hand-o-left fa-2x"></i>
                 </a>
                 <a href='@Url.Action("Edit", "Admin", new { id = Model.ID })' class="btn">
@@ -29,10 +32,20 @@
             </div>
         </div>
         <!-- /Controls -->
-
         <!-- Main Content -->
         <div class="col-md-8">
             <section id="placeDetails">
+
+                @if (Model.UserContributed)
+                {
+                    <div class="editSection">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            This place is user contributed.
+                        </div>
+                    </div>
+                }
+
                 <div>
                     <h1>
                         PLACE DETAILS
@@ -68,7 +81,7 @@
                             @Html.Raw(Model.PlaceDescription.Description)
                         </p>
                     }
-                    
+
                 </div>
             </section>
         </div>

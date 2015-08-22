@@ -22,7 +22,7 @@ namespace Indepp.Models
         public string UserEmail { get; set; }
 
         public bool UserContributed { get; set; }
-        public bool? Reviewed { get; set; }
+        public bool Reviewed { get; set; }
 
         public virtual Address Address { get; set; }
         public virtual PlaceDescription PlaceDescription { get; set; }
