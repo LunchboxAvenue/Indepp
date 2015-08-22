@@ -8,6 +8,7 @@ using PagedList;
 using Indepp.Models;
 using System.Data;
 using System.Data.Entity;
+using Indepp.HelperMethods;
 
 namespace Indepp.Controllers
 {
@@ -398,13 +399,7 @@ namespace Indepp.Controllers
 
         public ActionResult ArticleCreate()
         {
-            var places = Context.Places.ToList();
-            places.Insert(0, new Place() { ID = 0, Name = "None" });
-            ViewBag.placeList = places.Select(p => new Place()
-            {
-                ID = p.ID,
-                Name = p.Name
-            });
+            ViewBag.placeList = new ViewBagHelperMethods().PopulatePlaceDropdown(Context);
 
             return View();
         }
@@ -420,6 +415,8 @@ namespace Indepp.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    
+
                     article.PostedOn = DateTime.Now;
                     Context.Articles.Add(article);
                     Context.SaveChanges();
@@ -427,10 +424,12 @@ namespace Indepp.Controllers
                     return RedirectToAction("ArticleList");
                 }
             }
-            catch (DataException e)
+            catch (DataException)
             {
                 ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
             }
+
+            ViewBag.placeList = new ViewBagHelperMethods().PopulatePlaceDropdown(Context);
 
             return View(article);
         }
@@ -438,14 +437,7 @@ namespace Indepp.Controllers
         public ActionResult ArticleEdit(int? id)
         {
             var article = Context.Articles.Find(id);
-
-            var places = Context.Places.ToList();
-            places.Insert(0, new Place() { ID = 0, Name = "None" });
-            ViewBag.placeList = places.Select(p => new Place()
-            {
-                ID = p.ID,
-                Name = p.Name
-            });
+            ViewBag.placeList = new ViewBagHelperMethods().PopulatePlaceDropdown(Context);
 
             return View(article);
         }
@@ -477,6 +469,8 @@ namespace Indepp.Controllers
             {
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
+
+            ViewBag.placeList = new ViewBagHelperMethods().PopulatePlaceDropdown(Context);
 
             return View("ArticleEdit", article);
         }

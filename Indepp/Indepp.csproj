@@ -380,6 +380,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HelperMethods\HelperMethods.cs" />
+    <Compile Include="HelperMethods\ViewBagHelperMethods.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Article.cs" />
