@@ -80,5 +80,14 @@ namespace Indepp.Controllers
                 return View(emailMessage);
             }
         }
+
+        [HttpGet]
+        public ActionResult PlaceMap(string searchString)
+        {
+            //ViewBag.CurrentFilter = searchString;
+
+
+            return View();
+        }
     }
 }

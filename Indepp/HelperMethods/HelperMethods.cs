@@ -33,6 +33,8 @@ namespace Indepp.HelperMethods
                 routeController = "contact";
             else if (routeAction == "Login")
                 routeController = "admin";
+            else if (routeAction == "PlaceMap")
+                routeController = "placemap";
 
             return path + routeController.ToLower() + ".jpg";
         }
