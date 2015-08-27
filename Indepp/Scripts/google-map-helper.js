@@ -3,7 +3,8 @@
     var myOptions = {
         zoom: 1,
         center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: mapStyles
     };
     map = new google.maps.Map(document.getElementById(MapCanvas), myOptions);
 

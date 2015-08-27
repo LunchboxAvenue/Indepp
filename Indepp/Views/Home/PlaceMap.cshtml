@@ -20,9 +20,13 @@
         </div>
 
         <!-- Main Content -->
-        <div class="col-md-8">
+        <div class="col-md-12">
             <section id="placeList">
                 <h2 class="uppercaseText">filters go under</h2>
+                <label><input type="checkbox" id="coffeeBox" class="strikethrough" checked><span>Coffee</span></label>
+                <label><input type="checkbox" id="foodBox" class="strikethrough" checked><span>Food</span></label>
+                <label><input type="checkbox" id="farmBox" class="strikethrough" checked><span>Farms</span></label>
+                <label><input type="checkbox" id="craftshopBox" class="strikethrough" checked><span>Craft Shops</span></label>
 
                 @using (Html.BeginForm("PlaceMap", "Home", FormMethod.Get))
                 {
@@ -35,16 +39,6 @@
             </section>
         </div>
         <!-- Main Content Ends-->
-        <!-- Will be a partial later on -->
-        <div class="col-md-4 recentPosts">
-            <h2 class="uppercaseText">Recent posts</h2>
-
-            <p>Single origin saucer cappuccino doppio robusta crema single shot.</p>
-            <p>Roast, aromatic, white black java medium extra.</p>
-            <p>Blue mountain mug, redeye, flavour extraction lungo cream aromatic grounds body cappuccino.</p>
-        </div>
-        <!-- Partial will end here-->
-
     </div>
 </div>
 

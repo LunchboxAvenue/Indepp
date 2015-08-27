@@ -24,8 +24,8 @@ namespace Indepp.DAL
                 new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Reviewed = true, UserContributed = false },
                 new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Reviewed = true, UserContributed = false },
                 new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Reviewed = true, UserContributed = false },
-                new Place {ID = 11, Name = "The Light", Category = "CraftShops", Reviewed = true, UserContributed = false },
-                new Place {ID = 12, Name = "The Dark", Category = "CraftShops", Reviewed = true, UserContributed = false }
+                new Place {ID = 13, Name = "The Light", Category = "CraftShops", Reviewed = true, UserContributed = false },
+                new Place {ID = 14, Name = "The Dark", Category = "CraftShops", Reviewed = true, UserContributed = false }
             };
 
             places.ForEach(p => context.Places.Add(p));
@@ -33,9 +33,12 @@ namespace Indepp.DAL
 
             var addresses = new List<Address>
             {
-                new Address { PlaceID = 1, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
+                new Address { PlaceID = 1, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.798110, Longitude =  (decimal)-1.547736 },
                 new Address { PlaceID = 2, City = "Manchester", Country = "United Kingdom", County = "Midlands" },
-                new Address { PlaceID = 3, City = "London", Country = "United Kingdom", County = "Midlands"}
+                new Address { PlaceID = 3, City = "London", Country = "United Kingdom", County = "Midlands" },
+                new Address { PlaceID = 9, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.801000, Longitude =  (decimal)-1.540980 },
+                new Address { PlaceID = 11, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.974836, Longitude =  (decimal)-1.134820 },
+                new Address { PlaceID = 14, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.799950, Longitude =  (decimal)-1.562671 },
             };
 
             addresses.ForEach(a => context.Addresses.Add(a));

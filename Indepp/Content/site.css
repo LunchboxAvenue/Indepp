@@ -256,6 +256,9 @@ ul.typeahead {
 .uppercaseText {
   text-transform: uppercase;
 }
+.strikethrough:not(:checked) + span {
+  text-decoration: line-through;
+}
 #blogPostList h2,
 #articleList h2,
 #placeList h2 {

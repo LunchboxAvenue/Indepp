@@ -90,7 +90,7 @@ namespace Indepp.Controllers
             return View();
         }
 
-        public JsonResult GetPlaceLocations(bool showCoffee, bool showFood, bool showFarm, bool showCraftShop)
+        public JsonResult GetPlaceLocations(string showCoffee, string showFood, string showFarm, string showCraftShop)
         {
             var places = db.Places.Select(p => new PlaceMap
             {
@@ -98,10 +98,13 @@ namespace Indepp.Controllers
                 Category = p.Category,
                 Longitude = p.Address.Longitude,
                 Latitude = p.Address.Latitude
-            });
+            }).Where(p => p.Latitude != null && p.Longitude != null);
 
-            //var sortedPlaces = places.Where(p => p.Category != null);
-            return Json(places, JsonRequestBehavior.AllowGet);
+            var sortedPlaces = places
+                .Where(p => p.Category == showCoffee || p.Category == showFood
+                        || p.Category == showFarm || p.Category == showCraftShop);
+
+            return Json(sortedPlaces, JsonRequestBehavior.AllowGet);
         }
     }
 }
