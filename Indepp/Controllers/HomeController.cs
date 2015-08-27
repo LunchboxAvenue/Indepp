@@ -89,5 +89,19 @@ namespace Indepp.Controllers
 
             return View();
         }
+
+        public JsonResult GetPlaceLocations(bool showCoffee, bool showFood, bool showFarm, bool showCraftShop)
+        {
+            var places = db.Places.Select(p => new PlaceMap
+            {
+                Name = p.Name,
+                Category = p.Category,
+                Longitude = p.Address.Longitude,
+                Latitude = p.Address.Latitude
+            });
+
+            //var sortedPlaces = places.Where(p => p.Category != null);
+            return Json(places, JsonRequestBehavior.AllowGet);
+        }
     }
 }

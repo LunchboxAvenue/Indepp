@@ -28,6 +28,11 @@ namespace Indepp
             bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                 "~/Scripts/knockout-3.3.0.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/placemap").Include(
+                "~/Scripts/google-map-helper.js",
+                "~/Scripts/places-map.js"
+                ));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model PagedList.IPagedList<Indepp.Models.Place>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
 
 <div class="container-fluid">
     <div class="row paperBody">
@@ -30,6 +31,7 @@
                         <input type="submit" class="btn btn-default" value="Search" />
                     </p>
                 }
+                <div id="placesMap" style="height: 500px;"></div>
             </section>
         </div>
         <!-- Main Content Ends-->
@@ -45,3 +47,5 @@
 
     </div>
 </div>
+
+@Scripts.Render("~/bundles/placemap")
