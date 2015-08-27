@@ -15,24 +15,6 @@ $(function () {
     geocoder = new google.maps.Geocoder();
     map.setZoom(4);
 
-    /*
-    $('#FindLocation').click(function () {
-        WhereAreYou();
-    });
-
-    $('#location').keyup(function (e) {
-        if (e.keyCode == 13) {
-            WhereAreYou();
-        }
-    });
-
-    $('#CentreUK').click(function () {
-        var latlng = new google.maps.LatLng(54.5, -3.5);
-        map.setCenter(latlng);
-        map.setZoom(6);
-    });
-    */
-
     $('#coffeeBox').click(function () {
         GetPlaceLocations();
     });
@@ -54,40 +36,12 @@ $(function () {
 function GetPlaceLocations() {
     clearMapPoints();
 
-    /*var coffee;
-    var food;
-    var farm;
-    var craftshop;
-
-    if ($('#coffeeBox').is(':checked'))
-        coffee = "coffee";
-    else if ($('#foodBox').is(':checked'))
-        food = "food";
-    else if ($('#farmBox').is(':checked'))
-        farm = "farms";
-    else if ($('#craftshopBox').is(':checked'))
-        craftshop = "craftShops"*/
-
     var inputs = {
-        //showNpex: $('#Npex').is(':checked'),
-        //showTrial: $('#Trial').is(':checked'),
-        //showNonNpex: $('#NonNpex').is(':checked')
         showCoffee: ($('#coffeeBox').is(':checked')) ? "Coffee": null,
         showFood: ($('#foodBox').is(':checked')) ? "Food" : null,
         showFarm: ($('#farmBox').is(':checked')) ? "Farms": null,
         showCraftShop: ($('#craftshopBox').is(':checked')) ? "CraftShops" : null
     };
-
-    /*if (!$('#Trial').is(':checked'))
-        $('.connecting').css('display', 'none');
-    else
-        $('.connecting').css('display', 'block');
-
-    if (!$('#Npex').is(':checked'))
-        $('.connected').css('display', 'none');
-    else
-        $('.connected').css('display', 'block');
-    */
 
     $.post("/Home/GetPlaceLocations", inputs, function (data) {
         placesData = data;
