@@ -355,10 +355,8 @@
     <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\wsc.js" />
     <Content Include="Scripts\ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
     <Content Include="Scripts\ckeditor\styles.js" />
-    <Content Include="Scripts\google-map-helper.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
-    <Content Include="Scripts\places-map.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -394,7 +392,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EmailMessage.cs" />
     <Compile Include="ViewModels\LoginDetails.cs" />
-    <Compile Include="ViewModels\PlaceMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
