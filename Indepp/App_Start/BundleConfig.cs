@@ -30,6 +30,7 @@ namespace Indepp
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/placemap").Include(
+                "~/Scripts/fontawesome-markers.js",
                 "~/Scripts/google-map-helper.js",
                 "~/Scripts/places-map.js"
                 ));
