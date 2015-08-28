@@ -35,6 +35,10 @@ $(function () {
     $('#craftshopBox').click(function () {
         GetPlaceLocations();
     });
+
+    $('#searchBox').keyup(function () {
+        GetPlaceLocations();
+    });
     
 });
 
@@ -45,7 +49,8 @@ function GetPlaceLocations() {
         showCoffee: ($('#coffeeBox').is(':checked')) ? "Coffee": null,
         showFood: ($('#foodBox').is(':checked')) ? "Food" : null,
         showFarm: ($('#farmBox').is(':checked')) ? "Farms": null,
-        showCraftShop: ($('#craftshopBox').is(':checked')) ? "CraftShops" : null
+        showCraftShop: ($('#craftshopBox').is(':checked')) ? "CraftShops" : null,
+        placeName: ($('#searchBox').val()) 
     };
 
     $.post("/Home/GetPlaceLocations", inputs, function (data) {

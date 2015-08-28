@@ -42,7 +42,7 @@ function DrawMapPoints() {
                 workingHours.push('<br /><span>' + DayEnum[placesData[i].WorkingHours[k].Day] + ': ' + placesData[i].WorkingHours[k].OpenTime + '</span>');
         }
 
-        marker.place = '<div class="placeInfoDiv">' + placesData[i].Name + workingHours + '</div>';
+        marker.place = '<div class="placeInfoDiv">' + placesData[i].Name + '<br />' + workingHours + '</div>';
 
         if (placesData[i].Category == "Coffee") { marker.icon.path = fontawesome.markers.COFFEE }
         if (placesData[i].Category == "Food") { marker.icon.path = fontawesome.markers.CUTLERY }

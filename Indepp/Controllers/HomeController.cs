@@ -82,15 +82,12 @@ namespace Indepp.Controllers
         }
 
         [HttpGet]
-        public ActionResult PlaceMap(string searchString)
+        public ActionResult PlaceMap()
         {
-            //ViewBag.CurrentFilter = searchString;
-
-
             return View();
         }
 
-        public JsonResult GetPlaceLocations(string showCoffee, string showFood, string showFarm, string showCraftShop)
+        public JsonResult GetPlaceLocations(string showCoffee, string showFood, string showFarm, string showCraftShop, string placeName = "")
         {
             var places = db.Places.Select(p => new PlaceMap
             {
@@ -103,7 +100,8 @@ namespace Indepp.Controllers
 
             var sortedPlaces = places
                 .Where(p => p.Category == showCoffee || p.Category == showFood
-                        || p.Category == showFarm || p.Category == showCraftShop);
+                        || p.Category == showFarm || p.Category == showCraftShop)
+                .Where(p => p.Name.Contains(placeName));
 
             return Json(sortedPlaces, JsonRequestBehavior.AllowGet);
         }
