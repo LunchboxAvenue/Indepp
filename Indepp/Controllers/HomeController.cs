@@ -97,7 +97,8 @@ namespace Indepp.Controllers
                 Name = p.Name,
                 Category = p.Category,
                 Longitude = p.Address.Longitude,
-                Latitude = p.Address.Latitude
+                Latitude = p.Address.Latitude,
+                WorkingHours = p.WorkingHours
             }).Where(p => p.Latitude != null && p.Longitude != null);
 
             var sortedPlaces = places

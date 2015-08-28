@@ -36,7 +36,13 @@ function DrawMapPoints() {
             }
         });
 
-        marker.place = '<div class="placeInfoDiv">' + placesData[i].Name + '</div>';
+        var workingHours = [];
+        for (k in placesData[i].WorkingHours) {
+            if (placesData[i].WorkingHours[k].OpenTime !== null)
+                workingHours.push('<br /><span>' + DayEnum[placesData[i].WorkingHours[k].Day] + ': ' + placesData[i].WorkingHours[k].OpenTime + '</span>');
+        }
+
+        marker.place = '<div class="placeInfoDiv">' + placesData[i].Name + workingHours + '</div>';
 
         if (placesData[i].Category == "Coffee") { marker.icon.path = fontawesome.markers.COFFEE }
         if (placesData[i].Category == "Food") { marker.icon.path = fontawesome.markers.CUTLERY }

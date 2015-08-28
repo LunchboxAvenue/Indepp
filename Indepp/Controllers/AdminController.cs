@@ -169,7 +169,8 @@ namespace Indepp.Controllers
                         dayOfTheWeek.OpenTime = workingHour.OpenTime;
                     }
 
-                Inplace.Reviewed = place.Reviewed;
+                if (!Inplace.Reviewed)
+                    Inplace.Reviewed = place.Reviewed;
 
                 Context.SaveChanges();
 
