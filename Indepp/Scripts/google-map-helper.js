@@ -24,40 +24,36 @@ function DrawMapPoints() {
             position: point,
             map: map,
             title: placesData[i].Name,
-            //Labs: '<div class="MapDiv">',
             icon: {
                 path: fontawesome.markers.COFFEE,
                 scale: 0.5,
-                strokeWeight: 0.2,
+                strokeWeight: 1,
                 strokeColor: 'black',
                 strokeOpacity: 1,
                 fillColor: '#696969',
                 fillOpacity: 0.85,
-            },
+                anchor: new google.maps.Point(30, -30)
+            }
         });
-        markersArray.push(marker);
 
-        //Just have a link to the site instead of all labs in the site
-        //marker.Labs += placesData[i].Name + '</div>';
+        marker.place = '<div class="placeInfoDiv">' + placesData[i].Name + '</div>';
 
         if (placesData[i].Category == "Coffee") { marker.icon.path = fontawesome.markers.COFFEE }
         if (placesData[i].Category == "Food") { marker.icon.path = fontawesome.markers.CUTLERY }
         if (placesData[i].Category == "Farms") { marker.icon.path = fontawesome.markers.PAGELINES }
-        if (placesData[i].Category == "CraftShops") { marker.icon.path = fontawesome.markers.COG }
+        if (placesData[i].Category == "CraftShops") { marker.icon.path = fontawesome.markers.GEAR }
 
-        /*if (sitesData[i].TrialTrust) { marker.icon = iconBase + 'schools_maps.png'; }
-        if (typeof (thisLab) != "undefined" && thisLab == sitesData[i].ID) { marker.icon = iconBase + 'schools_maps.png'; }*/
+        markersArray.push(marker);
 
-        /*google.maps.event.addListener(marker, 'click', function () {
-            // When clicked, open an Info Window  
-            var info = new google.maps.InfoWindow({
-                content: this.Labs,
+        google.maps.event.addListener(marker, 'click', function () {
+            var infoWindow = new google.maps.InfoWindow({
+                content: this.place,
                 position: this.position
             });
 
-            info.open(map);
-            setTimeout(function () { $('.MapDiv').parent().parent().css('z-index', 10000) }, 500);
-        });*/
+            infoWindow.open(map);
+            setTimeout(function () { infoWindow.close(); }, 15000);
+        });
     }
 }
 
