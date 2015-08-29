@@ -10,6 +10,7 @@ using System.Net.Mail;
 using SendGrid;
 using System.Configuration;
 using Indepp.ViewModels;
+using Indepp.Filters;
 
 namespace Indepp.Controllers
 {
@@ -42,6 +43,7 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
+        [Throttle(Message = "You must wait {n} minutes before you can send us another email.", Seconds = 120)]
         public ActionResult Contact(EmailMessage emailMessage)
         {
             ViewBag.PageTitle = "Contact";

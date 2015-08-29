@@ -380,6 +380,7 @@
     <Compile Include="Controllers\ContributeController.cs" />
     <Compile Include="DAL\PlaceContext.cs" />
     <Compile Include="DAL\PlaceInitializer.cs" />
+    <Compile Include="Filters\ThrottleAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

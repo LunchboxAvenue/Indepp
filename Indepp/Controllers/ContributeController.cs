@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Indepp.Models;
 using Indepp.DAL;
 using System.Data;
+using Indepp.Filters;
 
 namespace Indepp.Controllers
 {
@@ -31,6 +32,7 @@ namespace Indepp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Throttle(Message = "You must wait {n} minutes before you can contribute another place.", Seconds = 120)]
         public ActionResult CreatePlace(Place place)
         {
             if (ModelState.IsValid)

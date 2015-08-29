@@ -24,6 +24,8 @@
                 {
                     <h3>@messageSent.ToString()</h3>
                 }
+                
+                @Html.ValidationMessage("ExcessiveRequests")
 
                 @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
                 {
