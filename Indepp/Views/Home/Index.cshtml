@@ -38,7 +38,9 @@
                     {
                         <tr>
                             <td>
-                                @blogPost.ID
+                                <a href='@Url.Action("BlogPost", "Home", new { id = blogPost.ID })'>
+                                    <i class="fa fa-newspaper-o fa-2x"></i>
+                                </a>
                             </td>
                             <td>
                                 @blogPost.Title

@@ -107,5 +107,12 @@ namespace Indepp.Controllers
 
             return Json(sortedPlaces, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult BlogPost(int? id)
+        {
+            var blogPost = db.BlogPosts.FirstOrDefault(b => b.ID == id);
+
+            return View(blogPost);
+        }
     }
 }

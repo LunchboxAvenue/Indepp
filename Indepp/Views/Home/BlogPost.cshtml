@@ -1,0 +1,41 @@
+﻿@model Indepp.Models.BlogPost
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">@Model.Title</h1>
+
+            <p class="underHeaderText">
+                Not sure if this will stay here.
+            </p>
+        </div>
+
+        <div class="col-md-8">
+            <section id="placeDetails">
+                <div>
+                    <p>
+                        @Model.PostedOn
+                    </p>
+                    <p>
+                        @Html.Raw(Model.Description)
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Will be a partial later on -->
+        <div class="col-md-4 recentPosts">
+            <h2 class="uppercaseText">Recent posts</h2>
+
+            <p>Single origin saucer cappuccino doppio robusta crema single shot.</p>
+            <p>Roast, aromatic, white black java medium extra.</p>
+            <p>Blue mountain mug, redeye, flavour extraction lungo cream aromatic grounds body cappuccino.</p>
+        </div>
+        <!-- Partial will end here-->
+
+    </div>
+</div>
