@@ -416,8 +416,6 @@ namespace Indepp.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    
-
                     article.PostedOn = DateTime.Now;
                     Context.Articles.Add(article);
                     Context.SaveChanges();
@@ -457,6 +455,7 @@ namespace Indepp.Controllers
                     var IndeppArticle = Context.Articles.Find(article.ID);
 
                     IndeppArticle.Title = article.Title;
+                    IndeppArticle.ShortDescription = article.ShortDescription;
                     IndeppArticle.Description = article.Description;
                     IndeppArticle.ModifiedOn = DateTime.Now;
                     IndeppArticle.PlaceID = article.PlaceID;

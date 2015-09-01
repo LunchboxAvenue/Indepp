@@ -55,8 +55,19 @@
                                 @blogPost.Title
                             </td>
                             <td>
-                                @Html.Raw(blogPost.ShortDescription)
+                                @if (blogPost.ShortDescription == null)
+                                {
+                                    <p>
+                                        New article about <strong>@blogPost.Place.Name</strong> has come out.
+                                        Don't forget to check it out before you give it a visit!
+                                    </p>
+                                }
+                                else
+                                {
+                                    @Html.Raw(blogPost.ShortDescription)
+                                }
                             </td>
+
                             <td>
                                 @blogPost.PostedOn
                             </td>

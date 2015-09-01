@@ -42,6 +42,15 @@
                             @Html.ValidationMessageFor(a => Model.Title)
                         </div>
                         <div class="editSection">
+                            <label for="@Model.ShortDescription">Short Description</label>
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                Short description is shown at Home page together with blog posts. If left empty, default short description will be shown.
+                            </div>
+                            @Html.TextAreaFor(a => Model.ShortDescription, new { @class = "form-control", @id = "shortDescriptionEditor" })
+                            @Html.ValidationMessageFor(a => Model.ShortDescription)
+                        </div>
+                        <div class="editSection">
                             <label for="@Model.Description">Description</label>
                             @Html.TextAreaFor(a => Model.Description, new { @class = "form-control", @id = "descriptionEditor" })
                             @Html.ValidationMessageFor(a => Model.Description)
@@ -63,6 +72,7 @@
 @Scripts.Render("~/bundles/editor")
 
 <script>
+    CKEDITOR.replace('shortDescriptionEditor');
     CKEDITOR.replace('descriptionEditor');
 
     $(document).ready(function () {
