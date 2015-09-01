@@ -23,11 +23,37 @@ namespace Indepp.Controllers
         {
             ViewBag.PageTitle = "Home";
 
-            var blogPosts = db.BlogPosts.OrderByDescending(pb => pb.ID);
+            var articles = db.Articles.Select(a => new ArticleAndBlogPost
+            {
+                ID = a.ID,
+                Title = a.Title,
+                ShortDescription = a.ShortDescription,
+                Description = a.Description,
+                PostedOn = a.PostedOn,
+                PlaceID = a.PlaceID,
+                IsArticle = true,
+                Place = a.Place
+            });
+
+            var blogPosts = db.BlogPosts.Select(bp => new ArticleAndBlogPost
+            {
+                ID = bp.ID,
+                Title = bp.Title,
+                ShortDescription = bp.ShortDescription,
+                Description = bp.Description,
+                PostedOn = bp.PostedOn,
+                PlaceID = bp.PlaceID,
+                IsArticle = false,
+                Place = null
+            });
+
+            var articlesAndBlogPosts = articles.Union(blogPosts).OrderByDescending(abp => abp.PostedOn);
+
+
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-            return View(blogPosts.ToPagedList(pageNumber, pageSize));
+            return View(articlesAndBlogPosts.ToPagedList(pageNumber, pageSize));
         }
 
         public ActionResult About() 

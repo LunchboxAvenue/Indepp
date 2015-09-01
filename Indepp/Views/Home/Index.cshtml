@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<Indepp.Models.BlogPost>
+﻿@model PagedList.IPagedList<Indepp.ViewModels.ArticleAndBlogPost>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -38,9 +38,18 @@
                     {
                         <tr>
                             <td>
-                                <a href='@Url.Action("BlogPost", "Home", new { id = blogPost.ID })'>
-                                    <i class="fa fa-newspaper-o fa-2x"></i>
-                                </a>
+                                @if (blogPost.IsArticle)
+                                {
+                                    <a href='@Url.Action("Details", blogPost.Place.Category, new { id = blogPost.PlaceID })'>
+                                        <i class="fa fa-newspaper-o fa-2x"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href='@Url.Action("BlogPost", "Home", new { id = blogPost.ID })'>
+                                        <i class="fa fa-newspaper-o fa-2x"></i>
+                                    </a>
+                                }
                             </td>
                             <td>
                                 @blogPost.Title
