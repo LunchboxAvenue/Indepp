@@ -11,6 +11,7 @@ using SendGrid;
 using System.Configuration;
 using Indepp.ViewModels;
 using Indepp.Filters;
+using Indepp.HelperMethods;
 
 namespace Indepp.Controllers
 {
@@ -136,6 +137,8 @@ namespace Indepp.Controllers
 
         public ActionResult BlogPost(int? id)
         {
+            ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(db, 5);
+
             var blogPost = db.BlogPosts.FirstOrDefault(b => b.ID == id);
 
             return View(blogPost);

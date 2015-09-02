@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using Indepp.HelperMethods;
 
 namespace Indepp.Controllers
 {
@@ -24,6 +25,8 @@ namespace Indepp.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
+
+            ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(Context, 5);
 
             if (searchString != null)
                 page = 1;

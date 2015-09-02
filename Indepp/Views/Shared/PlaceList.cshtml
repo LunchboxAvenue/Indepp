@@ -73,14 +73,28 @@
             </section>
         </div>
         <!-- Main Content Ends-->
-
         <!-- Will be a partial later on -->
         <div class="col-md-4 recentPosts">
             <h2 class="uppercaseText">Recent posts</h2>
-
-            <p>Single origin saucer cappuccino doppio robusta crema single shot.</p>
-            <p>Roast, aromatic, white black java medium extra.</p>
-            <p>Blue mountain mug, redeye, flavour extraction lungo cream aromatic grounds body cappuccino.</p>
+            @foreach (var post in ViewBag.RecentPosts)
+            {
+                if (post.IsArticle)
+                {
+                    <p>
+                        <a href='@Url.Action("Details", post.Place.Category, new { id = post.PlaceID })'>
+                            @post.Title
+                        </a>
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        <a href='@Url.Action("BlogPost", "Home", new { id = post.ID })'>
+                            @post.Title
+                        </a>
+                    </p>
+                }
+            }
         </div>
         <!-- Partial will end here-->
 
