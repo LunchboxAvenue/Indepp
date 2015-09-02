@@ -1,0 +1,9 @@
+﻿<a href="#menu-toggle" id="menu-toggle">
+    <i class="fa fa-long-arrow-left"></i>
+</a>
+@if (Request.IsAuthenticated)
+{
+    <a href='@Url.Action("Logout", "Account")' id="sign-out">
+        <i class="fa fa-sign-out fa-2x"></i>
+    </a>
+}

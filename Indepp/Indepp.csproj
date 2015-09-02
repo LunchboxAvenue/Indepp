@@ -477,6 +477,7 @@
     <Content Include="Views\Home\PlaceMap.cshtml" />
     <Content Include="Views\Home\BlogPost.cshtml" />
     <Content Include="Views\Admin\Statistics.cshtml" />
+    <Content Include="Views\Shared\_NavigationIconsPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
