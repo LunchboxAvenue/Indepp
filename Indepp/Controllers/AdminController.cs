@@ -125,6 +125,9 @@ namespace Indepp.Controllers
 
                 Inplace.Name = place.Name;
                 Inplace.Category = place.Category;
+                Inplace.Website = place.Website;
+                Inplace.Telephone = place.Telephone;
+                Inplace.Email = place.Email;
 
                 // address update
                 if (Inplace.Address == null) {

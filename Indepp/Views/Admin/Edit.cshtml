@@ -61,6 +61,21 @@
                     @Html.TextBoxFor(p => p.Category, new { @class = "form-control" })
                     @Html.ValidationMessageFor(p => Model.Category)
                 </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Website</span>
+                    @Html.TextBoxFor(p => p.Website, new { @class = "form-control", @placeholder = "www.example.com" })
+                    @Html.ValidationMessageFor(p => Model.Website)
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Telephone</span>
+                    @Html.TextBoxFor(p => p.Telephone, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => Model.Telephone)
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Email</span>
+                    @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => Model.Email)
+                </div>
             </div>
 
             <div class="editSection">

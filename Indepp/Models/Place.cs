@@ -18,6 +18,12 @@ namespace Indepp.Models
         [StringLength(50)]
         public string Category { get; set; }
 
+        public string Website { get; set; }
+        public string Telephone { get; set; }
+
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; }
+
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string UserEmail { get; set; }
 
