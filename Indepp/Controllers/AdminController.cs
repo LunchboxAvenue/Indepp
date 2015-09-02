@@ -9,6 +9,7 @@ using Indepp.Models;
 using System.Data;
 using System.Data.Entity;
 using Indepp.HelperMethods;
+using Indepp.ViewModels;
 
 namespace Indepp.Controllers
 {
@@ -552,6 +553,36 @@ namespace Indepp.Controllers
             return View(places.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult Statistics()
+        {
+            var places = Context.Places.AsQueryable();
+            var articles = Context.Articles.AsQueryable();
+            var blogPosts = Context.BlogPosts.AsQueryable();
+
+            var bestContributor = places
+                .Where(p => p.UserEmail != null)
+                .GroupBy(x => new { x.UserEmail })
+                .Select(group => new { Name = group.Key, Count = group.Count() })
+                .OrderByDescending(x => x.Count)
+                .FirstOrDefault();
+
+            var statistics = new PlaceStatistics
+            {
+                CoffeePlaces = places.Where(p => p.Category == "Coffee").Count(),
+                FoodPlaces = places.Where(p => p.Category == "Food").Count(),
+                FarmPlaces = places.Where(p => p.Category == "Farms").Count(),
+                CraftShopPlaces = places.Where(p => p.Category == "CraftShops").Count(),
+                TotalPlaces = places.Count(),
+                UserContributedPlaces = places.Where(p => p.UserContributed == true).Count(),
+                ReviewedPlaces = places.Where(p => p.Reviewed == true).Count(),
+                TotalArticles = articles.Count(),
+                LinkedArticles = articles.Where(a => a.PlaceID != null).Count(),
+                TotalBlogPosts = blogPosts.Count(),
+                BestContributorEmail = bestContributor != null ? bestContributor.Name.UserEmail + " - " + bestContributor.Count : ""
+            };
+
+            return View(statistics);
+        }
 
         protected override void Dispose(bool disposing)
         {

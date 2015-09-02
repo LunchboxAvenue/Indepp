@@ -1,0 +1,96 @@
+﻿@model Indepp.ViewModels.PlaceStatistics
+
+<div class="container-fluid">
+    <div class="row paperBody">
+        <div class="col-lg-12">
+            <a href="#menu-toggle" id="menu-toggle">
+                <i class="fa fa-long-arrow-left"></i>
+            </a>
+
+            <h1 class="specialHeaderText">Statistics</h1>
+
+            <p class="underHeaderText">
+                Here you can view some of the statistics for Places
+            </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="col-md-12">
+            <div class="btn-group" role="group">
+                <a href='@Url.Action("Index", "Admin")' class="btn">
+                    <i class="fa fa-hand-o-left fa-2x"></i>
+                </a>
+            </div>
+        </div>
+        <!-- /Controls -->
+
+        <div class="col-md-6">
+            <section id="placeDetails">
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">@Model.CoffeePlaces</span>
+                            Coffee
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.FoodPlaces</span>
+                            Food
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.FarmPlaces</span>
+                            Farm
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.CraftShopPlaces</span>
+                            Craft Shops
+                        </li>
+                    </ul>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">@Model.TotalPlaces</span>
+                            Total
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.UserContributedPlaces</span>
+                            User Contributed
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.ReviewedPlaces</span>
+                            Reviewed
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-md-6">
+            <section id="placeDetails">
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">@Model.TotalArticles</span>
+                            Articles
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.LinkedArticles</span>
+                            Linked Articles
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.TotalBlogPosts</span>
+                            Blog Posts
+                        </li>
+                    </ul>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">@Model.BestContributorEmail</span>
+                            Best Contributor
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>

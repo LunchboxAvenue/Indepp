@@ -398,6 +398,7 @@
     <Compile Include="ViewModels\EmailMessage.cs" />
     <Compile Include="ViewModels\LoginDetails.cs" />
     <Compile Include="ViewModels\PlaceMap.cs" />
+    <Compile Include="ViewModels\PlaceStatistics.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -475,6 +476,7 @@
     <Content Include="Views\Admin\UserPlaceList.cshtml" />
     <Content Include="Views\Home\PlaceMap.cshtml" />
     <Content Include="Views\Home\BlogPost.cshtml" />
+    <Content Include="Views\Admin\Statistics.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
