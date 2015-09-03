@@ -12,10 +12,12 @@ namespace Indepp.Controllers
     public class FoodController : Controller
     {
         private PlaceContext Context;
+        private DynamicFilteringMethods DynamicFiltering;
 
-        public FoodController(PlaceContext context)
+        public FoodController(PlaceContext context, DynamicFilteringMethods dynamicFiltering)
         {
             Context = context;
+            DynamicFiltering = dynamicFiltering;
         }
         // GET: Foods
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
@@ -40,21 +42,7 @@ namespace Indepp.Controllers
             if (!String.IsNullOrEmpty(searchString))
                 places = places.Where(p => p.Name.Contains(searchString));
 
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    places = places.OrderByDescending(p => p.Name);
-                    break;
-                case "id_desc":
-                    places = places.OrderByDescending(p => p.ID);
-                    break;
-                case "ID":
-                    places = places.OrderBy(p => p.ID);
-                    break;
-                default:
-                    places = places.OrderBy(p => p.Name);
-                    break;
-            }
+            places = DynamicFiltering.SortPlaces(places, sortOrder);
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);

@@ -12,10 +12,12 @@ namespace Indepp.Controllers
     public class FarmsController : Controller
     {
         private PlaceContext Context;
+        private DynamicFilteringMethods DynamicFiltering;
 
-        public FarmsController(PlaceContext context)
+        public FarmsController(PlaceContext context, DynamicFilteringMethods dynamicFiltering)
         {
             Context = context;
+            DynamicFiltering = dynamicFiltering;
         }
 
         // GET: Farms
@@ -41,21 +43,7 @@ namespace Indepp.Controllers
             if (!String.IsNullOrEmpty(searchString))
                 places = places.Where(p => p.Name.Contains(searchString));
 
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    places = places.OrderByDescending(p => p.Name);
-                    break;
-                case "id_desc":
-                    places = places.OrderByDescending(p => p.ID);
-                    break;
-                case "ID":
-                    places = places.OrderBy(p => p.ID);
-                    break;
-                default:
-                    places = places.OrderBy(p => p.Name);
-                    break;
-            }
+            places = DynamicFiltering.SortPlaces(places, sortOrder);
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);

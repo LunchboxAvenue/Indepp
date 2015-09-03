@@ -17,14 +17,19 @@ namespace Indepp.Controllers
 {
     public class HomeController : Controller
     {
-        private PlaceContext db = new PlaceContext();
+        private PlaceContext Context;
+
+        public HomeController(PlaceContext context)
+        {
+            Context = context;
+        }
 
         // GET: Home
         public ActionResult Index(int? page)
         {
             ViewBag.PageTitle = "Home";
 
-            var articles = db.Articles.Select(a => new ArticleAndBlogPost
+            var articles = Context.Articles.Select(a => new ArticleAndBlogPost
             {
                 ID = a.ID,
                 Title = a.Title,
@@ -36,7 +41,7 @@ namespace Indepp.Controllers
                 Place = a.Place
             });
 
-            var blogPosts = db.BlogPosts.Select(bp => new ArticleAndBlogPost
+            var blogPosts = Context.BlogPosts.Select(bp => new ArticleAndBlogPost
             {
                 ID = bp.ID,
                 Title = bp.Title,
@@ -118,7 +123,7 @@ namespace Indepp.Controllers
 
         public JsonResult GetPlaceLocations(string showCoffee, string showFood, string showFarm, string showCraftShop, string placeName = "")
         {
-            var places = db.Places.Select(p => new PlaceMap
+            var places = Context.Places.Select(p => new PlaceMap
             {
                 Name = p.Name,
                 Category = p.Category,
@@ -137,9 +142,9 @@ namespace Indepp.Controllers
 
         public ActionResult BlogPost(int? id)
         {
-            ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(db, 5);
+            ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(Context, 5);
 
-            var blogPost = db.BlogPosts.FirstOrDefault(b => b.ID == id);
+            var blogPost = Context.BlogPosts.FirstOrDefault(b => b.ID == id);
 
             return View(blogPost);
         }
