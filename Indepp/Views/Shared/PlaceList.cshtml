@@ -28,7 +28,9 @@
                 @using (Html.BeginForm("Index", (@ViewBag.PageTitle as string).Replace(" ", string.Empty), FormMethod.Get))
                 {
                     <p>
-                        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                        Find by city: @Html.TextBox("City", ViewBag.CurrentPlaceFilter.City as string)<br />
+                        Find by coutry: @Html.TextBox("Country", ViewBag.CurrentPlaceFilter.Country as string)<br />
+                        Find by name: @Html.TextBox("Name", ViewBag.CurrentPlaceFilter.Name as string)<br />
                         <input type="submit" class="btn btn-default" value="Search" />
                     </p>
                 }
@@ -36,10 +38,10 @@
                 <table class="table table-hover">
                     <tr>
                         <th>
-                            @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
+                            @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, currentPlaceFilter = ViewBag.CurrentPlaceFilter })
                         </th>
                         <th>
-                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentPlaceFilter = ViewBag.CurrentPlaceFilter })
                         </th>
                         <th>
                             Category
@@ -66,7 +68,14 @@
                 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                 @Html.PagedListPager(Model, page => Url.Action("Index",
-                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+                new
+                {
+                    page,
+                    sortOrder = ViewBag.CurrentSort,
+                    Name = ViewBag.CurrentPlaceFilter.Name,
+                    City = ViewBag.CurrentPlaceFilter.City,
+                    Country = ViewBag.CurrentPlaceFilter.Country
+                }))
 
             </section>
         </div>

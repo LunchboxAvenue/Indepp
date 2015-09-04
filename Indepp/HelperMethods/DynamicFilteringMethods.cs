@@ -1,4 +1,6 @@
 ﻿using Indepp.Models;
+using Indepp.ViewModels;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,26 @@ namespace Indepp.HelperMethods
             }
 
             return places;
+        }
+
+        public IQueryable<Place> FilterPlaces(IQueryable<Place> places, PlaceFilter filter)
+        {
+            if (!String.IsNullOrEmpty(filter.Name))
+                places = places.Where(p => p.Name.Contains(filter.Name));
+            if (!String.IsNullOrEmpty(filter.Country))
+                places = places.Where(p => p.Address.Country.Contains(filter.Country));
+            if (!String.IsNullOrEmpty(filter.City))
+                places = places.Where(p => p.Address.City.Contains(filter.City));
+
+            return places;
+        }
+
+        public IPagedList<Place> PlaceList(IQueryable<Place> places, int? page)
+        {
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return places.ToPagedList(pageNumber, pageSize);
         }
     }
 }

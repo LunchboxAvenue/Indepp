@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Indepp.HelperMethods;
+using Indepp.ViewModels;
 
 namespace Indepp.Controllers
 {
@@ -21,7 +22,7 @@ namespace Indepp.Controllers
         }
 
         // GET: Coffee
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, int? page, PlaceFilter filter, PlaceFilter currentPlaceFilter)
         {
             ViewBag.PageTitle = "Coffee";
 
@@ -31,24 +32,20 @@ namespace Indepp.Controllers
 
             ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(Context, 5);
 
-            if (searchString != null)
-                page = 1;
+            if (filter.Name != null || filter.City != null || filter.Country != null)
+                if(filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country)
+                    page = 1;
             else
-                searchString = currentFilter;
+                filter = currentPlaceFilter;
 
-            ViewBag.CurrentFilter = searchString;
+            ViewBag.CurrentPlaceFilter = filter;
 
             var places = Context.Places.Where(c => c.Category == "coffee" && c.Reviewed == true);
 
-            if (!String.IsNullOrEmpty(searchString))
-                places = places.Where(p => p.Name.Contains(searchString));
+            places = DynamicFiltering.FilterPlaces(places, filter); // filter places based on filter
+            places = DynamicFiltering.SortPlaces(places, sortOrder); // sort places based on sortOrder
 
-            places = DynamicFiltering.SortPlaces(places, sortOrder);
-
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
-            return View("PlaceList", places.ToPagedList(pageNumber, pageSize));
+            return View("PlaceList", DynamicFiltering.PlaceList(places, page));
         }
 
         public ActionResult Details(int? id)
