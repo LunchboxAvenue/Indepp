@@ -24,13 +24,10 @@ namespace Indepp.Controllers
         // GET: Coffee
         public ActionResult Index(string sortOrder, int? page, PlaceFilter filter, PlaceFilter currentPlaceFilter)
         {
-            ViewBag.PageTitle = "Coffee";
-
+            // sortOrder must be reflected in view
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
-
-            ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(Context, 5);
 
             if (filter.Name != null || filter.City != null || filter.Country != null)
                 if(filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country)
@@ -41,9 +38,12 @@ namespace Indepp.Controllers
             ViewBag.CurrentPlaceFilter = filter;
 
             var places = Context.Places.Where(c => c.Category == "coffee" && c.Reviewed == true);
-
             places = DynamicFiltering.FilterPlaces(places, filter); // filter places based on filter
             places = DynamicFiltering.SortPlaces(places, sortOrder); // sort places based on sortOrder
+
+            // setup additional ViewBag items
+            ViewBag.PageTitle = "Coffee";
+            ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(Context, 5);
 
             return View("PlaceList", DynamicFiltering.PlaceList(places, page));
         }

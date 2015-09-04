@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Indepp.HelperMethods;
+using Indepp.ViewModels;
 
 namespace Indepp.Controllers
 {
@@ -20,34 +21,30 @@ namespace Indepp.Controllers
             DynamicFiltering = dynamicFiltering;
         }
         // GET: Foods
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, int? page, PlaceFilter filter, PlaceFilter currentPlaceFilter)
         {
-            ViewBag.PageTitle = "Food";
-
+            // sortOrder must be reflected in view
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
 
+            if (filter.Name != null || filter.City != null || filter.Country != null)
+                if (filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country)
+                    page = 1;
+                else
+                    filter = currentPlaceFilter;
+
+            ViewBag.CurrentPlaceFilter = filter;
+
+            var places = Context.Places.Where(c => c.Category == "food" && c.Reviewed == true);
+            places = DynamicFiltering.FilterPlaces(places, filter); // filter places based on filter
+            places = DynamicFiltering.SortPlaces(places, sortOrder); // sort places based on sortOrder
+
+            // setup additional ViewBag items
+            ViewBag.PageTitle = "Food";
             ViewBag.RecentPosts = new ViewBagHelperMethods().GetRecentPosts(Context, 5);
 
-            if (searchString != null)
-                page = 1;
-            else
-                searchString = currentFilter;
-
-            ViewBag.CurrentFilter = searchString;
-
-            var places = Context.Places.AsQueryable().Where(c => c.Category == "food" && c.Reviewed == true);
-
-            if (!String.IsNullOrEmpty(searchString))
-                places = places.Where(p => p.Name.Contains(searchString));
-
-            places = DynamicFiltering.SortPlaces(places, sortOrder);
-
-            int pageSize = 3;
-            int pageNumber = (page ?? 1);
-
-            return View("PlaceList", places.ToPagedList(pageNumber, pageSize));
+            return View("PlaceList", DynamicFiltering.PlaceList(places, page));
         }
 
         public ActionResult Details(int? id)
