@@ -25,15 +25,32 @@
             <section id="placeList">
                 <h2 class="uppercaseText">List of best @ViewBag.PageTitle places in UK</h2>
 
-                @using (Html.BeginForm("Index", (@ViewBag.PageTitle as string).Replace(" ", string.Empty), FormMethod.Get))
-                {
-                    <p>
-                        Find by city: @Html.TextBox("City", ViewBag.CurrentPlaceFilter.City as string)<br />
-                        Find by coutry: @Html.TextBox("Country", ViewBag.CurrentPlaceFilter.Country as string)<br />
-                        Find by name: @Html.TextBox("Name", ViewBag.CurrentPlaceFilter.Name as string)<br />
-                        <input type="submit" class="btn btn-default" value="Search" />
-                    </p>
-                }
+                <div id="filter-panel" class="collapse filter-panel">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("Index", (@ViewBag.PageTitle as string).Replace(" ", string.Empty), FormMethod.Get/*, new { @class = "form-inline" }*/))
+                            {
+                                <div class="input-group">
+                                    <span class="input-group-addon">Name:</span>
+                                    @Html.TextBox("Name", ViewBag.CurrentPlaceFilter.Name as string, new { @class = "form-control" })
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">Country:</span>
+                                    @Html.TextBox("Country", ViewBag.CurrentPlaceFilter.Country as string, new { @class = "form-control" })
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">City:</span>
+                                    @Html.TextBox("City", ViewBag.CurrentPlaceFilter.City as string, new { @class = "form-control" })
+                                </div>
+                                <input type="submit" class="btn btn-default filterSubmitButton" value="Search" />
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <button id="advancedSearchButton" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
+                    <span class="glyphicon glyphicon-cog"></span> Advanced Search
+                </button>
 
                 <table class="table table-hover">
                     <tr>
