@@ -36,8 +36,16 @@ namespace Indepp.DAL
                 new Address { PlaceID = 1, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.798110, Longitude =  (decimal)-1.547736 },
                 new Address { PlaceID = 2, City = "Manchester", Country = "United Kingdom", County = "Midlands" },
                 new Address { PlaceID = 3, City = "London", Country = "United Kingdom", County = "Midlands" },
+                new Address { PlaceID = 4, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
+                new Address { PlaceID = 5, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
+                new Address { PlaceID = 6, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
+                new Address { PlaceID = 7, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
+                new Address { PlaceID = 8, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
                 new Address { PlaceID = 9, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.801000, Longitude =  (decimal)-1.540980 },
+                new Address { PlaceID = 10, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
                 new Address { PlaceID = 11, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.974836, Longitude =  (decimal)-1.134820 },
+                new Address { PlaceID = 12, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
+                new Address { PlaceID = 13, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
                 new Address { PlaceID = 14, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.799950, Longitude =  (decimal)-1.562671 },
             };
 

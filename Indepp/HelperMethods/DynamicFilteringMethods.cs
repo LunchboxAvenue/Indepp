@@ -23,6 +23,18 @@ namespace Indepp.HelperMethods
                 case "ID":
                     places = places.OrderBy(p => p.ID);
                     break;
+                case "country_desc":
+                    places = places.OrderByDescending(p => p.Address.Country);
+                    break;
+                case "country_asc":
+                    places = places.OrderBy(p => p.Address.Country);
+                    break;
+                case "city_desc":
+                    places = places.OrderByDescending(p => p.Address.City);
+                    break;
+                case "city_asc":
+                    places = places.OrderBy(p => p.Address.City);
+                    break;
                 default:
                     places = places.OrderBy(p => p.Name);
                     break;

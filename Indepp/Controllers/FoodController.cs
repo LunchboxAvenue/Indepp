@@ -27,6 +27,8 @@ namespace Indepp.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
+            ViewBag.CountrySortParam = sortOrder == "country_asc" ? "country_desc" : "country_asc";
+            ViewBag.CitySortParam = sortOrder == "city_asc" ? "city_desc" : "city_asc";
 
             if (filter.Name != null || filter.City != null || filter.Country != null)
                 if (filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country)

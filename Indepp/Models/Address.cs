@@ -23,9 +23,11 @@ namespace Indepp.Models
         [StringLength(50)]
         public string Address3 { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string City { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string County { get; set; }
 

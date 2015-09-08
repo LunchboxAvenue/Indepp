@@ -55,13 +55,24 @@
                 <table class="table table-hover">
                     <tr>
                         <th>
-                            @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, currentPlaceFilter = ViewBag.CurrentPlaceFilter })
+                            @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, Name = ViewBag.CurrentPlaceFilter.Name,
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                })
                         </th>
                         <th>
-                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentPlaceFilter = ViewBag.CurrentPlaceFilter })
+                            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, Name = ViewBag.CurrentPlaceFilter.Name,
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                })
                         </th>
                         <th>
-                            Category
+                            @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.CountrySortParam, Name = ViewBag.CurrentPlaceFilter.Name,
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                })
+                        </th>
+                        <th>
+                            @Html.ActionLink("City", "Index", new { sortOrder = ViewBag.CitySortParam, Name = ViewBag.CurrentPlaceFilter.Name,
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                })
                         </th>
                     </tr>
 
@@ -77,7 +88,10 @@
                                 @place.Name
                             </td>
                             <td>
-                                @place.Category
+                                @place.Address.Country
+                            </td>
+                            <td>
+                                @place.Address.City
                             </td>
                         </tr>
                     }
