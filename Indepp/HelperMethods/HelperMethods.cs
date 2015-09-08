@@ -39,5 +39,13 @@ namespace Indepp.HelperMethods
             return path + routeController.ToLower() + ".jpg";
         }
 
+        public static string DisplayOpeningHours(this HtmlHelper html, TimeSpan? openTime, TimeSpan? closeTime)
+        {
+            var open = openTime.HasValue ? openTime.Value.ToString("hh\\:mm") : "";
+            var close= closeTime.HasValue ? closeTime.Value.ToString("hh\\:mm") : "";
+
+            return open + " - " + close;
+        }
+
     }
 }

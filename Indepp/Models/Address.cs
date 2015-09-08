@@ -27,10 +27,10 @@ namespace Indepp.Models
         [StringLength(50)]
         public string City { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string County { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string Country { get; set; }
 

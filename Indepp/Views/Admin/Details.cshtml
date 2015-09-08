@@ -1,4 +1,5 @@
 ﻿@model Indepp.Models.Place
+@using Indepp.HelperMethods
 
 <div class="container-fluid">
     <div class="row paperBody">
@@ -99,12 +100,12 @@
                         @if (workingHour.Day == DateTime.Now.DayOfWeek)
                         {
                             <span class="boldText">@workingHour.Day: </span>
-                            <span class="boldText">@workingHour.OpenTime</span>
+                            <span class="boldText">@Html.DisplayOpeningHours(workingHour.OpenTime, workingHour.CloseTime)</span>
                         }
                         else
                         {
                             <span>@workingHour.Day: </span>
-                            <span>@workingHour.OpenTime</span>
+                            <span>@Html.DisplayOpeningHours(workingHour.OpenTime, workingHour.CloseTime)</span>
                         }
                     </p>
                 }

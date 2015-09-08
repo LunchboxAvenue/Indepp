@@ -171,6 +171,7 @@ namespace Indepp.Controllers
                     {
                         var dayOfTheWeek = Inplace.WorkingHours.Where(wh => wh.Day == workingHour.Day).SingleOrDefault();
                         dayOfTheWeek.OpenTime = workingHour.OpenTime;
+                        dayOfTheWeek.CloseTime = workingHour.CloseTime;
                     }
 
                 if (!Inplace.Reviewed)

@@ -14,20 +14,25 @@ namespace Indepp.Models
 
         public DayOfWeek Day { get; set; }
 
-        [StringLength(15)]
-        public string OpenTime { get; set; }
+        [Range(typeof(TimeSpan), "00:00", "23:59")]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        public TimeSpan? OpenTime { get; set; }
+
+        [Range(typeof(TimeSpan), "00:00", "23:59")]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
+        public TimeSpan? CloseTime { get; set; }
 
         public List<WorkingHour> PopulateHours()
         {
             var workingHours = new List<WorkingHour>
                 {
-                    new WorkingHour() { Day =  DayOfWeek.Monday, OpenTime = "" },
-                    new WorkingHour() { Day =  DayOfWeek.Tuesday, OpenTime = "" },
-                    new WorkingHour() { Day =  DayOfWeek.Wednesday, OpenTime = "" },
-                    new WorkingHour() { Day =  DayOfWeek.Thursday, OpenTime = "" },
-                    new WorkingHour() { Day =  DayOfWeek.Friday, OpenTime = "" },
-                    new WorkingHour() { Day =  DayOfWeek.Saturday, OpenTime = "" },
-                    new WorkingHour() { Day =  DayOfWeek.Sunday, OpenTime = "" }
+                    new WorkingHour() { Day =  DayOfWeek.Monday },
+                    new WorkingHour() { Day =  DayOfWeek.Tuesday },
+                    new WorkingHour() { Day =  DayOfWeek.Wednesday },
+                    new WorkingHour() { Day =  DayOfWeek.Thursday },
+                    new WorkingHour() { Day =  DayOfWeek.Friday },
+                    new WorkingHour() { Day =  DayOfWeek.Saturday },
+                    new WorkingHour() { Day =  DayOfWeek.Sunday }
                 };
 
             return workingHours;

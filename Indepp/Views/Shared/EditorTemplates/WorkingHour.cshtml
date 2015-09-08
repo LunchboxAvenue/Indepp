@@ -1,8 +1,12 @@
 ﻿@model Indepp.Models.WorkingHour
 
+@Html.HiddenFor(wh => wh.Day)
 <div class="input-group">
-    @Html.HiddenFor(wh => wh.Day)
-    <span class="input-group-addon" id="basic-addon1">@Html.DisplayTextFor(wh => wh.Day)</span>
-    @Html.TextBoxFor(wh => wh.OpenTime, new { @class = "form-control", @placeholder = "hh:mm - hh:mm" })
-    @Html.ValidationMessageFor(p => Model.OpenTime)
+    <span class="input-group-addon">@Html.DisplayTextFor(wh => wh.Day) Open Time</span>
+    @Html.TextBoxFor(wh => wh.OpenTime, "{0:hh\\:mm}", new { @class = "form-control", @placeholder = "hh:mm" })
+    @Html.ValidationMessageFor(wh => wh.OpenTime)
+
+    <span class="input-group-addon">Close Time</span>
+    @Html.TextBoxFor(wh => wh.CloseTime, "{0:hh\\:mm}", new { @class = "form-control", @placeholder = "hh:mm" })
+    @Html.ValidationMessageFor(wh => wh.CloseTime)
 </div>

@@ -1,4 +1,5 @@
 ﻿@model Indepp.Models.Place
+@using Indepp.HelperMethods
 
 <div class="container-fluid">
     <div class="row paperBody">
@@ -97,7 +98,7 @@
                             {
                                 <p>
                                     <span>@workingHour.Day: </span>
-                                    <span>@workingHour.OpenTime</span>
+                                    <span>@Html.DisplayOpeningHours(workingHour.OpenTime, workingHour.CloseTime)</span>
                                 </p>
                             }
                         }
