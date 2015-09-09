@@ -46,7 +46,7 @@ namespace Indepp.DAL
                 new Address { PlaceID = 11, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.974836, Longitude =  (decimal)-1.134820 },
                 new Address { PlaceID = 12, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
                 new Address { PlaceID = 13, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
-                new Address { PlaceID = 14, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.799950, Longitude =  (decimal)-1.562671 },
+                new Address { PlaceID = 14, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.799950, Longitude =  (decimal)-1.562671 }
             };
 
             addresses.ForEach(a => context.Addresses.Add(a));

@@ -31,11 +31,10 @@ namespace Indepp.Controllers
             ViewBag.CountrySortParam = sortOrder == "country_asc" ? "country_desc" : "country_asc";
             ViewBag.CitySortParam = sortOrder == "city_asc" ? "city_desc" : "city_asc";
 
-            if (filter.Name != null || filter.City != null || filter.Country != null)
-                if (filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country)
-                    page = 1;
-                else
-                    filter = currentPlaceFilter;
+            if (DynamicFiltering.FilterCheck(filter, currentPlaceFilter))
+                page = 1;
+            else
+                filter = currentPlaceFilter;
 
             ViewBag.CurrentPlaceFilter = filter;
 

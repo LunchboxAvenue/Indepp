@@ -42,6 +42,12 @@
                                     <span class="input-group-addon">City:</span>
                                     @Html.TextBox("City", ViewBag.CurrentPlaceFilter.City as string, new { @class = "form-control" })
                                 </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">Open At:</span>
+                                    @Html.TextBox("OpenTime", ViewBag.CurrentPlaceFilter.OpenTime as string, new { @class = "form-control" })
+                                    <span class="input-group-addon">Open Until:</span>
+                                    @Html.TextBox("CloseTime", ViewBag.CurrentPlaceFilter.CloseTime as string, new { @class = "form-control" })
+                                </div>
                                 <input type="submit" class="btn btn-default filterSubmitButton" value="Search" />
                             }
                         </div>
@@ -56,22 +62,26 @@
                     <tr>
                         <th>
                             @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, Name = ViewBag.CurrentPlaceFilter.Name,
-                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country,
+                                                                    OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
                                                                 })
                         </th>
                         <th>
                             @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, Name = ViewBag.CurrentPlaceFilter.Name,
-                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country,
+                                                                    OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
                                                                 })
                         </th>
                         <th>
                             @Html.ActionLink("Country", "Index", new { sortOrder = ViewBag.CountrySortParam, Name = ViewBag.CurrentPlaceFilter.Name,
-                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country,
+                                                                    OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
                                                                 })
                         </th>
                         <th>
                             @Html.ActionLink("City", "Index", new { sortOrder = ViewBag.CitySortParam, Name = ViewBag.CurrentPlaceFilter.Name,
-                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country
+                                                                    City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country,
+                                                                    OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
                                                                 })
                         </th>
                     </tr>
@@ -105,7 +115,9 @@
                     sortOrder = ViewBag.CurrentSort,
                     Name = ViewBag.CurrentPlaceFilter.Name,
                     City = ViewBag.CurrentPlaceFilter.City,
-                    Country = ViewBag.CurrentPlaceFilter.Country
+                    Country = ViewBag.CurrentPlaceFilter.Country,
+                    OpenTime = ViewBag.CurrentPlaceFilter.OpenTime,
+                    CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
                 }))
 
             </section>

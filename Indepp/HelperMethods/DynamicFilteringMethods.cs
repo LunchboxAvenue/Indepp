@@ -45,13 +45,18 @@ namespace Indepp.HelperMethods
 
         public IQueryable<Place> FilterPlaces(IQueryable<Place> places, PlaceFilter filter)
         {
+            int dayOfTheWeek = (int)DateTime.Now.DayOfWeek;
             if (!String.IsNullOrEmpty(filter.Name))
                 places = places.Where(p => p.Name.Contains(filter.Name));
             if (!String.IsNullOrEmpty(filter.Country))
                 places = places.Where(p => p.Address.Country.Contains(filter.Country));
             if (!String.IsNullOrEmpty(filter.City))
                 places = places.Where(p => p.Address.City.Contains(filter.City));
-
+            if (!String.IsNullOrEmpty(filter.OpenTime.ToString()))
+                places = places.Where(p => p.WorkingHours.Any(wh => (int)wh.Day == dayOfTheWeek && filter.OpenTime.Value.CompareTo(wh.OpenTime.Value) != -1));
+            if (!String.IsNullOrEmpty(filter.CloseTime.ToString()))
+                places = places.Where(p => p.WorkingHours.Any(wh => (int)wh.Day == dayOfTheWeek && wh.CloseTime.Value.CompareTo(filter.CloseTime.Value) != -1));
+                
             return places;
         }
 
@@ -61,6 +66,17 @@ namespace Indepp.HelperMethods
             int pageNumber = (page ?? 1);
 
             return places.ToPagedList(pageNumber, pageSize);
+        }
+
+        public bool FilterCheck(PlaceFilter filter, PlaceFilter currentPlaceFilter)
+        {
+            if (filter.Name != null || filter.City != null || filter.Country != null || filter.OpenTime.ToString() != null || filter.CloseTime.ToString() != null)
+                if (filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country || filter.OpenTime != currentPlaceFilter.OpenTime || filter.CloseTime != currentPlaceFilter.CloseTime)
+                    return true;
+                else
+                    return false;
+            else
+                return false;
         }
     }
 }
