@@ -20,6 +20,7 @@ namespace Indepp.Filters
                 var request = filterContext.HttpContext.Request;
                 var ip = request.ServerVariables["HTTP_X_FORWARDED_FOR"] ?? request.UserHostAddress;
                 bool allowExecute = false;
+                string currentController = filterContext.HttpContext.Request.RequestContext.RouteData.GetRequiredString("controller");
 
                 if (HttpRuntime.Cache[ip] == null)
                 {
@@ -38,6 +39,22 @@ namespace Indepp.Filters
                 {
                     Message = Message.Replace("{n}", (Seconds/60).ToString());
                     filterContext.Controller.ViewData.ModelState.AddModelError("ExcessiveRequests", Message);
+
+                    if (currentController == "Contribute")
+                    {
+                        var result = new ViewResult
+                        {
+                            ViewName = "~/Views/Contribute/CreatePlace.cshtml",
+                            ViewData = new ViewDataDictionary(filterContext.Controller.ViewData)
+                            {
+                                Model = filterContext.Controller.TempData["PlaceConfirmed"]
+                            }
+                        };
+
+                        result.ViewData.ModelState.AddModelError("ExcessiveRequests", Message);
+                        filterContext.Result = result;
+                    }
+                        
                 }
             }
 

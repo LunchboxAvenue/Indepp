@@ -32,7 +32,6 @@ namespace Indepp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Throttle(Message = "You must wait {n} minutes before you can contribute another place.", Seconds = 120)]
         public ActionResult CreatePlace(Place place)
         {
             if (ModelState.IsValid)
@@ -54,6 +53,7 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
+        [Throttle(Message = "You must wait {n} minutes before you can contribute another place.", Seconds = 120)]
         public ActionResult SubmitPlace()
         {
             var place = TempData["PlaceConfirmed"] as Place;
