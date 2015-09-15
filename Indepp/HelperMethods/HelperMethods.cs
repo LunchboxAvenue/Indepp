@@ -13,9 +13,15 @@ namespace Indepp.HelperMethods
             var routeData = html.ViewContext.RouteData;
 
             var routeAction = (string)routeData.Values["action"];
-            var routeControl = (string)routeData.Values["controller"];
+            var routeController = (string)routeData.Values["controller"];
 
-            var returnActive = control == routeControl && action == routeAction;
+            var returnActive = control == routeController;
+
+            if (routeController == "Home" || routeController == "Admin")
+                returnActive = control == routeController && action == routeAction;
+
+            if (routeController == action && routeController == control) // only for admin navigation list item
+                returnActive = true;
 
             return returnActive ? "active" : "";
         }
