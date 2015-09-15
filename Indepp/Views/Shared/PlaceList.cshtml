@@ -44,9 +44,9 @@
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon">Open At:</span>
-                                    @Html.TextBox("OpenTime", ViewBag.CurrentPlaceFilter.OpenTime as string, new { @class = "form-control" })
+                                    @Html.TextBox("OpenTime", ViewBag.CurrentPlaceFilter.OpenTime as string, new { @class = "form-control", @placeholder = "hh:mm" })
                                     <span class="input-group-addon">Open Until:</span>
-                                    @Html.TextBox("CloseTime", ViewBag.CurrentPlaceFilter.CloseTime as string, new { @class = "form-control" })
+                                    @Html.TextBox("CloseTime", ViewBag.CurrentPlaceFilter.CloseTime as string, new { @class = "form-control", @placeholder = "hh:mm" })
                                 </div>
                                 <input type="submit" class="btn btn-default filterSubmitButton" value="Search" />
                                 <button type="reset" value="Reset" id="resetFormAfterPost" class="btn btn-default filterSubmitButton">Reset</button>
@@ -155,12 +155,13 @@
 <script>
     $('#resetFormAfterPost').click(function () {
         $('input#Name, input#Country, input#City, input#OpenTime, input#CloseTime').attr('value', '');
-        $('.field-validation-error')
+    });
+
+    $('.field-validation-error')
             .removeClass('field-validation-error')
             .addClass('field-validation-valid');
 
-        $('.input-validation-error')
-            .removeClass('input-validation-error')
-            .addClass('valid');
-    });
+    $('.input-validation-error')
+        .removeClass('input-validation-error')
+        .addClass('valid');
 </script>
