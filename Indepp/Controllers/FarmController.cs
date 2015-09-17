@@ -53,6 +53,9 @@ namespace Indepp.Controllers
         {
             var place = Context.Places.Where(p => p.ID == id).FirstOrDefault();
 
+            if (place == null)
+                return HttpNotFound();
+
             return View("PlaceDetails", place);
         }
     }

@@ -371,6 +371,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CoffeeController.cs" />
     <Compile Include="Controllers\CraftShopController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FarmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -478,6 +479,8 @@
     <Content Include="Views\Home\BlogPost.cshtml" />
     <Content Include="Views\Admin\Statistics.cshtml" />
     <Content Include="Views\Shared\_NavigationIconsPartial.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
