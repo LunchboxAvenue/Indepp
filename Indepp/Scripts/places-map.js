@@ -48,8 +48,8 @@ function GetPlaceLocations() {
     var inputs = {
         showCoffee: ($('#coffeeBox').is(':checked')) ? "Coffee": null,
         showFood: ($('#foodBox').is(':checked')) ? "Food" : null,
-        showFarm: ($('#farmBox').is(':checked')) ? "Farms": null,
-        showCraftShop: ($('#craftshopBox').is(':checked')) ? "CraftShops" : null,
+        showFarm: ($('#farmBox').is(':checked')) ? "Farm": null,
+        showCraftShop: ($('#craftshopBox').is(':checked')) ? "CraftShop" : null,
         placeName: ($('#searchBox').val()) 
     };
 

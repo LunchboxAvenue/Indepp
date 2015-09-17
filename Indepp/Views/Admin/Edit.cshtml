@@ -58,7 +58,7 @@
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">Category</span>
-                    @Html.TextBoxFor(p => p.Category, new { @class = "form-control" })
+                    @Html.DropDownListFor(p => p.Category, new SelectList(ViewBag.AvailableCategories), new { @class = "form-control" })
                     @Html.ValidationMessageFor(p => Model.Category)
                 </div>
                 <div class="input-group">

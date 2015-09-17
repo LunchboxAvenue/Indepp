@@ -193,9 +193,9 @@
     <Content Include="Content\images\coffee.jpg" />
     <Content Include="Content\images\contact.jpg" />
     <Content Include="Content\images\contribute.jpg" />
-    <Content Include="Content\images\craftshops.jpg" />
+    <Content Include="Content\images\craftshop.jpg" />
     <Content Include="Content\images\events.jpg" />
-    <Content Include="Content\images\farms.jpg" />
+    <Content Include="Content\images\farm.jpg" />
     <Content Include="Content\images\food.jpg" />
     <Content Include="Content\images\home.jpg" />
     <Content Include="Content\images\placemap.jpg" />
@@ -370,9 +370,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CoffeeController.cs" />
-    <Compile Include="Controllers\CraftShopsController.cs" />
+    <Compile Include="Controllers\CraftShopController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
-    <Compile Include="Controllers\FarmsController.cs" />
+    <Compile Include="Controllers\FarmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\ContributeController.cs" />

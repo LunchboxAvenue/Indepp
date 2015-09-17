@@ -7,6 +7,7 @@ using Indepp.Models;
 using Indepp.DAL;
 using System.Data;
 using Indepp.Filters;
+using Indepp.HelperMethods;
 
 namespace Indepp.Controllers
 {
@@ -23,6 +24,7 @@ namespace Indepp.Controllers
         {
             var workingHours = new WorkingHour();
             var place = new Place() { WorkingHours = workingHours.PopulateHours() };
+            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
 
             if (TempData["PlaceConfirmed"] != null)
                 return View(TempData["PlaceConfirmed"] as Place);
@@ -40,6 +42,7 @@ namespace Indepp.Controllers
                 return RedirectToAction("PreviewPlace");
             }
 
+            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
             return View(place);
         }
 

@@ -69,6 +69,7 @@ namespace Indepp.Controllers
         {
             var workingHours = new WorkingHour();
             var place = new Place() { WorkingHours = workingHours.PopulateHours() };
+            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
 
             return View(place);
         }
@@ -94,6 +95,7 @@ namespace Indepp.Controllers
                 ModelState.AddModelError("", "Unable to add a place. Try again, and if the problem persists see your system administrator.");
             }
 
+            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
             return View(place);
         }
 
@@ -111,6 +113,8 @@ namespace Indepp.Controllers
 
             if (place.WorkingHours.Count() == 0)
                 place.WorkingHours = workingHours.PopulateHours().ToList();
+
+            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
 
             return View(place);
         }
@@ -186,6 +190,7 @@ namespace Indepp.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
+            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
             return View("Edit", place);
         }
         
@@ -574,8 +579,8 @@ namespace Indepp.Controllers
             {
                 CoffeePlaces = places.Where(p => p.Category == "Coffee").Count(),
                 FoodPlaces = places.Where(p => p.Category == "Food").Count(),
-                FarmPlaces = places.Where(p => p.Category == "Farms").Count(),
-                CraftShopPlaces = places.Where(p => p.Category == "CraftShops").Count(),
+                FarmPlaces = places.Where(p => p.Category == "Farm").Count(),
+                CraftShopPlaces = places.Where(p => p.Category == "CraftShop").Count(),
                 TotalPlaces = places.Count(),
                 UserContributedPlaces = places.Where(p => p.UserContributed == true).Count(),
                 ReviewedPlaces = places.Where(p => p.Reviewed == true).Count(),

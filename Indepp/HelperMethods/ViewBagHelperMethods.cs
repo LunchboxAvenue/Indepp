@@ -21,6 +21,11 @@ namespace Indepp.HelperMethods
             });
         }
 
+        public List<string> PopulatePlaceCategories()
+        {
+            return new List<string>() { "Coffee", "Food", "Farm", "CraftShop" };
+        }
+
         public IEnumerable<ArticleAndBlogPost> GetRecentPosts(PlaceContext context, int amount)
         {
             var articles = context.Articles.Select(a => new ArticleAndBlogPost

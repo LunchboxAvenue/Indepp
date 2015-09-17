@@ -22,10 +22,10 @@ namespace Indepp.DAL
                 new Place {ID = 8, Name = "Sweet lords coffee", Category = "Coffee", Reviewed = true, UserContributed = false },
                 new Place {ID = 9, Name = "Belgrave Music Hall and Canteen", Category = "Food", Reviewed = true, UserContributed = false },
                 new Place {ID = 10, Name = "JUST FOOD", Category = "Food", Reviewed = true, UserContributed = false },
-                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farms", Reviewed = true, UserContributed = false },
-                new Place {ID = 12, Name = "Leeds Farm", Category = "Farms", Reviewed = true, UserContributed = false },
-                new Place {ID = 13, Name = "The Light", Category = "CraftShops", Reviewed = true, UserContributed = false },
-                new Place {ID = 14, Name = "The Dark", Category = "CraftShops", Reviewed = true, UserContributed = false }
+                new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farm", Reviewed = true, UserContributed = false },
+                new Place {ID = 12, Name = "Leeds Farm", Category = "Farm", Reviewed = true, UserContributed = false },
+                new Place {ID = 13, Name = "The Light", Category = "CraftShop", Reviewed = true, UserContributed = false },
+                new Place {ID = 14, Name = "The Dark", Category = "CraftShop", Reviewed = true, UserContributed = false }
             };
 
             places.ForEach(p => context.Places.Add(p));
