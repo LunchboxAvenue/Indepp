@@ -371,8 +371,9 @@ namespace Indepp.Controllers
         public ActionResult ArticleList(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
+            ViewBag.MappedToSortParam = sortOrder == "mapped_to_asc" ? "mapped_to_desc" : "mapped_to_asc";
 
             if (searchString != null)
                 page = 1;
@@ -396,6 +397,12 @@ namespace Indepp.Controllers
                     break;
                 case "ID":
                     articles = articles.OrderBy(bp => bp.ID);
+                    break;
+                case "mapped_to_asc":
+                    articles = articles.OrderBy(a => a.Place.Name);
+                    break;
+                case "mapped_to_desc":
+                    articles = articles.OrderByDescending(a => a.Place.Name);
                     break;
                 default:
                     articles = articles.OrderBy(bp => bp.Title);

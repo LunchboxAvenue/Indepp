@@ -83,7 +83,10 @@
                                     @Html.ActionLink("ID", "ArticleList", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
                                 </th>
                                 <th>
-                                    @Html.ActionLink("Title", "ArticleList", new { sortOrder = ViewBag.TitleSortParm, currentFilter = ViewBag.CurrentFilter })
+                                    @Html.ActionLink("Title", "ArticleList", new { sortOrder = ViewBag.TitleSortParam, currentFilter = ViewBag.CurrentFilter })
+                                </th>
+                                <th>
+                                    @Html.ActionLink("Mapped to", "ArticleList", new { sortOrder = ViewBag.MappedToSortParam, currentFilter = ViewBag.CurrentFilter })
                                 </th>
                                 <th>
                                     Description
@@ -101,6 +104,9 @@
                                     </td>
                                     <td>
                                         @article.Title
+                                    </td>
+                                    <td>
+                                        @article.Place.Name
                                     </td>
                                     <td>
                                         @Html.Raw(article.Description)
