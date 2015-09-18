@@ -48,6 +48,7 @@ function DrawMapPoints() {
         if (placesData[i].Category == "Food") { marker.icon.path = fontawesome.markers.CUTLERY }
         if (placesData[i].Category == "Farm") { marker.icon.path = fontawesome.markers.PAGELINES }
         if (placesData[i].Category == "CraftShop") { marker.icon.path = fontawesome.markers.GEAR }
+        if (placesData[i].Category == "Fashion") { marker.icon.path = fontawesome.markers.UMBRELLA }
 
         markersArray.push(marker);
 

@@ -23,7 +23,7 @@ namespace Indepp.HelperMethods
 
         public List<string> PopulatePlaceCategories()
         {
-            return new List<string>() { "Coffee", "Food", "Farm", "CraftShop" };
+            return new List<string>() { "Coffee", "Food", "Farm", "CraftShop", "Fashion" };
         }
 
         public IEnumerable<ArticleAndBlogPost> GetRecentPosts(PlaceContext context, int amount)

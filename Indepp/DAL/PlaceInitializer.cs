@@ -25,7 +25,9 @@ namespace Indepp.DAL
                 new Place {ID = 11, Name = "Yorkshire Farm", Category = "Farm", Reviewed = true, UserContributed = false },
                 new Place {ID = 12, Name = "Leeds Farm", Category = "Farm", Reviewed = true, UserContributed = false },
                 new Place {ID = 13, Name = "The Light", Category = "CraftShop", Reviewed = true, UserContributed = false },
-                new Place {ID = 14, Name = "The Dark", Category = "CraftShop", Reviewed = true, UserContributed = false }
+                new Place {ID = 14, Name = "The Dark", Category = "CraftShop", Reviewed = true, UserContributed = false },
+                new Place {ID = 15, Name = "AVIO", Category = "Fashion", Reviewed = true, UserContributed = false },
+                new Place {ID = 16, Name = "MU", Category = "Fashion", Reviewed = true, UserContributed = false }
             };
 
             places.ForEach(p => context.Places.Add(p));
@@ -46,7 +48,9 @@ namespace Indepp.DAL
                 new Address { PlaceID = 11, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.974836, Longitude =  (decimal)-1.134820 },
                 new Address { PlaceID = 12, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
                 new Address { PlaceID = 13, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire" },
-                new Address { PlaceID = 14, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.799950, Longitude =  (decimal)-1.562671 }
+                new Address { PlaceID = 14, City = "Leeds", Country = "United Kingdom", County = "West Yorkshire", Latitude = (decimal)53.799950, Longitude =  (decimal)-1.562671 },
+                new Address { PlaceID = 15, City = "Manchester", Country = "United Kingdom", County = "Midlands" },
+                new Address { PlaceID = 16, City = "London", Country = "United Kingdom", County = "London", Latitude = (decimal)51.516893, Longitude =  (decimal)-0.127691 }
             };
 
             addresses.ForEach(a => context.Addresses.Add(a));

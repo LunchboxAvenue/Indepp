@@ -121,7 +121,7 @@ namespace Indepp.Controllers
             return View();
         }
 
-        public JsonResult GetPlaceLocations(string showCoffee, string showFood, string showFarm, string showCraftShop, string placeName = "")
+        public JsonResult GetPlaceLocations(string showCoffee, string showFood, string showFarm, string showCraftShop, string showFashion, string placeName = "")
         {
             var places = Context.Places.Select(p => new PlaceMap
             {
@@ -134,7 +134,7 @@ namespace Indepp.Controllers
 
             var sortedPlaces = places
                 .Where(p => p.Category == showCoffee || p.Category == showFood
-                        || p.Category == showFarm || p.Category == showCraftShop)
+                        || p.Category == showFarm || p.Category == showCraftShop || p.Category == showFashion)
                 .Where(p => p.Name.Contains(placeName));
 
             return Json(sortedPlaces, JsonRequestBehavior.AllowGet);

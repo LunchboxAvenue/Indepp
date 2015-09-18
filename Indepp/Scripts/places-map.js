@@ -36,6 +36,10 @@ $(function () {
         GetPlaceLocations();
     });
 
+    $('#fashionBox').click(function () {
+        GetPlaceLocations();
+    });
+
     $('#searchBox').keyup(function () {
         GetPlaceLocations();
     });
@@ -50,6 +54,7 @@ function GetPlaceLocations() {
         showFood: ($('#foodBox').is(':checked')) ? "Food" : null,
         showFarm: ($('#farmBox').is(':checked')) ? "Farm": null,
         showCraftShop: ($('#craftshopBox').is(':checked')) ? "CraftShop" : null,
+        showFashion: ($('#fashionBox').is(':checked')) ? "Fashion" : null,
         placeName: ($('#searchBox').val()) 
     };
 
