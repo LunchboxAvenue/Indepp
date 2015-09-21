@@ -27,7 +27,6 @@ namespace Indepp.Controllers
             // sortOrder must be reflected in view
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
             ViewBag.CountrySortParam = sortOrder == "country_asc" ? "country_desc" : "country_asc";
             ViewBag.CitySortParam = sortOrder == "city_asc" ? "city_desc" : "city_asc";
 

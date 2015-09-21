@@ -11,6 +11,7 @@ namespace Indepp.ViewModels
         public int FoodPlaces { get; set; }
         public int FarmPlaces { get; set; }
         public int CraftShopPlaces { get; set; }
+        public int FashionPlaces { get; set; }
 
         public int TotalPlaces { get; set; }
         public int UserContributedPlaces { get; set; }

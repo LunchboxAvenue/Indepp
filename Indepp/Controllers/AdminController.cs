@@ -588,6 +588,7 @@ namespace Indepp.Controllers
                 FoodPlaces = places.Where(p => p.Category == "Food").Count(),
                 FarmPlaces = places.Where(p => p.Category == "Farm").Count(),
                 CraftShopPlaces = places.Where(p => p.Category == "CraftShop").Count(),
+                FashionPlaces = places.Where(p => p.Category == "Fashion").Count(),
                 TotalPlaces = places.Count(),
                 UserContributedPlaces = places.Where(p => p.UserContributed == true).Count(),
                 ReviewedPlaces = places.Where(p => p.Reviewed == true).Count(),
