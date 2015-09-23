@@ -10,7 +10,7 @@
             <p class="underHeaderText">
                 Have found an awesome place?
                 Contribute your finding with the others!
-                Your place will be reviewed by our team and will be shortly published. 
+                Your place will be reviewed by our team and will be shortly published.
                 Big thanks for all the contributors!
             </p>
         </div>
@@ -131,6 +131,11 @@
                     <div class="editSection">
                         <label>Contributor info</label>
                         <div class="input-group">
+                            <span class="input-group-addon">Your Name</span>
+                            @Html.TextBoxFor(p => p.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(p => p.UserName)
+                        </div>
+                        <div class="input-group">
                             <span class="input-group-addon">Email</span>
                             @Html.TextBoxFor(p => p.UserEmail, new { @class = "form-control" })
                             @Html.ValidationMessageFor(p => p.UserEmail)
@@ -140,6 +145,16 @@
                 </section>
             </div>
             <!-- /Main Content-->
+
+            <!-- top 10 contributors -->
+            <div class="col-md-4">
+                <h2 class="uppercaseText">Top 10 Contributors</h2>
+                @foreach (var contributor in ViewBag.TopContributors)
+                {
+                    <p>@contributor.UserName - @contributor.PlacesContributed</p>
+                }
+            </div>
+        <!-- /top 10 contributors-->
         }
 
     </div>

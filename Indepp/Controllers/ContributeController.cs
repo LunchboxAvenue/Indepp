@@ -14,17 +14,20 @@ namespace Indepp.Controllers
     public class ContributeController : Controller
     {
         public PlaceContext Context;
+        public ViewBagHelperMethods ViewBagHelpers;
 
         public ContributeController(PlaceContext context)
         {
             Context = context;
+            ViewBagHelpers = new ViewBagHelperMethods();
         }
         // GET: UserPlace
         public ActionResult CreatePlace()
         {
             var workingHours = new WorkingHour();
             var place = new Place() { WorkingHours = workingHours.PopulateHours() };
-            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
+            ViewBag.AvailableCategories = ViewBagHelpers.PopulatePlaceCategories();
+            ViewBag.TopContributors = ViewBagHelpers.GetTopContributors(Context, 10);
 
             if (TempData["PlaceConfirmed"] != null)
                 return View(TempData["PlaceConfirmed"] as Place);
@@ -42,7 +45,8 @@ namespace Indepp.Controllers
                 return RedirectToAction("PreviewPlace");
             }
 
-            ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
+            ViewBag.AvailableCategories = ViewBagHelpers.PopulatePlaceCategories();
+            ViewBag.TopContributors = ViewBagHelpers.GetTopContributors(Context, 10);
             return View(place);
         }
 
@@ -56,7 +60,7 @@ namespace Indepp.Controllers
         }
 
         [HttpPost]
-        [Throttle(Message = "You must wait {n} minutes before you can contribute another place.", Seconds = 120)]
+        [Throttle(Message = "You must wait {n} minutes before you can contribute another place.", Seconds = 20)]
         public ActionResult SubmitPlace()
         {
             var place = TempData["PlaceConfirmed"] as Place;

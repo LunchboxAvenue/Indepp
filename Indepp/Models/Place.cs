@@ -24,6 +24,9 @@ namespace Indepp.Models
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
+        [StringLength(50)]
+        public string UserName { get; set; }
+
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string UserEmail { get; set; }
 

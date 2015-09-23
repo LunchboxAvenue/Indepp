@@ -399,6 +399,7 @@
     <Compile Include="ViewModels\ArticleAndBlogPost.cs" />
     <Compile Include="ViewModels\EmailMessage.cs" />
     <Compile Include="ViewModels\LoginDetails.cs" />
+    <Compile Include="ViewModels\PlaceContributor.cs" />
     <Compile Include="ViewModels\PlaceFilter.cs" />
     <Compile Include="ViewModels\PlaceMap.cs" />
     <Compile Include="ViewModels\PlaceStatistics.cs" />

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Indepp.DAL;
+using Indepp.HelperMethods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -51,6 +53,10 @@ namespace Indepp.Filters
                             }
                         };
 
+                        var context = new PlaceContext();
+
+                        result.ViewBag.AvailableCategories = new ViewBagHelperMethods().PopulatePlaceCategories();
+                        result.ViewBag.TopContributors = new ViewBagHelperMethods().GetTopContributors(context, 10);
                         result.ViewData.ModelState.AddModelError("ExcessiveRequests", Message);
                         filterContext.Result = result;
                     }

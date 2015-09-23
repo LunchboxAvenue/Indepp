@@ -56,5 +56,20 @@ namespace Indepp.HelperMethods
 
             return articlesAndBlogPosts;
         }
+
+        public IEnumerable<PlaceContributor> GetTopContributors(PlaceContext context, int contributors)
+        {
+            var topContributors = context.Places
+                .Where(p => p.UserEmail != null)
+                .GroupBy(x => new { x.UserName })
+                .Select(group => new { Name = group.Key, Count = group.Count() })
+                .OrderByDescending(x => x.Count)
+                .Take(contributors)
+                .AsQueryable();
+
+            var topContrbitorsList = topContributors.Select(c => new PlaceContributor { UserName = c.Name.UserName ?? "Anonymous", PlacesContributed = c.Count });
+
+            return topContrbitorsList;
+        }
     }
 }
