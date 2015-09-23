@@ -29,24 +29,24 @@
                 {
                     <div class="editSection">
                         <label>Use this for to write us an email</label>
-                        <div class="input-group">
+                        <div class="input-group required">
                             <span class="input-group-addon">Name</span>
                             @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => Model.Name)
                         </div>
-                        <div class="input-group">
+                        <div class="input-group required">
                             <span class="input-group-addon">Email</span>
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => Model.Email)
                         </div>
-                        <div class="input-group">
+                        <div class="input-group required">
                             <span class="input-group-addon">Subject</span>
                             @Html.TextBoxFor(m => m.Subject, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => Model.Subject)
                         </div>
                     </div>
 
-                    <div class="editSection">
+                    <div class="editSection required">
                         <label>Message</label>
                         <div class="input-group">
                             @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = 5 })

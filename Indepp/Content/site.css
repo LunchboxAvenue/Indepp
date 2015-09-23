@@ -278,4 +278,14 @@ ul.typeahead {
 #advancedSearchButton {
   margin-bottom: 20px;
 }
+/* filter panel end*/
+/* add asterisc to required input fields */
+.input-group.required span.input-group-addon:after {
+  content: " *";
+  color: red;
+}
+.editSection.required label:after {
+  content: " *";
+  color: red;
+}
 /*# sourceMappingURL=site.css.map */

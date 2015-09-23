@@ -33,17 +33,17 @@
             <div class="col-md-12">
                 <section id="blogPostDetails">
                     <div>
-                        <div class="editSection">
+                        <div class="editSection required">
                             <label for="Title">Title</label>
                             @Html.TextAreaFor(bp => Model.Title, new { @class = "form-control" })
                             @Html.ValidationMessageFor(bp => Model.Title)
                         </div>
-                        <div class="editSection">
+                        <div class="editSection required">
                             <label for="Short Description">Short Description</label>
                             @Html.TextAreaFor(bp => Model.ShortDescription, new { @class = "form-control", @id = "shortDescriptionEditor" })
                             @Html.ValidationMessageFor(bp => Model.ShortDescription)
                         </div>
-                        <div class="editSection">
+                        <div class="editSection required">
                             <label for="Description">Description</label>
                             @Html.TextAreaFor(bp => Model.Description, new { @class = "form-control", @id = "descriptionEditor" })
                             @Html.ValidationMessageFor(bp => Model.Description)

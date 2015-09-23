@@ -34,7 +34,7 @@
                     <section id="placeDetails">
                         <div class="editSection">
                             <label>Place Details</label>
-                            <div class="input-group">
+                            <div class="input-group required">
                                 <span class="input-group-addon">Name</span>
                                 @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Name)
@@ -78,7 +78,7 @@
                                 @Html.TextBoxFor(p => p.Address.Address3, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.Address3)
                             </div>
-                            <div class="input-group">
+                            <div class="input-group required">
                                 <span class="input-group-addon">City</span>
                                 @Html.TextBoxFor(p => p.Address.City, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.City)
@@ -88,7 +88,7 @@
                                 @Html.TextBoxFor(p => p.Address.County, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.County)
                             </div>
-                            <div class="input-group">
+                            <div class="input-group required">
                                 <span class="input-group-addon">Country</span>
                                 @Html.TextBoxFor(p => p.Address.Country, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.Country)
