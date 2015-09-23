@@ -375,7 +375,7 @@ namespace Indepp.Controllers
 
         #region Article Functionality
 
-        public ActionResult ArticleList(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult ArticleList(string sortOrder, string titleFilter, string mappedToFilter, string titleString, string mappedToString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
@@ -383,17 +383,24 @@ namespace Indepp.Controllers
             ViewBag.MappedToSortParam = sortOrder == "mapped_to_asc" ? "mapped_to_desc" : "mapped_to_asc";
             ViewBag.DateSortParam = sortOrder == "date_asc" ? "date_desc" : "date_asc";
 
-            if (searchString != null)
+            if (titleString != null || mappedToString != null)
                 page = 1;
             else
-                searchString = currentFilter;
+            {
+               titleString = titleFilter;
+               mappedToString = mappedToFilter;
+            }
+                
 
-            ViewBag.CurrentFilter = searchString;
+            ViewBag.TitleFilter = titleString;
+            ViewBag.MappedToFilter = mappedToString;
 
             var articles = Context.Articles.AsQueryable();
 
-            if (!String.IsNullOrEmpty(searchString))
-                articles = articles.Where(a => a.Title.Contains(searchString));
+            if (!String.IsNullOrEmpty(titleString))
+                articles = articles.Where(a => a.Title.Contains(titleString));
+            if (!String.IsNullOrEmpty(mappedToString))
+                articles = articles.Where(a => a.Place.Name.Contains(mappedToString));
 
             switch (sortOrder)
             {
