@@ -83,10 +83,13 @@
                                     @Html.ActionLink("ID", "BlogPostList", new { sortOrder = ViewBag.IDSortParam, currentFilter = ViewBag.CurrentFilter })
                                 </th>
                                 <th>
-                                    @Html.ActionLink("Title", "BlogPostList", new { sortOrder = ViewBag.TitleSortParm, currentFilter = ViewBag.CurrentFilter })
+                                    @Html.ActionLink("Title", "BlogPostList", new { sortOrder = ViewBag.TitleSortParam, currentFilter = ViewBag.CurrentFilter })
                                 </th>
                                 <th>
                                     Short Description
+                                </th>
+                                <th>
+                                    @Html.ActionLink("Posted On", "BlogPostList", new { sortORder = ViewBag.DateSortParam, currentFIlter = ViewBag.CurrentFilter })
                                 </th>
                                 <th>
                                     Actions
@@ -104,6 +107,9 @@
                                     </td>
                                     <td>
                                         @blogPost.ShortDescription
+                                    </td>
+                                    <td>
+                                        @blogPost.PostedOn
                                     </td>
                                     <td>
                                         <a href='@Url.Action("BlogPostDetails", "Admin", new { id = blogPost.ID })'>

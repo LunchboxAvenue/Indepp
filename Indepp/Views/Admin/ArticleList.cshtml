@@ -92,6 +92,9 @@
                                     Description
                                 </th>
                                 <th>
+                                    @Html.ActionLink("Posted On", "ArticleList", new { sortOrder = ViewBag.DateSortParam, currentFilter = ViewBag.CurrentFilter })
+                                </th>
+                                <th>
                                     Actions
                                 </th>
                             </tr>
@@ -110,6 +113,9 @@
                                     </td>
                                     <td>
                                         @Html.Raw(article.Description)
+                                    </td>
+                                    <td>
+                                        @article.PostedOn
                                     </td>
                                     <td>
                                         <a href='@Url.Action("ArticleDetails", "Admin", new { id = article.ID })'>

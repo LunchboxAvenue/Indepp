@@ -235,8 +235,9 @@ namespace Indepp.Controllers
         public ActionResult BlogPostList(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
+            ViewBag.DateSortParam = sortOrder == "date_asc" ? "date_desc" : "date_asc";
 
             if (searchString != null)
                 page = 1;
@@ -260,6 +261,12 @@ namespace Indepp.Controllers
                     break;
                 case "ID":
                     blogPosts = blogPosts.OrderBy(bp => bp.ID);
+                    break;
+                case "date_asc":
+                    blogPosts = blogPosts.OrderBy(bp => bp.PostedOn);
+                    break;
+                case "date_desc":
+                    blogPosts = blogPosts.OrderByDescending(bp => bp.PostedOn);
                     break;
                 default:
                     blogPosts = blogPosts.OrderBy(bp => bp.Title);
@@ -374,6 +381,7 @@ namespace Indepp.Controllers
             ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
             ViewBag.MappedToSortParam = sortOrder == "mapped_to_asc" ? "mapped_to_desc" : "mapped_to_asc";
+            ViewBag.DateSortParam = sortOrder == "date_asc" ? "date_desc" : "date_asc";
 
             if (searchString != null)
                 page = 1;
@@ -403,6 +411,12 @@ namespace Indepp.Controllers
                     break;
                 case "mapped_to_desc":
                     articles = articles.OrderByDescending(a => a.Place.Name);
+                    break;
+                case "date_asc":
+                    articles = articles.OrderBy(a => a.PostedOn);
+                    break;
+                case "date_desc":
+                    articles = articles.OrderByDescending(a => a.PostedOn);
                     break;
                 default:
                     articles = articles.OrderBy(bp => bp.Title);
