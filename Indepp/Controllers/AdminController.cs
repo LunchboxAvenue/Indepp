@@ -232,24 +232,30 @@ namespace Indepp.Controllers
 
         #region BlogPost Functionality
 
-        public ActionResult BlogPostList(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult BlogPostList(string sortOrder, string titleFilter, string shortDescriptionFilter, string titleString, string shortDescriptionString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.TitleSortParam = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
             ViewBag.DateSortParam = sortOrder == "date_asc" ? "date_desc" : "date_asc";
 
-            if (searchString != null)
+            if (titleString != null || shortDescriptionString != null)
                 page = 1;
             else
-                searchString = currentFilter;
-
-            ViewBag.CurrentFilter = searchString;
+            {
+                titleString = titleFilter;
+                shortDescriptionString = shortDescriptionFilter;
+            }
+                
+            ViewBag.TitleFilter = titleString;
+            ViewBag.ShortDescriptionFilter = shortDescriptionString;
 
             var blogPosts = Context.BlogPosts.AsQueryable();
 
-            if (!String.IsNullOrEmpty(searchString))
-                blogPosts = blogPosts.Where(bp => bp.Title.Contains(searchString));
+            if (!String.IsNullOrEmpty(titleString))
+                blogPosts = blogPosts.Where(bp => bp.Title.Contains(titleString));
+            if (!String.IsNullOrEmpty(shortDescriptionString))
+                blogPosts = blogPosts.Where(bp => bp.ShortDescription.Contains(shortDescriptionString));
 
             switch (sortOrder)
             {
