@@ -609,6 +609,15 @@ namespace Indepp.Controllers
                 .OrderByDescending(x => x.Count)
                 .FirstOrDefault();
 
+            var topContributors = Context.Places
+                .Where(p => p.UserEmail != null)
+                .GroupBy(x => new { x.UserEmail, x.UserName })
+                .Select(group => new { Email = group.Key.UserEmail, Name = group.Key.UserName, Count = group.Count() })
+                .OrderByDescending(x => x.Count)
+                .Take(10);
+
+            var topContributorsList = topContributors.Select(c => new PlaceContributor { UserEmail = c.Email, UserName = c.Name ?? "Anonymous", PlacesContributed = c.Count });
+
             var statistics = new PlaceStatistics
             {
                 CoffeePlaces = places.Where(p => p.Category == "Coffee").Count(),
@@ -622,7 +631,8 @@ namespace Indepp.Controllers
                 TotalArticles = articles.Count(),
                 LinkedArticles = articles.Where(a => a.PlaceID != null).Count(),
                 TotalBlogPosts = blogPosts.Count(),
-                BestContributorEmail = bestContributor != null ? bestContributor.Name.UserEmail + " - " + bestContributor.Count : ""
+                BestContributorEmail = bestContributor != null ? bestContributor.Name.UserEmail + " - " + bestContributor.Count : "",
+                TopContributors = topContributorsList
             };
 
             return View(statistics);

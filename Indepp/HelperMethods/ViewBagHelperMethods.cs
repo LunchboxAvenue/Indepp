@@ -67,9 +67,9 @@ namespace Indepp.HelperMethods
                 .Take(contributors)
                 .AsQueryable();
 
-            var topContrbitorsList = topContributors.Select(c => new PlaceContributor { UserName = c.Name.UserName ?? "Anonymous", PlacesContributed = c.Count });
+            var topContributorsList = topContributors.Select(c => new PlaceContributor { UserName = c.Name.UserName ?? "Anonymous", PlacesContributed = c.Count });
 
-            return topContrbitorsList;
+            return topContributorsList;
         }
     }
 }

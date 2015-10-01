@@ -9,5 +9,6 @@ namespace Indepp.ViewModels
     {
         public string UserName { get; set; }
         public int PlacesContributed { get; set; }
+        public string UserEmail { get; set; }
     }
 }

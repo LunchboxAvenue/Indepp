@@ -94,5 +94,19 @@
             </section>
         </div>
 
+        <div class="col-md-6">
+            <div>
+                <ul class="list-group">
+                    @foreach (var contributor in Model.TopContributors)
+                    {
+                        <li class="list-group-item">
+                            <span class="badge">@contributor.PlacesContributed</span>
+                            @contributor.UserName (@contributor.UserEmail)
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
     </div>
 </div>

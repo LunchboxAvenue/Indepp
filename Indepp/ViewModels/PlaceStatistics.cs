@@ -22,5 +22,6 @@ namespace Indepp.ViewModels
         public int TotalBlogPosts { get; set; }
 
         public string BestContributorEmail { get; set; }
+        public IEnumerable<PlaceContributor> TopContributors { get; set; }
     }
 }
