@@ -1,5 +1,7 @@
 ﻿@model PagedList.IPagedList<Indepp.ViewModels.ArticleAndBlogPost>
 @using PagedList.Mvc;
+@using Indepp.HelperMethods
+
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <div class="container-fluid">
@@ -60,7 +62,7 @@
                                 }
                                 else
                                 {
-                                    @Html.Raw(blogPost.ShortDescription)
+                                    @Html.Raw(blogPost.ShortDescription.SkipImageDecreaseText(200));
                                 }
                             </td>
 

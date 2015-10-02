@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 
@@ -51,6 +52,17 @@ namespace Indepp.HelperMethods
             var close= closeTime.HasValue ? closeTime.Value.ToString("hh\\:mm") : "";
 
             return open + " - " + close;
+        }
+
+        public static string SkipImageDecreaseText(this string html, int length)
+        {
+            string stringWithoutImgTags = Regex.Replace(html, @"(<img\/?[^>]+>)", @"[image hidden] ", RegexOptions.IgnoreCase);
+            stringWithoutImgTags = stringWithoutImgTags.Substring(0, Math.Min(stringWithoutImgTags.Length, length));
+
+            if (stringWithoutImgTags.Length == length)
+                stringWithoutImgTags += "...";
+
+            return stringWithoutImgTags;
         }
 
     }
