@@ -131,7 +131,7 @@
                                         @article.Place.Name
                                     </td>
                                     <td>
-                                        @Html.Raw(article.Description)
+                                        @Html.Raw(article.Description.SkipImageDecreaseText(150))
                                     </td>
                                     <td>
                                         @article.PostedOn

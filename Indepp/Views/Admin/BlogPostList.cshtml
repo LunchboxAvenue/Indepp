@@ -125,7 +125,7 @@
                                         @blogPost.Title
                                     </td>
                                     <td>
-                                        @blogPost.ShortDescription
+                                        @Html.Raw(blogPost.ShortDescription.SkipImageDecreaseText(150))
                                     </td>
                                     <td>
                                         @blogPost.PostedOn
