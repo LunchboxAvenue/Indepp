@@ -122,6 +122,17 @@
         $("#wrapper").toggleClass("toggled");
         $('#menu-toggle i').toggleClass("fa fa-long-arrow-left fa fa-bars");
     });
+
+    $(window).resize(function () {
+        if ($(window).width() <= 768) {
+            $("#wrapper").removeClass("toggled");
+            $('#menu-toggle i').removeAttr('class').attr('class', 'fa fa-bars');
+        } else {
+            $("#wrapper").removeClass("toggled");
+            $('#menu-toggle i').removeAttr('class').attr('class', 'fa fa-long-arrow-left');
+        }
+    });
+    
 </script>
 
 
