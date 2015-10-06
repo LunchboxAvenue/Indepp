@@ -17,52 +17,34 @@ namespace Indepp.Controllers
     public class AdminController : Controller
     {
         public PlaceContext Context;
+        private DynamicFilteringMethods DynamicFiltering;
 
-        public AdminController(PlaceContext context)
+        public AdminController(PlaceContext context, DynamicFilteringMethods dynamicFiltering)
         {
             Context = context;
+            DynamicFiltering = dynamicFiltering;
         }
 
         #region Place Functionality
 
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, int? page, PlaceFilter filter, PlaceFilter currentPlaceFilter)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.IDSortParam = sortOrder == "ID" ? "id_desc" : "ID";
 
-            if (searchString != null)
+            if (DynamicFiltering.FilterCheck(filter, currentPlaceFilter))
                 page = 1;
             else
-                searchString = currentFilter;
+                filter = currentPlaceFilter;
 
-            ViewBag.CurrentFilter = searchString;
+            ViewBag.CurrentPlaceFilter = filter;
 
             var places = Context.Places.Where(p => p.Reviewed == true);
+            places = DynamicFiltering.FilterPlaces(places, filter); // filter places based on filter
+            places = DynamicFiltering.SortPlaces(places, sortOrder); // sort places based on sortOrder
 
-            if (!String.IsNullOrEmpty(searchString))
-                places = places.Where(p => p.Name.Contains(searchString));
-
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    places = places.OrderByDescending(p => p.Name);
-                    break;
-                case "id_desc":
-                    places = places.OrderByDescending(p => p.ID);
-                    break;
-                case "ID":
-                    places = places.OrderBy(p => p.ID);
-                    break;
-                default:
-                    places = places.OrderBy(p => p.Name);
-                    break;
-            }
-
-            int pageSize = 20;
-            int pageNumber = (page ?? 1);
-
-            return View(places.ToPagedList(pageNumber, pageSize));
+            return View(DynamicFiltering.PlaceList(places, page));
         }
 
         public ActionResult Create()
