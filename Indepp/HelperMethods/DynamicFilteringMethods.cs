@@ -56,6 +56,8 @@ namespace Indepp.HelperMethods
                 places = places.Where(p => p.WorkingHours.Any(wh => (int)wh.Day == dayOfTheWeek && filter.OpenTime.Value.CompareTo(wh.OpenTime.Value) != -1));
             if (!String.IsNullOrEmpty(filter.CloseTime.ToString()))
                 places = places.Where(p => p.WorkingHours.Any(wh => (int)wh.Day == dayOfTheWeek && wh.CloseTime.Value.CompareTo(filter.CloseTime.Value) != -1));
+            if (!String.IsNullOrEmpty(filter.Category))
+                places = places.Where(p => p.Category.Contains(filter.Category));
                 
             return places;
         }
@@ -70,8 +72,8 @@ namespace Indepp.HelperMethods
 
         public bool FilterCheck(PlaceFilter filter, PlaceFilter currentPlaceFilter)
         {
-            if (filter.Name != null || filter.City != null || filter.Country != null || filter.OpenTime.ToString() != null || filter.CloseTime.ToString() != null)
-                if (filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country || filter.OpenTime != currentPlaceFilter.OpenTime || filter.CloseTime != currentPlaceFilter.CloseTime)
+            if (filter.Name != null || filter.City != null || filter.Country != null || filter.OpenTime.ToString() != null || filter.CloseTime.ToString() != null || filter.Category != null)
+                if (filter.Name != currentPlaceFilter.Name || filter.City != currentPlaceFilter.City || filter.Country != currentPlaceFilter.Country || filter.OpenTime != currentPlaceFilter.OpenTime || filter.CloseTime != currentPlaceFilter.CloseTime || filter.Category != currentPlaceFilter.Category)
                     return true;
                 else
                     return false;

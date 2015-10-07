@@ -79,6 +79,10 @@
                                                 @Html.TextBox("Name", ViewBag.CurrentPlaceFilter.Name as string, new { @class = "form-control" })
                                             </div>
                                             <div class="input-group">
+                                                <span class="input-group-addon">Category:</span>
+                                                @Html.TextBox("Category", ViewBag.CurrentPlaceFilter.Category as string, new { @class = "form-control" })
+                                            </div>
+                                            <div class="input-group">
                                                 <span class="input-group-addon">Country:</span>
                                                 @Html.TextBox("Country", ViewBag.CurrentPlaceFilter.Country as string, new { @class = "form-control" })
                                             </div>
@@ -109,13 +113,15 @@
                         <table class="table table-hover">
                             <tr>
                                 <th>
-                                    @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, Name = ViewBag.CurrentPlaceFilter.Name, City = ViewBag.CurrentPlaceFilter.City,
-                                                                            Country = ViewBag.CurrentPlaceFilter.Country, OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
+                                    @Html.ActionLink("ID", "Index", new { sortOrder = ViewBag.IDSortParam, Name = ViewBag.CurrentPlaceFilter.Name, Category = ViewBag.CurrentPlaceFilter.Category,
+                                                                          City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country,
+                                                                          OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
                                                                         })
                                 </th>
                                 <th>
-                                    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, Name = ViewBag.CurrentPlaceFilter.Name, City = ViewBag.CurrentPlaceFilter.City,
-                                                                            Country = ViewBag.CurrentPlaceFilter.Country, OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
+                                    @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, Name = ViewBag.CurrentPlaceFilter.Name, Category = ViewBag.CurrentPlaceFilter.Category,
+                                                                            City = ViewBag.CurrentPlaceFilter.City, Country = ViewBag.CurrentPlaceFilter.Country,
+                                                                            OpenTime = ViewBag.CurrentPlaceFilter.OpenTime, CloseTime = ViewBag.CurrentPlaceFilter.CloseTime
                                                                         })
                                 </th>
                                 <th>
@@ -160,6 +166,7 @@
                             page,
                             sortOrder = ViewBag.CurrentSort,
                             Name = ViewBag.CurrentPlaceFilter.Name,
+                            Category = ViewBag.CurrentPlaceFilter.Category,
                             City = ViewBag.CurrentPlaceFilter.City,
                             Country = ViewBag.CurrentPlaceFilter.Country,
                             OpenTime = ViewBag.CurrentPlaceFilter.OpenTime,
@@ -177,7 +184,7 @@
 
 <script>
     $('#resetFormAfterPost').click(function () {
-        $('input#Name, input#Country, input#City, input#OpenTime, input#CloseTime').attr('value', '');
+        $('input#Name, input#Category, input#Country, input#City, input#OpenTime, input#CloseTime').attr('value', '');
     });
 
     $('.field-validation-error')
