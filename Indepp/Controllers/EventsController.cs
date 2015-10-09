@@ -8,11 +8,10 @@ namespace Indepp.Controllers
 {
     public class EventsController : Controller
     {
-        // GET: Events
-        public ActionResult Index()
+        /*public ActionResult Index()
         {
             ViewBag.PageTitle = "Events";
             return View();
-        }
+        }*/
     }
 }
