@@ -20,23 +20,7 @@ $(function () {
     geocoder = new google.maps.Geocoder();
     map.setZoom(4);
 
-    $('#coffeeBox').click(function () {
-        GetPlaceLocations();
-    });
-
-    $('#foodBox').click(function () {
-        GetPlaceLocations();
-    });
-
-    $('#farmBox').click(function () {
-        GetPlaceLocations();
-    });
-
-    $('#craftshopBox').click(function () {
-        GetPlaceLocations();
-    });
-
-    $('#fashionBox').click(function () {
+    $('#coffeeBox, #foodBox, #farmBox, #craftshopBox, #fashionBox').click(function () {
         GetPlaceLocations();
     });
 
