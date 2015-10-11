@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Optimization;
 using System.Web.Helpers;
 using System.Security.Claims;
+using Indepp.App_Start;
 
 namespace Indepp
 {
@@ -18,6 +19,7 @@ namespace Indepp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
+            MigrationConfig.EnableCodeFirstMigrations();
         }
     }
 }
