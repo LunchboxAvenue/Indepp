@@ -389,6 +389,11 @@
     <Compile Include="HelperMethods\HelperMethods.cs" />
     <Compile Include="HelperMethods\ViewBagHelperMethods.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Migrations\201510111451219_InitialCreate.cs" />
+    <Compile Include="Migrations\201510111451219_InitialCreate.Designer.cs">
+      <DependentUpon>201510111451219_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\BlogPost.cs" />
@@ -495,6 +500,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Fashion\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510111451219_InitialCreate.resx">
+      <DependentUpon>201510111451219_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
