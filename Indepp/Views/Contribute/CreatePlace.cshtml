@@ -1,4 +1,7 @@
 ﻿@model Indepp.Models.Place
+@{ var googleMapApi = System.Configuration.ConfigurationManager.AppSettings["GOOGLE_MAP_API_KEY"]; }
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=@googleMapApi&libraries=places"></script>
 
 <div class="container-fluid">
     <div class="row paperBody">
@@ -39,6 +42,10 @@
 
                     <div class="editSection">
                         <label>Place Details</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">Google Search</span>
+                            <input id="googleSearchInput" type="text"/>
+                        </div>
                         <div class="input-group required">
                             <span class="input-group-addon">Name</span>
                             @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
@@ -164,4 +171,34 @@
 
 <script>
     CKEDITOR.replace('descriptionEditor');
+</script>
+
+<script>
+        function initialize() {
+            var input = document.getElementById('googleSearchInput');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+
+            google.maps.event.addListener(autocomplete, 'place_changed', function() {
+                var place = autocomplete.getPlace();
+                console.log(place);
+            });
+        }
+
+        // Run the initialize function when the window has finished loading.
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    /*google.maps.event.addDomListener(window, 'load', function () {
+        var places = new google.maps.places.Autocomplete(document.getElementById('googleSearchInput'));
+        google.maps.event.addListener(places, 'place_changed', function () {
+            var place = places.getPlace();
+            var address = place.formatted_address;
+            var latitude = place.geometry.location.A;
+            var longitude = place.geometry.location.F;
+            var mesg = "Address: " + address;
+            mesg += "\nLatitude: " + latitude;
+            mesg += "\nLongitude: " + longitude;
+            alert(mesg);
+        });
+    });*/
+    
 </script>
