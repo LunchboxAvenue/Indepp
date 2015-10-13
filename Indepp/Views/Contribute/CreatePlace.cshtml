@@ -41,11 +41,15 @@
                     @Html.ValidationMessage("ExcessiveRequests")
 
                     <div class="editSection">
-                        <label>Place Details</label>
+                        <label>Search for place using google</label>
                         <div class="input-group">
                             <span class="input-group-addon">Google Search</span>
-                            <input id="googleSearchInput" type="text"/>
+                            <input class="form-control" id="googleSearchInput" type="text" />
                         </div>
+                    </div>
+
+                    <div class="editSection">
+                        <label>Place Details</label>
                         <div class="input-group required">
                             <span class="input-group-addon">Name</span>
                             @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
@@ -180,7 +184,41 @@
 
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
                 var place = autocomplete.getPlace();
-                console.log(place);
+                console.log(JSON.stringify(place));
+                console.log(place.address_components);
+                console.log(place.international_phone_number);
+
+                /*place.address_components.forEach(function (address) {
+                    if ($.inArray('postal_town', address.types) > -1)
+                        $('#Address_City').val(address.long_name);
+
+                    if ($.inArray('country', address.types) > -1)
+                        $('#Address_Country').val(address.long_name);
+
+                    if ($.inArray('postal_code', address.types) > -1)
+                        $('#Address_PostCode').val(address.long_name);    
+                });
+
+                $('#Name').val(place.name);
+                $('#Website').val(place.website);
+                $('#Telephone').val(place.international_phone_number);*/
+
+                var componentForm = {
+                    //street_number: 'short_name',
+                    //route: 'long_name',
+                    locality: 'Address_City',
+                    //administrative_area_level_1: 'short_name',
+                    country: 'Address_Country',
+                    postal_code: 'Address_PostCode'
+                };
+
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (componentForm[addressType]) {
+                        var val = place.address_components[i].long_name;
+                        document.getElementById(componentForm[addressType]).value = val;
+                    }
+                }
             });
         }
 
