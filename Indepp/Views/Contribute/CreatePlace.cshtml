@@ -80,29 +80,19 @@
                     <div class="editSection">
                         <label>Address</label>
                         <div class="input-group">
-                            <span class="input-group-addon">Address 1</span>
+                            <span class="input-group-addon">Street Number</span>
                             @Html.TextBoxFor(p => p.Address.Address1, new { @class = "form-control" })
                             @Html.ValidationMessageFor(p => Model.Address.Address1)
                         </div>
                         <div class="input-group">
-                            <span class="input-group-addon">Address 2</span>
+                            <span class="input-group-addon">Street</span>
                             @Html.TextBoxFor(p => p.Address.Address2, new { @class = "form-control" })
                             @Html.ValidationMessageFor(p => Model.Address.Address2)
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon">Address 3</span>
-                            @Html.TextBoxFor(p => p.Address.Address3, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(p => Model.Address.Address3)
                         </div>
                         <div class="input-group required">
                             <span class="input-group-addon">City</span>
                             @Html.TextBoxFor(p => p.Address.City, new { @class = "form-control" })
                             @Html.ValidationMessageFor(p => Model.Address.City)
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon">County</span>
-                            @Html.TextBoxFor(p => p.Address.County, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(p => Model.Address.County)
                         </div>
                         <div class="input-group required">
                             <span class="input-group-addon">Country</span>
@@ -114,6 +104,10 @@
                             @Html.TextBoxFor(p => p.Address.PostCode, new { @class = "form-control" })
                             @Html.ValidationMessageFor(p => Model.Address.PostCode)
                         </div>
+                    </div>
+
+                    <div class="editSection">
+                        <label>Geo Location</label>
                         <div class="input-group">
                             <span class="input-group-addon">Latitude</span>
                             @Html.TextBoxFor(p => p.Address.Latitude, new { @class = "form-control" })
@@ -184,30 +178,19 @@
 
             google.maps.event.addListener(autocomplete, 'place_changed', function() {
                 var place = autocomplete.getPlace();
-                console.log(JSON.stringify(place));
-                console.log(place.address_components);
-                console.log(place.international_phone_number);
+                console.log(place);
 
-                /*place.address_components.forEach(function (address) {
-                    if ($.inArray('postal_town', address.types) > -1)
-                        $('#Address_City').val(address.long_name);
-
-                    if ($.inArray('country', address.types) > -1)
-                        $('#Address_Country').val(address.long_name);
-
-                    if ($.inArray('postal_code', address.types) > -1)
-                        $('#Address_PostCode').val(address.long_name);    
-                });
+                resetAll();
 
                 $('#Name').val(place.name);
                 $('#Website').val(place.website);
-                $('#Telephone').val(place.international_phone_number);*/
+                $('#Telephone').val(place.international_phone_number);
 
                 var componentForm = {
-                    //street_number: 'short_name',
-                    //route: 'long_name',
+                    street_number: 'Address_Address1',
+                    route: 'Address_Address2',
                     locality: 'Address_City',
-                    //administrative_area_level_1: 'short_name',
+                    postal_town: 'Address_City',
                     country: 'Address_Country',
                     postal_code: 'Address_PostCode'
                 };
@@ -219,24 +202,16 @@
                         document.getElementById(componentForm[addressType]).value = val;
                     }
                 }
+
+                $('#Address_Latitude').val(place.geometry.location.lat());
+                $('#Address_Longitude').val(place.geometry.location.lng());
             });
+        }
+
+        function resetAll() {
+            $('#Name, #Website, #Telephone, #Address_Address1, #Address_Address2, #Address_City, #Address_Country, #Address_PostCode, #Address_Latitude, #Address_Longitude').val("");
         }
 
         // Run the initialize function when the window has finished loading.
         google.maps.event.addDomListener(window, 'load', initialize);
-
-    /*google.maps.event.addDomListener(window, 'load', function () {
-        var places = new google.maps.places.Autocomplete(document.getElementById('googleSearchInput'));
-        google.maps.event.addListener(places, 'place_changed', function () {
-            var place = places.getPlace();
-            var address = place.formatted_address;
-            var latitude = place.geometry.location.A;
-            var longitude = place.geometry.location.F;
-            var mesg = "Address: " + address;
-            mesg += "\nLatitude: " + latitude;
-            mesg += "\nLongitude: " + longitude;
-            alert(mesg);
-        });
-    });*/
-    
 </script>

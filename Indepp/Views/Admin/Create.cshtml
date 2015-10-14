@@ -64,29 +64,19 @@
                         <div class="editSection">
                             <label>Address</label>
                             <div class="input-group">
-                                <span class="input-group-addon">Address 1</span>
+                                <span class="input-group-addon">Street Number</span>
                                 @Html.TextBoxFor(p => p.Address.Address1, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.Address1)
                             </div>
                             <div class="input-group">
-                                <span class="input-group-addon">Address 2</span>
+                                <span class="input-group-addon">Street Name</span>
                                 @Html.TextBoxFor(p => p.Address.Address2, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.Address2)
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">Address 3</span>
-                                @Html.TextBoxFor(p => p.Address.Address3, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(p => Model.Address.Address3)
                             </div>
                             <div class="input-group required">
                                 <span class="input-group-addon">City</span>
                                 @Html.TextBoxFor(p => p.Address.City, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.City)
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon">County</span>
-                                @Html.TextBoxFor(p => p.Address.County, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(p => Model.Address.County)
                             </div>
                             <div class="input-group required">
                                 <span class="input-group-addon">Country</span>
