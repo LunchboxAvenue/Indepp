@@ -3,10 +3,10 @@
 @Html.HiddenFor(wh => wh.Day)
 <div class="input-group">
     <span class="input-group-addon">@Html.DisplayTextFor(wh => wh.Day) Open Time</span>
-    @Html.TextBoxFor(wh => wh.OpenTime, "{0:hh\\:mm}", new { @class = "form-control", @placeholder = "hh:mm" })
+    @Html.TextBoxFor(wh => wh.OpenTime, "{0:hh\\:mm}", new { @class = "form-control", @placeholder = "hh:mm", @id = Model.Day + ".Open"})
     @Html.ValidationMessageFor(wh => wh.OpenTime)
 
     <span class="input-group-addon">Close Time</span>
-    @Html.TextBoxFor(wh => wh.CloseTime, "{0:hh\\:mm}", new { @class = "form-control", @placeholder = "hh:mm" })
+    @Html.TextBoxFor(wh => wh.CloseTime, "{0:hh\\:mm}", new { @class = "form-control", @placeholder = "hh:mm", @id = Model.Day + ".Close"})
     @Html.ValidationMessageFor(wh => wh.CloseTime)
 </div>
