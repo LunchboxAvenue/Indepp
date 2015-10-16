@@ -409,6 +409,7 @@
     <Compile Include="ViewModels\PlaceFilter.cs" />
     <Compile Include="ViewModels\PlaceMap.cs" />
     <Compile Include="ViewModels\PlaceStatistics.cs" />
+    <Compile Include="ViewModels\WorkingHour.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">

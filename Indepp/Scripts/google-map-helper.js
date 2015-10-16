@@ -38,8 +38,9 @@ function DrawMapPoints() {
 
         var workingHours = [];
         for (k in placesData[i].WorkingHours) {
-            if (placesData[i].WorkingHours[k].OpenTime !== null)
-                workingHours.push('<br /><span>' + DayEnum[placesData[i].WorkingHours[k].Day] + ': ' + placesData[i].WorkingHours[k].OpenTime + '</span>');
+            if (placesData[i].WorkingHours[k].OpenTime !== null) {
+                workingHours.push('<br /><span>' + DayEnum[placesData[i].WorkingHours[k].Day] + ': ' + placesData[i].WorkingHours[k].OpenTime + ' - ' + placesData[i].WorkingHours[k].CloseTime + '</span>');
+            }
         }
 
         marker.place = '<div class="placeInfoDiv">' + placesData[i].Name + '<br />' + workingHours + '</div>';

@@ -12,6 +12,6 @@ namespace Indepp.ViewModels
         public string Category { get; set; }
         public decimal? Latitude { get; set; }
         public decimal? Longitude { get; set; }
-        public ICollection<WorkingHour> WorkingHours { get; set; }
+        public ICollection<WorkingHourView> WorkingHours { get; set; }
     }
 }
