@@ -356,6 +356,7 @@
     <Content Include="Scripts\ckeditor\styles.js" />
     <Content Include="Scripts\fontawesome-markers.js" />
     <Content Include="Scripts\google-map-helper.js" />
+    <Content Include="Scripts\google-place-search.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\places-map.js" />

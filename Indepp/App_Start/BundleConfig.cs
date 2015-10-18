@@ -34,6 +34,10 @@ namespace Indepp
                 "~/Scripts/google-map-helper.js",
                 "~/Scripts/places-map.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/placesearch").Include(
+                "~/Scripts/google-place-search.js"
+                ));
         }
     }
 }

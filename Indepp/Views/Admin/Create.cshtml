@@ -1,4 +1,7 @@
 ﻿@model Indepp.Models.Place
+@{ var googleMapApi = System.Configuration.ConfigurationManager.AppSettings["GOOGLE_MAP_API_KEY"]; }
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=@googleMapApi&libraries=places"></script>
 
 <div class="container-fluid">
     <div class="row paperBody">
@@ -32,6 +35,18 @@
             <!-- Main Content -->
                 <div class="col-md-8">
                     <section id="placeDetails">
+
+                        <div class="editSection">
+                            <label>Search for place using google</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">Google Search</span>
+                                <input class="form-control" id="googleSearchInput" type="text" />
+                            </div>
+                        </div>
+
+                        <input type="button" id="resetAllButton" class="btn btn-default" value="Reset" />
+
+
                         <div class="editSection">
                             <label>Place Details</label>
                             <div class="input-group required">
@@ -88,6 +103,10 @@
                                 @Html.TextBoxFor(p => p.Address.PostCode, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(p => Model.Address.PostCode)
                             </div>
+                        </div>
+
+                        <div class="editSection">
+                            <label>Geo Location</label>
                             <div class="input-group">
                                 <span class="input-group-addon">Latitude</span>
                                 @Html.TextBoxFor(p => p.Address.Latitude, new { @class = "form-control" })
@@ -108,7 +127,7 @@
                             </div>
                         </div> 
 
-                        <div class="editSection">
+                        <div class="editSection workingHours">
                             <label>Working Hours</label>
                             @Html.EditorFor(p => p.WorkingHours)
                         </div>
@@ -122,6 +141,7 @@
 </div>
 
 @Scripts.Render("~/bundles/editor")
+@Scripts.Render("~/bundles/placesearch")
 
 <script>
     CKEDITOR.replace('descriptionEditor');

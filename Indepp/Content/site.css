@@ -209,6 +209,9 @@
 .editSection .input-group textarea {
   width: 100%;
 }
+.editSection.workingHours .input-group span {
+  min-width: 200px;
+}
 /* styles for Create Pages END */
 /* Styles for validation helpers
 -----------------------------------------------------------*/
