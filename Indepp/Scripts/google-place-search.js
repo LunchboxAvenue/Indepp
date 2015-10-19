@@ -1,35 +1,36 @@
-﻿function initialize() {
+﻿var componentForm = {
+    street_number: 'Address_Address1',
+    route: 'Address_Address2',
+    locality: 'Address_City',
+    postal_town: 'Address_City',
+    country: 'Address_Country',
+    postal_code: 'Address_PostCode'
+};
+
+var DayEnum = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday"
+};
+
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+function initialize() {
     var input = document.getElementById('googleSearchInput');
     var autocomplete = new google.maps.places.Autocomplete(input);
 
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
         var place = autocomplete.getPlace();
-        console.log(place);
 
         resetAll();
 
         $('#Name').val(place.name);
         $('#Website').val(place.website);
         $('#Telephone').val(place.international_phone_number);
-
-        var componentForm = {
-            street_number: 'Address_Address1',
-            route: 'Address_Address2',
-            locality: 'Address_City',
-            postal_town: 'Address_City',
-            country: 'Address_Country',
-            postal_code: 'Address_PostCode'
-        };
-
-        var DayEnum = {
-            0: "Sunday",
-            1: "Monday",
-            2: "Tuesday",
-            3: "Wednesday",
-            4: "Thursday",
-            5: "Friday",
-            6: "Saturday"
-        };
 
         for (var i = 0; i < place.address_components.length; i++) {
             var addressType = place.address_components[i].types[0];
@@ -59,12 +60,11 @@
 
 function resetAll() {
     $('#Name, #Website, #Telephone, #Address_Address1, #Address_Address2, #Address_City, #Address_Country, #Address_PostCode, #Address_Latitude, #Address_Longitude').val("");
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-    days.forEach(function (day) {
-        document.getElementById(day + '.Open').value = "";
-        document.getElementById(day + '.Close').value = "";
-    });
+    
+    for (var i = 0; i < days.length; i++) {
+        document.getElementById(days[i] + '.Open').value = "";
+        document.getElementById(days[i] + '.Close').value = "";
+    };
 }
 
 // Run the initialize function when the window has finished loading.
