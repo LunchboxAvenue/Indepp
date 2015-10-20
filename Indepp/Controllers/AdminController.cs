@@ -109,6 +109,7 @@ namespace Indepp.Controllers
             {
                 var Inplace = Context.Places.Where(p => p.ID == place.ID).FirstOrDefault();
 
+                Inplace.GooglePlaceId = place.GooglePlaceId;
                 Inplace.Name = place.Name;
                 Inplace.Category = place.Category;
                 Inplace.Website = place.Website;

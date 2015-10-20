@@ -44,6 +44,11 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         This place is user contributed. Tick the publish box when you are done reviewing this place.
                     </div>
+
+                    <div id="googlePlacePublishHelper" class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
                     <label>Publish</label>
                     <div class="input-group">
                         @Html.EditorFor(p => p.Reviewed)
@@ -61,6 +66,8 @@
             </div>
 
             <input type="button" id="resetAllButton" class="btn btn-default" value="Reset" />
+
+            @Html.HiddenFor(p => p.GooglePlaceId)
 
             <div class="editSection">
                 <label>Place Details</label>
@@ -157,6 +164,12 @@
 
 @Scripts.Render("~/bundles/editor")
 @Scripts.Render("~/bundles/placesearch")
+
+@{ 
+    if (Model.UserContributed) {
+        @Scripts.Render("~/bundles/placepublishhelper");
+    }
+}
 
 <script>
     CKEDITOR.replace('descriptionEditor');

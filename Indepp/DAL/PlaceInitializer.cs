@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Indepp.DAL
 {
-    public class PlaceInitializer : System.Data.Entity.DropCreateDatabaseAlways<PlaceContext>
+    public class PlaceInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<PlaceContext>
     {
         protected override void Seed(PlaceContext context)
         {

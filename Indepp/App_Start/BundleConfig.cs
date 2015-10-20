@@ -38,6 +38,10 @@ namespace Indepp
             bundles.Add(new ScriptBundle("~/bundles/placesearch").Include(
                 "~/Scripts/google-place-search.js"
                 ));
+
+            bundles.Add(new ScriptBundle("~/bundles/placepublishhelper").Include(
+                "~/Scripts/google-place-publish-helper.js"
+                ));
         }
     }
 }

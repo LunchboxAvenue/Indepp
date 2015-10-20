@@ -33,6 +33,8 @@ namespace Indepp.Models
         public bool UserContributed { get; set; }
         public bool Reviewed { get; set; }
 
+        public string GooglePlaceId { get; set; }
+
         public virtual Address Address { get; set; }
         public virtual PlaceDescription PlaceDescription { get; set; }
         public virtual ICollection<Article> Articles { get; set; }

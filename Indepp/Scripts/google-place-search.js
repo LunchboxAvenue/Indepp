@@ -27,7 +27,7 @@ function initialize() {
         var place = autocomplete.getPlace();
 
         resetAll();
-
+        $('#GooglePlaceId').val(place.place_id);
         $('#Name').val(place.name);
         $('#Website').val(place.website);
         $('#Telephone').val(place.international_phone_number);
@@ -59,7 +59,7 @@ function initialize() {
 }
 
 function resetAll() {
-    $('#Name, #Website, #Telephone, #Address_Address1, #Address_Address2, #Address_City, #Address_Country, #Address_PostCode, #Address_Latitude, #Address_Longitude').val("");
+    $('#GooglePlaceId, #Name, #Website, #Telephone, #Address_Address1, #Address_Address2, #Address_City, #Address_Country, #Address_PostCode, #Address_Latitude, #Address_Longitude').val("");
     
     for (var i = 0; i < days.length; i++) {
         document.getElementById(days[i] + '.Open').value = "";
