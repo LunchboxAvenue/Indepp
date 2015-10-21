@@ -72,4 +72,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 $('#resetAllButton').click(function () {
     resetAll();
+    $('#googleSearchInput').val("");
 });
