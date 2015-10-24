@@ -21,7 +21,6 @@ namespace Indepp
                       "~/Content/site.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/editor").Include(
-                "~/Scripts/ckeditor-live-fix.js",
                 "~/Scripts/ckeditor/ckeditor.js",
                 "~/Scripts/ckeditor/config.js"
                 ));

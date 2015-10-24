@@ -211,7 +211,6 @@
     <Content Include="Scripts\bootstrap-combobox.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\ckeditor-live-fix.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
     <Content Include="Scripts\ckeditor\config.js" />
     <Content Include="Scripts\ckeditor\lang\en.js" />
