@@ -37,6 +37,15 @@
                     <p>
                         @Model.Category
                     </p>
+                    <p>
+                        @Model.Email
+                    </p>
+                    <p>
+                        @Model.Telephone
+                    </p>
+                    <p>
+                        @Model.Website
+                    </p>
                 </div>
 
                 <div id="placeDetailsAddress">
@@ -46,10 +55,28 @@
                             Address:
                         </p>
                         <p>
+                            @Model.Address.Address1 @Model.Address.Address2
+                        </p>
+                        <p>
                             @Model.Address.City
                         </p>
                         <p>
                             @Model.Address.Country
+                        </p>
+                        <p>
+                            @Model.Address.PostCode
+                        </p>
+                    }
+                </div>
+
+                <div id="placeDetailsDescription">
+                    @if (Model.PlaceDescription != null)
+                    {
+                        <p>
+                            Description:
+                        </p>
+                        <p>
+                            @Html.Raw(Model.PlaceDescription.Description)
                         </p>
                     }
                 </div>
@@ -75,18 +102,6 @@
                                 @article.PostedOn
                             </p>
                         }
-                    }
-                </div>
-
-                <div id="placeDetailsDescription">
-                    @if (Model.PlaceDescription != null)
-                    {
-                        <p>
-                            Description:
-                        </p>
-                        <p>
-                            @Html.Raw(Model.PlaceDescription.Description)
-                        </p>
                     }
                 </div>
             </section>
