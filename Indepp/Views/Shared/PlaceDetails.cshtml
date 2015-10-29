@@ -25,12 +25,9 @@
                             The information displayed might not be true.
                         </div>
                     }
-                    <h1>
-                        PLACE DETAILS
-                    </h1>
-                    <p>
-                        @Model.ID
-                    </p>
+                </div>
+
+                <div class="col-md-4">
                     <p>
                         @Model.Name
                     </p>
@@ -48,8 +45,8 @@
                     </p>
                 </div>
 
-                <div id="placeDetailsAddress">
-                    @if (Model.Address != null)
+                <div class="col-md-4">
+                    @if (Model.Address.City != null)
                     {
                         <p>
                             Address:
@@ -68,9 +65,9 @@
                         </p>
                     }
                 </div>
-
-                <div id="placeDetailsDescription">
-                    @if (Model.PlaceDescription != null)
+                
+                <div class="col-md-4">
+                    @if (Model.PlaceDescription.Description != null)
                     {
                         <p>
                             Description:

@@ -56,7 +56,7 @@ namespace Indepp.Controllers
             var articlesAndBlogPosts = articles.Union(blogPosts).OrderByDescending(abp => abp.PostedOn);
 
 
-            int pageSize = 3;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
 
             return View(articlesAndBlogPosts.ToPagedList(pageNumber, pageSize));

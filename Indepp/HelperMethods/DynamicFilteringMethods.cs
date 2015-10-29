@@ -62,7 +62,7 @@ namespace Indepp.HelperMethods
             return places;
         }
 
-        public IPagedList<Place> PlaceList(IQueryable<Place> places, int? page, int pageSize = 3)
+        public IPagedList<Place> PlaceList(IQueryable<Place> places, int? page, int pageSize = 10)
         {
             int pageNumber = (page ?? 1);
 
