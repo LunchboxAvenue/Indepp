@@ -123,7 +123,7 @@ namespace Indepp.Controllers
 
         public JsonResult GetPlaceLocations(string showCoffee, string showFood, string showFarm, string showCraftShop, string showFashion, string placeName = "")
         {
-            var places = Context.Places.ToList().Select(p => new PlaceMap
+            var places = Context.Places.Where(p => p.Address.Latitude != null && p.Address.Longitude != null).ToList().Select(p => new PlaceMap
             {
                 Name = p.Name,
                 Category = p.Category,
@@ -135,7 +135,7 @@ namespace Indepp.Controllers
                         OpenTime = wh.OpenTime.HasValue ? wh.OpenTime.Value.ToString(@"hh\:mm") : "",
                         CloseTime = wh.CloseTime.HasValue ? wh.CloseTime.Value.ToString(@"hh\:mm") : ""
                     }).ToList()
-            }).Where(p => p.Latitude != null && p.Longitude != null);
+            });
 
             var sortedPlaces = places
                 .Where(p => p.Category == showCoffee || p.Category == showFood
