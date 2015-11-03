@@ -83,10 +83,10 @@ namespace Indepp.Controllers
             if (ModelState.IsValid)
             {
                 // Add Recipients
-                /*
                 var recipients = new List<string>()
                 { 
-                    @"Artur Smulko <artursmulko@gmail.com>" 
+                    @"Artur Smulko <artursmulko@gmail.com>",
+                    @"Anna Politiko <annapolitiko@gmail.com>"
                 };
 
                 // Using SendGrid to send emails
@@ -104,7 +104,7 @@ namespace Indepp.Controllers
 
                 // Send email
                 transportWeb.DeliverAsync(messageToIndepp);
-                */
+                
                 TempData.Add("MessageSent", "Your email has been sent");
 
                 return RedirectToAction("Contact");
